@@ -44,7 +44,7 @@ BOOL CDialogSkinFileNew::OnInitDialog()
 	CDialog::OnInitDialog();
 
 	// TODO:  Add extra initialization here
-	m_lstStyles.AddString(_T("(нч)"));
+	m_lstStyles.AddString(_T("(Empty)"));
 	m_lstStyles.SetCurSel(0);
 	FindStyleFiles(CGlobalVariable::GetStylesDir());
 
@@ -90,7 +90,7 @@ void CDialogSkinFileNew::OnLbnSelchangeListStyle()
 
 	m_lstStyles.GetText(nIndex, strText);
 	CString strStyleDir;
-	strStyleDir = (strText == _T("(нч)")) ? _T("") : CGlobalVariable::GetStylesDir() \
+	strStyleDir = (strText == _T("(Empty)")) ? _T("") : CGlobalVariable::GetStylesDir() \
 		+ strText;
 	if(!strStyleDir.IsEmpty())
 	{

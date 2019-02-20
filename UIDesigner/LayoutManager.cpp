@@ -122,7 +122,7 @@ void CWindowUI::SetPos(RECT rc)
 	CControlUI* pControl=static_cast<CControlUI*>(m_items[0]);
 	if(pControl==NULL)
 		return;
-	pControl->SetPos(rc);//·Å´óµ½Õû¸ö¿Í»§Çø
+	pControl->SetPos(rc);//æ”¾å¤§åˆ°æ•´ä¸ªå®¢æˆ·åŒº
 }
 
 void CWindowUI::SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue)
@@ -1017,10 +1017,10 @@ CControlUI* CLayoutManager::CloneControl(CControlUI* pControl)
 		pCopyControl = new CListContainerElementUI(*static_cast<CListContainerElementUI*>(pControl->GetInterface(_T("ListContainerElement"))));
 		break;
 	case classList:
-		{//0917 by µË¾°ÈÊ(cddjr) , ÔÚ²»¸Ä¶¯duilibµÄÇ°ÌáÏÂ£¬Ö»ÄÜ²ÉÓÃÈçÏÂ´úÂë 
+		{//0917 by é‚“æ™¯ä»(cddjr) , åœ¨ä¸æ”¹åŠ¨duilibçš„å‰æä¸‹ï¼Œåªèƒ½é‡‡ç”¨å¦‚ä¸‹ä»£ç  
 			CListUI &copyList = *static_cast<CListUI*>(pControl->GetInterface(_T("List")));
 			if (copyList.GetHorizontalScrollBar() || copyList.GetVerticalScrollBar())
-			{//²âÊÔ´°ÌåÖĞ£¬Ôİ²»Ö§³Ö¹ö¶¯Ìõ
+			{//æµ‹è¯•çª—ä½“ä¸­ï¼Œæš‚ä¸æ”¯æŒæ»šåŠ¨æ¡
 				copyList.EnableScrollBar(false, false);
 			}
 			pCopyControl = new CListUI();
@@ -1447,7 +1447,7 @@ void CLayoutManager::SaveControlProperty(CControlUI* pControl, TiXmlElement* pNo
 		CControlUI* pParent = pControl->GetParent();
 		if((pParent != NULL) && ((static_cast<IContainerUI*>(pParent->GetInterface(_T("IContainer"))) != NULL) && (static_cast<CContainerUI*>(pParent->GetInterface(_T("Container"))) != NULL)))
 		{
-			// Èç¹ûÍ¬Ò»²ãÖĞËùÓĞÔªËØ¶¼ÊÇ²»¿É¼ûµÄ£¬Ôò²»ÉèÖÃÊôĞÔ
+			// å¦‚æœåŒä¸€å±‚ä¸­æ‰€æœ‰å…ƒç´ éƒ½æ˜¯ä¸å¯è§çš„ï¼Œåˆ™ä¸è®¾ç½®å±æ€§
 			bool bVisible = false;
 			CContainerUI* pContainerUI = static_cast<CContainerUI*>(pParent->GetInterface(_T("Container")));
 			for( int it = 0; it < pContainerUI->GetCount(); it++ )
@@ -1513,8 +1513,8 @@ void CLayoutManager::SaveControlProperty(CControlUI* pControl, TiXmlElement* pNo
 	}
 #endif // 0
 
-	// ÔÚ¾ø¶Ô×ø±êÏÂÊä³öpos×ø±ê£¬Ê¹ÓÃÇ°Á½¸öÖµ±íÊ¾×ø±ê
-	// Ê¼ÖÕÊä³öwidthºÍheightÀ´±íÊ¾¿Ø¼ş´óĞ¡
+	// åœ¨ç»å¯¹åæ ‡ä¸‹è¾“å‡ºposåæ ‡ï¼Œä½¿ç”¨å‰ä¸¤ä¸ªå€¼è¡¨ç¤ºåæ ‡
+	// å§‹ç»ˆè¾“å‡ºwidthå’Œheightæ¥è¡¨ç¤ºæ§ä»¶å¤§å°
 	if(pControl->IsFloat())
 	{
 		pNode->SetAttribute("float", "true");
@@ -2097,7 +2097,7 @@ void CLayoutManager::SaveTileLayoutProperty(CControlUI* pControl, TiXmlElement* 
 	SaveContainerProperty(pControl, pNode);
 }
 
-//added by µË¾°ÈÊ 2011-09-08
+//added by é‚“æ™¯ä» 2011-09-08
 void CLayoutManager::SaveActiveXProperty(CControlUI* pControl, TiXmlElement* pNode)
 {
 	SaveControlProperty(pControl, pNode);

@@ -167,7 +167,7 @@ void CUICommandNode::End(CControlUI* pControl, LPCTSTR pstrName, LPCTSTR pstrVal
 	//TiXmlDocument xmlDoc("testEnd.xml");
 	//xmlDoc.InsertEndChild(*pElement);
 	//xmlDoc.Print();
-	//xmlDoc.SaveFile(); // °ÑXMLÎÄ¼þÐ´ÈëÓ²ÅÌ
+	//xmlDoc.SaveFile(); // æŠŠXMLæ–‡ä»¶å†™å…¥ç¡¬ç›˜
 	delete pNode;
 	m_pControl = NULL;
 }
@@ -308,7 +308,7 @@ BOOL CUICommandHistory::AddUICommand(CUICommandNode* pNode)
 	m_lstCommandNodes.AddTail(pNode);
 	m_nCommandIndex = m_lstCommandNodes.GetCount();
 
-	//zy ²âÊÔÓÃ
+	//zy æµ‹è¯•ç”¨
 	//if (pNode->m_pBefore)
 	//{
 	//	if (pNode->m_pBefore->m_pElementXml)

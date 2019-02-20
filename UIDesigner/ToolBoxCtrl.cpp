@@ -580,8 +580,8 @@ void CToolBoxCtrl::ExpandAll(BOOL bExpand/* = TRUE*/)
 void CToolBoxCtrl::OnPaint()
 {
 	CPaintDC dc(this); // device context for painting
-	// TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌÐò´úÂë
-	// ²»Îª»æÍ¼ÏûÏ¢µ÷ÓÃ CWnd::OnPaint()
+	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
+	// ä¸ä¸ºç»˜å›¾æ¶ˆæ¯è°ƒç”¨ CWnd::OnPaint()
 	CMemDC memDC(dc, this);
 	CDC* pDC = &memDC.GetDC();
 
@@ -903,22 +903,22 @@ void CToolBoxCtrl::CreateToolTabFont()
 		m_fontToolTab.DeleteObject();
 	}
 
-	CFont* pFont = CFont::FromHandle((HFONT) ::GetStockObject(DEFAULT_GUI_FONT));
-	ASSERT_VALID(pFont);
+CFont* pFont = CFont::FromHandle((HFONT) ::GetStockObject(DEFAULT_GUI_FONT));
+ASSERT_VALID(pFont);
 
-	LOGFONT lf;
-	memset(&lf, 0, sizeof(LOGFONT));
+LOGFONT lf;
+memset(&lf, 0, sizeof(LOGFONT));
 
-	pFont->GetLogFont(&lf);
+pFont->GetLogFont(&lf);
 
-	lf.lfWeight = FW_BOLD;
-	m_fontToolTab.CreateFontIndirect(&lf);
+lf.lfWeight = FW_BOLD;
+m_fontToolTab.CreateFontIndirect(&lf);
 }
 void CToolBoxCtrl::OnSize(UINT nType, int cx, int cy)
 {
 	CWnd::OnSize(nType, cx, cy);
 
-	// TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
 	AdjustLayout();
 }
 
@@ -995,23 +995,30 @@ void CToolBoxCtrl::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 
 	ReposTools();
 
-	int dy = m_nToolHeight *(nPrevOffset - m_nVertScrollOffset);
+	int dy = m_nToolHeight * (nPrevOffset - m_nVertScrollOffset);
 	ScrollWindow(0, dy, m_rectList, m_rectList);
 
-// 	CWnd::OnVScroll(nSBCode, nPos, pScrollBar);
+	// 	CWnd::OnVScroll(nSBCode, nPos, pScrollBar);
 }
 
 void CToolBoxCtrl::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-	CToolElement* pOldHover=m_pHover;
-	m_pHover=HitTest(point);
-	if(pOldHover==m_pHover)
-		return;
-	if(pOldHover)
-		pOldHover->Redraw();
-	if(m_pHover)
-		m_pHover->Redraw();
+
+	if (GetCapture()) {
+		TRACE(m_pSel->m_strName + _T(" moved\n"));
+	}
+	else {
+		CToolElement* pOldHover = m_pHover;
+		m_pHover = HitTest(point);
+		if (pOldHover == m_pHover)
+			return;
+		if (pOldHover)
+			pOldHover->Redraw();
+		if (m_pHover)
+			m_pHover->Redraw();
+	}
+
 
 	// Post message when the mouse pointer leaves the window 
 	TRACKMOUSEEVENT   tme;
@@ -1046,13 +1053,18 @@ void CToolBoxCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 	if(m_pSel->IsToolTab())
 		m_pSel->Expand(!m_pSel->IsExpanded());
 
+	if (DragDetect(point)) {
+		SetCapture();
+		TRACE(m_pSel->m_strName + _T(" Dragged\n"));
+	}
+
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
 void CToolBoxCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-
+	ReleaseCapture();
 	CWnd::OnLButtonUp(nFlags, point);
 }
 

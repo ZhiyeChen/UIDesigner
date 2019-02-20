@@ -21,7 +21,7 @@ BEGIN_MESSAGE_MAP(CClassViewTree, CTreeCtrl)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CClassViewTree ÏûÏ¢´¦Àí³ÌĞò
+// CClassViewTree æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CClassViewTree::OnTvnSelChanged(NMHDR *pNMHDR, LRESULT *pResult)
 {
@@ -39,7 +39,7 @@ void CClassViewTree::OnTvnSelChanged(NMHDR *pNMHDR, LRESULT *pResult)
 
 void CClassViewTree::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	switch(nChar)
 	{
 	case VK_DELETE:
@@ -71,7 +71,7 @@ BEGIN_MESSAGE_MAP(CClassView, CDockablePane)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CClassView ÏûÏ¢´¦Àí³ÌĞò
+// CClassView æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 int CClassView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
@@ -81,13 +81,13 @@ int CClassView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CRect rectDummy;
 	rectDummy.SetRectEmpty();
 
-	// ´´½¨ÊÓÍ¼:
+	// åˆ›å»ºè§†å›¾:
 	const DWORD dwViewStyle = WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
 
 	if (!m_wndClassView.Create(dwViewStyle, rectDummy, this, 2))
 	{
-		TRACE0("Î´ÄÜ´´½¨ÀàÊÓÍ¼\n");
-		return -1;      // Î´ÄÜ´´½¨
+		TRACE0("æœªèƒ½åˆ›å»ºç±»è§†å›¾\n");
+		return -1;      // æœªèƒ½åˆ›å»º
 	}
 
 	OnChangeVisualStyle();
@@ -114,7 +114,7 @@ void CClassView::OnContextMenu(CWnd* pWnd, CPoint point)
 
 	if (point != CPoint(-1, -1))
 	{
-		// Ñ¡ÔñÒÑµ¥»÷µÄÏî:
+		// é€‰æ‹©å·²å•å‡»çš„é¡¹:
 		CPoint ptTree = point;
 		pWndTree->ScreenToClient(&ptTree);
 
@@ -164,7 +164,7 @@ BOOL CClassView::PreTranslateMessage(MSG* pMsg)
 
 void CClassView::OnPaint()
 {
-	CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+	CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 	CRect rectTree;
 	m_wndClassView.GetWindowRect(rectTree);
@@ -190,7 +190,7 @@ void CClassView::OnChangeVisualStyle()
 	CBitmap bmp;
 	if (!bmp.LoadBitmap(uiBmpId))
 	{
-		TRACE(_T("ÎŞ·¨¼ÓÔØÎ»Í¼: %x\n"), uiBmpId);
+		TRACE(_T("æ— æ³•åŠ è½½ä½å›¾: %x\n"), uiBmpId);
 		ASSERT(FALSE);
 		return;
 	}
