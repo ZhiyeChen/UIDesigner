@@ -5,6 +5,7 @@
 #include "UIDesigner.h"
 #include "DialogCheckUpdate.h"
 #include <wininet.h>
+#include "UIUtil.h"
 
 #pragma comment(lib, "WinInet")
 
@@ -51,16 +52,16 @@ BOOL CDialogCheckUpdate::OnInitDialog()
 		this->GetDlgItem(IDC_STATIC_LATEST_VERSION)->SetWindowText(strLastestVersion);
 	CWnd* pWndInfo = this->GetDlgItem(IDC_STATIC_UPDATE_INFO);
 	if (strUpdateURL.IsEmpty())
-		pWndInfo->SetWindowText(_T("检查新版本失败！"));
+		pWndInfo->SetWindowText(StringConvertor::Utf8ToWide("检查新版本失败！"));
 	else if(strLastestVersion == UIDESIGNER_VERSION)
-		pWndInfo->SetWindowText(_T("您的版本已经是最新！"));
+		pWndInfo->SetWindowText(StringConvertor::Utf8ToWide("您的版本已经是最新！"));
 	else
 	{
 		m_btnUpdateURL.SetURL(strUpdateURL);
-		m_btnUpdateURL.SetTooltip(_T("下载最新版本"));
+		m_btnUpdateURL.SetTooltip(StringConvertor::Utf8ToWide("下载最新版本"));
 		m_btnUpdateURL.SizeToContent();
 		m_btnUpdateURL.ShowWindow(SW_SHOW);
-		pWndInfo->SetWindowText(_T("新版本可供下载！"));
+		pWndInfo->SetWindowText(StringConvertor::Utf8ToWide("新版本可供下载！"));
 	}
 	
 	return TRUE;  // return TRUE unless you set the focus to a control

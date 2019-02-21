@@ -235,7 +235,7 @@ void CFileView::OnProjectClose()
 void CFileView::OnProjectOpen()
 {
 	CFileDialog dlg(TRUE, _T(""), NULL,OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT
-		, _T("项目文件(*.uiproj)|*.uiproj|所有文件(*.*)|*.*||"));
+		, StringConvertor::Utf8ToWide("项目文件(*.uiproj)|*.uiproj|所有文件(*.*)|*.*||"));
 	if(dlg.DoModal() == IDOK)
 	{
 		if(CGlobalVariable::m_bIsProjectExist)
@@ -376,16 +376,16 @@ void CFileView::OnFileDelete()
 	DWORD dwInfo = m_wndFileView.GetItemData(hSelectedItem);
 	if(dwInfo == INFO_FILE)
 	{
-		if(MessageBox(_T("您确定删除此文件？\n点击“是”，确认删除，“否”取消删除。"),
-			_T("警告"), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if(MessageBox(StringConvertor::Utf8ToWide("您确定删除此文件？\n点击“是”，确认删除，“否”取消删除。"),
+			StringConvertor::Utf8ToWide("警告"), MB_YESNO | MB_ICONWARNING) == IDNO)
 			return;
 
 		DeleteSkinFile(hSelectedItem);
 	}
 	else if(dwInfo == INFO_DIRECTORY)
 	{
-		if(MessageBox(_T("您确定该目录中的所有内容，删除后将无法恢复？\n点击“是”，确认删除，“否”取消删除。"),
-			_T("警告"), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if(MessageBox(StringConvertor::Utf8ToWide("您确定该目录中的所有内容，删除后将无法恢复？\n点击“是”，确认删除，“否”取消删除。"),
+			StringConvertor::Utf8ToWide("警告"), MB_YESNO | MB_ICONWARNING) == IDNO)
 			return;
 
 		DeleteDirectory(hSelectedItem);
@@ -518,7 +518,7 @@ void CFileView::OnChangeVisualStyle()
 	CBitmap bmp;
 	if (!bmp.LoadBitmap(uiBmpId))
 	{
-		TRACE(_T("无法加载位图: %x\n"), uiBmpId);
+		TRACE(StringConvertor::Utf8ToWide("无法加载位图: %x\n"), uiBmpId);
 		ASSERT(FALSE);
 		return;
 	}
@@ -543,9 +543,9 @@ void CFileView::OnDirectoryNew()
 	DWORD dwInfo = m_wndFileView.GetItemData(hSelectedItem);
 	HTREEITEM hParent = (dwInfo != INFO_FILE) ? hSelectedItem:m_wndFileView.GetParentItem(hSelectedItem);
 	int nCount = 2;
-	CString strDirName = _T("新建文件夹");
+	CString strDirName = StringConvertor::Utf8ToWide("新建文件夹");
 	while(FindDirectory(strDirName, hParent))
-		strDirName.Format(_T("新建文件夹(%d)"), nCount++);
+		strDirName.Format(StringConvertor::Utf8ToWide("新建文件夹(%d)"), nCount++);
 
 	HTREEITEM hNewItem = m_wndFileView.InsertItem(strDirName, 1, 1, hParent);
 	m_wndFileView.SetItemData(hNewItem, INFO_DIRECTORY);
@@ -563,14 +563,14 @@ void CFileView::OnCreateCopy()
 
 	CString strFileName= m_wndFileView.GetItemText(hSelectedItem);
 	CString strNewFileName = strFileName;
-	strNewFileName.Insert(0, _T("复件 "));
+	strNewFileName.Insert(0, StringConvertor::Utf8ToWide("复件 "));
 	int nCount = 0;
 	while(!CopyFile(CGlobalVariable::m_strProjectPath + strFileName,
 		CGlobalVariable::m_strProjectPath + strNewFileName, TRUE))
 	{
 		strNewFileName = strFileName;
 		CString strCount;
-		strCount.Format(_T("复件(%d) "), nCount++);
+		strCount.Format(StringConvertor::Utf8ToWide("复件(%d) "), nCount++);
 		strNewFileName.Insert(0, strCount);
 	}
 	HTREEITEM hParent  = m_wndFileView.GetParentItem(hSelectedItem);
@@ -593,13 +593,13 @@ BOOL CFileView::RenameFile(CString strNewName, HTREEITEM hItem)
 	{
 		if(FindSkinFile(CGlobalVariable::m_strProjectPath + strOldName))
 		{
-			MessageBox(_T("此文件正处于打开状态，请先关闭后再进行重命名。"), _T("提示"), MB_ICONINFORMATION);
+			MessageBox(StringConvertor::Utf8ToWide("此文件正处于打开状态，请先关闭后再进行重命名。"), StringConvertor::Utf8ToWide("提示"), MB_ICONINFORMATION);
 			return FALSE;
 		}
 		if(!MoveFile(CGlobalVariable::m_strProjectPath + strOldName
 			, CGlobalVariable::m_strProjectPath + strNewName))
 		{
-			MessageBox(_T("此文件已经存在，不能重复命名。"), _T("提示"), MB_ICONINFORMATION);
+			MessageBox(StringConvertor::Utf8ToWide("此文件已经存在，不能重复命名。"), StringConvertor::Utf8ToWide("提示"), MB_ICONINFORMATION);
 			return FALSE;
 		}
 	}
@@ -607,7 +607,7 @@ BOOL CFileView::RenameFile(CString strNewName, HTREEITEM hItem)
 	{
 		if(FindDirectory(strNewName, m_wndFileView.GetParentItem(hItem)))
 		{
-			MessageBox(_T("此目录已经存在，不能重复命名。"), _T("提示"), MB_ICONINFORMATION);
+			MessageBox(StringConvertor::Utf8ToWide("此目录已经存在，不能重复命名。"), StringConvertor::Utf8ToWide("提示"), MB_ICONINFORMATION);
 			return FALSE;
 		}
 	}

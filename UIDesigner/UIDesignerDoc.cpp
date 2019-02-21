@@ -141,7 +141,7 @@ void CUIDesignerDoc::OnMdiCopyFullPath()
 {
 	if(m_strPathName.IsEmpty())
 	{
-		MessageBox(NULL, _T("请先保存当前文件。"), _T("提示"), MB_ICONINFORMATION);
+		MessageBox(NULL, StringConvertor::Utf8ToWide("请先保存当前文件。"), StringConvertor::Utf8ToWide("提示"), MB_ICONINFORMATION);
 		return;
 	}
 
@@ -164,7 +164,7 @@ void CUIDesignerDoc::OnMdiOpenFullPath()
 {
 	if(m_strPathName.IsEmpty())
 	{
-		MessageBox(NULL, _T("请先保存当前文件。"), _T("提示"), MB_ICONINFORMATION);
+		MessageBox(NULL, StringConvertor::Utf8ToWide("请先保存当前文件。"), StringConvertor::Utf8ToWide("提示"), MB_ICONINFORMATION);
 		return;
 	}
 

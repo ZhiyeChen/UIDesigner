@@ -12,6 +12,8 @@ class CToolElement : public CObject
 public:
 	CToolElement(const CString& strTabName);
 	CToolElement(const CString& strName,int nClass,UINT nIDIcon);
+	CToolElement(const CString& strName, int nClass, HICON hIcon);
+
 	virtual ~CToolElement();
 
 public:
@@ -24,6 +26,7 @@ public:
 	void SetClass(int nClass) { m_nClass=nClass; }
 	CToolElement* GetTool(int nClass) const;
 	int GetClass() const { return m_nClass; }
+	HICON GetIcon() const { return m_hIcon; }
 	virtual BOOL IsSelected() const;
 	virtual BOOL IsHovered() const;
 	BOOL IsParentExpanded() const;
@@ -82,7 +85,10 @@ public:
 
 	void SetCurSel(CToolElement* pTool, BOOL bRedraw = TRUE);
 	void SetCurSel(int nClass,BOOL bRedraw=TRUE);
+	void SetCurDrag(CToolElement* pTool);
+
 	CToolElement* GetCurSel() const { return m_pSel; }
+	CToolElement* GetCurDrag() const { return m_pDrag; }
 	void ExpandAll(BOOL bExpand = TRUE);
 
 	virtual void AdjustLayout();
@@ -113,6 +119,7 @@ protected:
 	CList<CToolElement*, CToolElement*> m_lstToolTabs;         // List of ToolTab
 	CToolElement*                       m_pSel;                // Current selection
 	CToolElement*                       m_pHover;              //Hover over
+	CToolElement* m_pDrag;
 
 	CRect m_rectList; // ToolBox area
 	int m_nTabHeight; //ToolTab height of the single row
@@ -134,6 +141,7 @@ protected:
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
+	void Redraw();
 	afx_msg void OnPaint();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

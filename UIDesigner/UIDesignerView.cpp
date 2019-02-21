@@ -296,7 +296,7 @@ void CUIDesignerView::OnLButtonDown(UINT nFlags, CPoint point)
 	
 	this->Invalidate(FALSE);
 
-// 	__super::OnLButtonDown(nFlags, point);
+ 	//__super::OnLButtonDown(nFlags, point);
 }
 
 BOOL CUIDesignerView::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)

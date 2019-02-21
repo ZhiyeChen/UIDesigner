@@ -6,6 +6,7 @@
 #include "ImageDialog.h"
 #include "DialogCustomFonts.h"
 #include "DialogDefaultAttribList.h"
+#include "UIUtil.h"
 
 using DuiLib::TRelativePosUI;
 using DuiLib::IListOwnerUI;
@@ -351,102 +352,102 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("Window"),classWindow);
 
 	pValueList=new CMFCPropertyGridProperty(_T("Size"),tagWindowSize,TRUE);//size
-	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0,_T("窗体的宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗体的宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0,_T("窗体的高度"));
+	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗体的高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("Caption"),tagCaption,TRUE);//caption
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("标题的Left位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("标题的Left位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("标题的Top位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("标题的Top位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("标题的Right位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("标题的Right位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("标题的Bottom位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("标题的Bottom位置"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("SizeBox"),tagSizeBox,TRUE);//sizebox
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("尺寸盒的Left位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("尺寸盒的Left位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("尺寸盒的Top位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("尺寸盒的Top位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("尺寸盒的Right位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("尺寸盒的Right位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("尺寸盒的Bottom位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("尺寸盒的Bottom位置"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("RoundCorner"),tagRoundCorner,TRUE);//roundcorner
-	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0,_T("圆角的宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("圆角的宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0,_T("圆角的高度"));
+	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("圆角的高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("MinInfo"),tagMinInfo,TRUE);//mininfo
-	pProp=new CMFCPropertyGridProperty(_T("MinWidth"),(_variant_t)(LONG)0,_T("窗口的最小跟踪宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("MinWidth"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗口的最小跟踪宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("MinHeight"),(_variant_t)(LONG)0,_T("窗口的最小跟踪高度"));
+	pProp=new CMFCPropertyGridProperty(_T("MinHeight"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗口的最小跟踪高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("MaxInfo"),tagMinInfo,TRUE);//maxinfo
-	pProp=new CMFCPropertyGridProperty(_T("MaxWidth"),(_variant_t)(LONG)0,_T("窗口的最大跟踪宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("MaxWidth"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗口的最大跟踪宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Maxeight"),(_variant_t)(LONG)0,_T("窗口的最大跟踪高度"));
+	pProp=new CMFCPropertyGridProperty(_T("Maxeight"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗口的最大跟踪高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
-	pProp=new CMFCPropertyGridProperty(_T("ShowDirty"),(_variant_t)false,_T("指示是否显示更新区域"),tagShowDirty);//showdirty
+	pProp=new CMFCPropertyGridProperty(_T("ShowDirty"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否显示更新区域"),tagShowDirty);//showdirty
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridCustomFontsProperty(_T("CustomFonts"),(_variant_t)_T("字体管理"),_T("管理自定义的字体"),tagCustomFonts);//customfonts
+	pProp=new CMFCPropertyGridCustomFontsProperty(_T("CustomFonts"),(_variant_t)StringConvertor::Utf8ToWide("字体管理"), StringConvertor::Utf8ToWide("管理自定义的字体"),tagCustomFonts);//customfonts
 	pProp->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridDefaultAttribListProperty(_T("DefaultAttribList"),(_variant_t)_T("默认属性列表管理"),_T("管理默认的属性列表"),tagDefaultAttribList);//defaultattriblist
+	pProp=new CMFCPropertyGridDefaultAttribListProperty(_T("DefaultAttribList"),(_variant_t)StringConvertor::Utf8ToWide("默认属性列表管理"), StringConvertor::Utf8ToWide("管理默认的属性列表"),tagDefaultAttribList);//defaultattriblist
 	pProp->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pProp);
 
 	// tagAlpha
-	pProp=new CMFCPropertyGridProperty(_T("Alpha"),(_variant_t)(LONG)0,_T("窗口的alpha值(0-255)\n255"),tagAlpha);
+	pProp=new CMFCPropertyGridProperty(_T("Alpha"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("窗口的alpha值(0-255)\n255"),tagAlpha);
 	pPropUI->AddSubItem(pProp);
 
 	// tagBkTrans
-	pProp=new CMFCPropertyGridProperty(_T("BkTrans"),(_variant_t)false,_T("窗口是否使用静态透明背景\nfalse"),tagBkTrans);
+	pProp=new CMFCPropertyGridProperty(_T("BkTrans"),(_variant_t)false, StringConvertor::Utf8ToWide("窗口是否使用静态透明背景\nfalse"),tagBkTrans);
 	pPropUI->AddSubItem(pProp);
 
 	// tagDefaultFontColor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("DefaultFontColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定默认的字体颜色"),tagDefaultFontColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("DefaultFontColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定默认的字体颜色"),tagDefaultFontColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	// tagSelectedFontColor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("SelectedColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定默认的selected字体颜色"),tagSelectedFontColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("SelectedColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定默认的selected字体颜色"),tagSelectedFontColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//	DisabledFontColor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("DisabledFontColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定默认的Disabled字体颜色"),tagDisabledFontColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("DisabledFontColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定默认的Disabled字体颜色"),tagDisabledFontColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	// tagLinkFontColor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("LinkFontColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定默认的link字体颜色"),tagLinkFontColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("LinkFontColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定默认的link字体颜色"),tagLinkFontColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	// tagLinkHoverFontColor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("LinkHoverFontColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定默认的linkhoverfont字体颜色"),tagLinkHoverFontColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("LinkHoverFontColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定默认的linkhoverfont字体颜色"),tagLinkHoverFontColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -456,131 +457,131 @@ void CUIProperties::InitPropList()
 #pragma region Control
 	pPropUI=new CMFCPropertyGridProperty(_T("Control"),classControl);
 
-	pProp=new CMFCPropertyGridProperty(_T("Name"),(_variant_t)_T(""),_T("控件的名称"),tagName);//name
+	pProp=new CMFCPropertyGridProperty(_T("Name"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("控件的名称"),tagName);//name
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Text"),(_variant_t)_T(""),_T("控件的显示文本"),tagText);//text
+	pProp=new CMFCPropertyGridProperty(_T("Text"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("控件的显示文本"),tagText);//text
 	pPropUI->AddSubItem(pProp);
 
 	pValueList=new CMFCPropertyGridProperty(_T("Pos"),tagPos,TRUE);//pos
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("控件的Left位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的Left位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("控件的Top位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的Top位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("控件的Right位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的Right位置"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("控件的Bottom位置"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的Bottom位置"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("RelativePos"),tagRelativePos,TRUE);//relativepos
-	pProp=new CMFCPropertyGridProperty(_T("MoveX"),(_variant_t)(LONG)0,_T("控件的水平位移"));
+	pProp=new CMFCPropertyGridProperty(_T("MoveX"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的水平位移"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("MoveY"),(_variant_t)(LONG)0,_T("控件的垂直位移"));
+	pProp=new CMFCPropertyGridProperty(_T("MoveY"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的垂直位移"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("ZoomX"),(_variant_t)(LONG)0,_T("控件的水平比例"));
+	pProp=new CMFCPropertyGridProperty(_T("ZoomX"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的水平比例"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("ZoomY"),(_variant_t)(LONG)0,_T("控件的垂直比例"));
+	pProp=new CMFCPropertyGridProperty(_T("ZoomY"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的垂直比例"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("Size"),tagSize,TRUE);//size
-	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0,_T("控件的宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0,_T("控件的高度"));
+	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("控件的高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("MinSize"),tagMinSize,TRUE);//minsize
-	pProp=new CMFCPropertyGridProperty(_T("MinWidth"),(_variant_t)(LONG)0,_T("指定控件的最小宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("MinWidth"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件的最小宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("MinHeight"),(_variant_t)(LONG)0,_T("指定控件的最小高度"));
+	pProp=new CMFCPropertyGridProperty(_T("MinHeight"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件的最小高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("MaxSize"),tagMaxSize,TRUE);
-	pProp=new CMFCPropertyGridProperty(_T("MaxWidth"),(_variant_t)(LONG)0,_T("指定控件的最大宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("MaxWidth"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件的最大宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("MaxHeight"),(_variant_t)(LONG)0,_T("指定控件的最大高度"));
+	pProp=new CMFCPropertyGridProperty(_T("MaxHeight"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件的最大高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	pValueList=new CMFCPropertyGridProperty(_T("Padding"),tagPadding,TRUE);//padding
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("指定控件内部的左边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件内部的左边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("指定控件内部的上边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件内部的上边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("指定控件内部的右边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件内部的右边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("指定控件内部的下边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件内部的下边距"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("BkImage"),_T(""),_T("指定控件的背景图片"),tagBkImage);//bkimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("BkImage"),_T(""), StringConvertor::Utf8ToWide("指定控件的背景图片"),tagBkImage);//bkimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropColor=new CMFCPropertyGridColor32Property(_T("BkColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定控件的背景颜色"),tagBkColor);//bkcolor
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("BkColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定控件的背景颜色"),tagBkColor);//bkcolor
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
-	pPropColor=new CMFCPropertyGridColorProperty(_T("BkColor2"),(LONG)RGB(0,0,0),NULL,_T("指定控件的背景颜色2"),tagBkColor2);//bkcolor2
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColorProperty(_T("BkColor2"),(LONG)RGB(0,0,0),NULL, StringConvertor::Utf8ToWide("指定控件的背景颜色2"),tagBkColor2);//bkcolor2
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
-	pPropColor=new CMFCPropertyGridColorProperty(_T("BorderColor"),(LONG)RGB(0,0,0),NULL,_T("指定控件的边框颜色"),tagBorderColor);//bordercolor
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColorProperty(_T("BorderColor"),(LONG)RGB(0,0,0),NULL, StringConvertor::Utf8ToWide("指定控件的边框颜色"),tagBorderColor);//bordercolor
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//focusbordercolor
-	pPropColor=new CMFCPropertyGridColorProperty(_T("focusbordercolor"),(LONG)RGB(0,0,0),NULL,_T("指定控件边框获得焦点时边框的颜色"),tagFocusBorderColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColorProperty(_T("focusbordercolor"),(LONG)RGB(0,0,0),NULL, StringConvertor::Utf8ToWide("指定控件边框获得焦点时边框的颜色"),tagFocusBorderColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
-	pProp=new CMFCPropertyGridProperty(_T("BorderSize"),(_variant_t)(LONG)0,_T("指定控件的边框线宽\n1"),tagBorderSize);//bordersize
+	pProp=new CMFCPropertyGridProperty(_T("BorderSize"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定控件的边框线宽\n1"),tagBorderSize);//bordersize
 	pPropUI->AddSubItem(pProp);
 
 	//borderround
 	pValueList=new CMFCPropertyGridProperty(_T("borderround"),tagBorderRound,TRUE);
-	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0,_T("边框圆角的宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("边框圆角的宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0,_T("边框圆角的高度"));
+	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("边框圆角的高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
-	pProp=new CMFCPropertyGridProperty(_T("Enabled"),(_variant_t)true,_T("指示是否已启用该控件\nTrue"),tagEnabled);//enabled
+	pProp=new CMFCPropertyGridProperty(_T("Enabled"),(_variant_t)true, StringConvertor::Utf8ToWide("指示是否已启用该控件\nTrue"),tagEnabled);//enabled
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Float"),(_variant_t)false,_T("确定该控件是固定的，还是浮动的\nFalse"),tagFloat);//float
+	pProp=new CMFCPropertyGridProperty(_T("Float"),(_variant_t)false, StringConvertor::Utf8ToWide("确定该控件是固定的，还是浮动的\nFalse"),tagFloat);//float
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Visible"),(_variant_t)true,_T("确定该控件是可见的，还是隐藏的\nTrue"),tagVisible);//visible
+	pProp=new CMFCPropertyGridProperty(_T("Visible"),(_variant_t)true, StringConvertor::Utf8ToWide("确定该控件是可见的，还是隐藏的\nTrue"),tagVisible);//visible
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Mouse"),(_variant_t)true,_T("指示该控件是否响应鼠标操作\nTrue"),tagMouse);//mouse
+	pProp=new CMFCPropertyGridProperty(_T("Mouse"),(_variant_t)true, StringConvertor::Utf8ToWide("指示该控件是否响应鼠标操作\nTrue"),tagMouse);//mouse
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Menu"),(_variant_t)false,_T("指示该控件是否需要右键菜单\nFalse"),tagMenu);//menu
+	pProp=new CMFCPropertyGridProperty(_T("Menu"),(_variant_t)false, StringConvertor::Utf8ToWide("指示该控件是否需要右键菜单\nFalse"),tagMenu);//menu
 	pPropUI->AddSubItem(pProp);
 
 	//colorhsl
-	pProp=new CMFCPropertyGridProperty(_T("ColorHSL"),(_variant_t)false,_T("指示该控件的颜色是否随窗口的hsl变化而变化\nFalse"),tagColorHSL);
+	pProp=new CMFCPropertyGridProperty(_T("ColorHSL"),(_variant_t)false, StringConvertor::Utf8ToWide("指示该控件的颜色是否随窗口的hsl变化而变化\nFalse"),tagColorHSL);
 	pPropUI->AddSubItem(pProp);
 
 	//tooltip
-	pProp=new CMFCPropertyGridProperty(_T("Tooltip"),(_variant_t)_T(""),_T("指示该控件鼠标悬浮提示"),tagTooltip);
+	pProp=new CMFCPropertyGridProperty(_T("Tooltip"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("指示该控件鼠标悬浮提示"),tagTooltip);
 	pPropUI->AddSubItem(pProp);
 
 	//userdata
-	pProp=new CMFCPropertyGridProperty(_T("UserData"),(_variant_t)_T(""),_T("指示该控件自定义标识\nFalse"),tagUserData);
+	pProp=new CMFCPropertyGridProperty(_T("UserData"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("指示该控件自定义标识\nFalse"),tagUserData);
 	pPropUI->AddSubItem(pProp);
 
 	//keyboard
-	pProp=new CMFCPropertyGridProperty(_T("KeyBoard"),(_variant_t)false,_T("指示CButton类控件是否接受TabStop和按键事件\nFalse"),tagKeyBoard);
+	pProp=new CMFCPropertyGridProperty(_T("KeyBoard"),(_variant_t)false, StringConvertor::Utf8ToWide("指示CButton类控件是否接受TabStop和按键事件\nFalse"),tagKeyBoard);
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -591,7 +592,7 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("Label"),classLabel);
 
 	//align
-	pProp=new CMFCPropertyGridProperty(_T("Align"),_T("Center"),_T("指示文本的对齐方式"),tagAlign);
+	pProp=new CMFCPropertyGridProperty(_T("Align"),_T("Center"), StringConvertor::Utf8ToWide("指示文本的对齐方式"),tagAlign);
 	pProp->AddOption(_T("Center"));
 	pProp->AddOption(_T("Left"));
 	pProp->AddOption(_T("Right"));
@@ -601,39 +602,39 @@ void CUIProperties::InitPropList()
 	pPropUI->AddSubItem(pProp);
 
 	//textcolor
-	pPropColor=new CMFCPropertyGridColorProperty(_T("TextColor"),(LONG)RGB(0,0,0),NULL,_T("指定文本的颜色"),tagTextColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColorProperty(_T("TextColor"),(LONG)RGB(0,0,0),NULL, StringConvertor::Utf8ToWide("指定文本的颜色"),tagTextColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//disabledtextcolor
-	pPropColor=new CMFCPropertyGridColorProperty(_T("DisabledTextColor"),(LONG)RGB(0,0,0),NULL,_T("指定文本的颜色"),tagDisabledTextColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColorProperty(_T("DisabledTextColor"),(LONG)RGB(0,0,0),NULL, StringConvertor::Utf8ToWide("指定文本的颜色"),tagDisabledTextColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//font
-	pProp=new CMFCPropertyGridProperty(_T("Font"),(_variant_t)(LONG)-1,_T("指定文本的字体"),tagFont);
+	pProp=new CMFCPropertyGridProperty(_T("Font"),(_variant_t)(LONG)-1, StringConvertor::Utf8ToWide("指定文本的字体"),tagFont);
 	pPropUI->AddSubItem(pProp);
 
 	//textpadding
 	pValueList=new CMFCPropertyGridProperty(_T("TextPadding"),tagTextPadding,TRUE);
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("指定文本区域的左边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的左边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("指定文本区域的上边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的上边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("指定文本区域的右边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的右边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("指定文本区域的下边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的下边距"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	//showhtml
-	pProp=new CMFCPropertyGridProperty(_T("ShowHtml"),(_variant_t)false,_T("指示是否使用HTML格式的文本"),tagShowHtml);
+	pProp=new CMFCPropertyGridProperty(_T("ShowHtml"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否使用HTML格式的文本"),tagShowHtml);
 	pPropUI->AddSubItem(pProp);
 
 	//endellipsis
-	pProp=new CMFCPropertyGridProperty(_T("EndEllipsis"),(_variant_t)false,_T("指示句末显示不全是否使用...代替"),tagEndEllipsis);
+	pProp=new CMFCPropertyGridProperty(_T("EndEllipsis"),(_variant_t)false, StringConvertor::Utf8ToWide("指示句末显示不全是否使用...代替"),tagEndEllipsis);
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -643,23 +644,23 @@ void CUIProperties::InitPropList()
 #pragma region Button
 	pPropUI=new CMFCPropertyGridProperty(_T("Button"),classButton);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""),_T("指定按钮正常显示时的图片"),tagNormalImage);//normalimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定按钮正常显示时的图片"),tagNormalImage);//normalimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""),_T("指定按钮获得热点时的图片"),tagHotImage);//hotimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""), StringConvertor::Utf8ToWide("指定按钮获得热点时的图片"),tagHotImage);//hotimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("PushedImage"),_T(""),_T("指定按钮被按压下时的图片"),tagPushedImage);//pushedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("PushedImage"),_T(""), StringConvertor::Utf8ToWide("指定按钮被按压下时的图片"),tagPushedImage);//pushedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""),_T("指定按钮获得焦点后的图片"),tagFocusedImage);//focusedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""), StringConvertor::Utf8ToWide("指定按钮获得焦点后的图片"),tagFocusedImage);//focusedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("DisabledImage"),_T(""),_T("指定按钮被禁用后的图片"),tagDisabledImage);//disabledimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("DisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定按钮被禁用后的图片"),tagDisabledImage);//disabledimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
@@ -671,41 +672,41 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("Edit"),classEdit);
 
 	//normalimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""),_T("指定编辑框正常显示时的图片"),tagEditNormalImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定编辑框正常显示时的图片"),tagEditNormalImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	//hotimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""),_T("指定编辑框获得热点时的图片"),tagEditHotImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""), StringConvertor::Utf8ToWide("指定编辑框获得热点时的图片"),tagEditHotImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	//focusedimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""),_T("指定编辑框获得焦点后的图片"),tagEditFocusedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""), StringConvertor::Utf8ToWide("指定编辑框获得焦点后的图片"),tagEditFocusedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	//disabledimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("DisabledImage"),_T(""),_T("指定编辑框被禁用后的图片"),tagEditDisabledImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("DisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定编辑框被禁用后的图片"),tagEditDisabledImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	//readonly
-	pProp=new CMFCPropertyGridProperty(_T("ReadOnly"),(_variant_t)false,_T("指示是否只读"),tagReadOnly);
+	pProp=new CMFCPropertyGridProperty(_T("ReadOnly"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否只读"),tagReadOnly);
 	pPropUI->AddSubItem(pProp);
 
 	//password
-	pProp=new CMFCPropertyGridProperty(_T("Password"),(_variant_t)false,_T("指示是否使用密码框"),tagPassword);
+	pProp=new CMFCPropertyGridProperty(_T("Password"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否使用密码框"),tagPassword);
 	pPropUI->AddSubItem(pProp);
 
 	//maxchar
-	pProp=new CMFCPropertyGridProperty(_T("MaxChar"),(_variant_t)(LONG)0,_T("指示输入字符最大长度\n255"),tagMaxChar);
+	pProp=new CMFCPropertyGridProperty(_T("MaxChar"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指示输入字符最大长度\n255"),tagMaxChar);
 	pPropUI->AddSubItem(pProp);
 
 	//nativebkcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("NativeBKColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定Windows原生Edit控件的背景颜色"),tagNativeBKColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("NativeBKColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定Windows原生Edit控件的背景颜色"),tagNativeBKColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -715,18 +716,18 @@ void CUIProperties::InitPropList()
 #pragma region Option
 	pPropUI=new CMFCPropertyGridProperty(_T("Option"),classOption);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ForeImage"),_T(""),_T("指定复选框的前景图片"),tagOptForeImage);//foreimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ForeImage"),_T(""), StringConvertor::Utf8ToWide("指定复选框的前景图片"),tagOptForeImage);//foreimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("SelectedImage"),_T(""),_T("指定复选框被选择后的图片"),tagSelectedImage);//selectedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("SelectedImage"),_T(""), StringConvertor::Utf8ToWide("指定复选框被选择后的图片"),tagSelectedImage);//selectedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pProp=new CMFCPropertyGridProperty(_T("Selected"),(_variant_t)false,_T("指示是否已被选中"),tagSelected);//selected
+	pProp=new CMFCPropertyGridProperty(_T("Selected"),(_variant_t)false,StringConvertor::Utf8ToWide("指示是否已被选中"),tagSelected);//selected
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Group"),(_variant_t)_T(""),_T("指定参与组合的名称"),tagGroup);//group
+	pProp=new CMFCPropertyGridProperty(_T("Group"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("指定参与组合的名称"),tagGroup);//group
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -736,21 +737,21 @@ void CUIProperties::InitPropList()
 #pragma region Progress
 	pPropUI=new CMFCPropertyGridProperty(_T("Progress"),classProgress);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ForeImage"),_T(""),_T("指定进度条的前景图片"),tagForeImage);//foreimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ForeImage"),_T(""), StringConvertor::Utf8ToWide("指定进度条的前景图片"),tagForeImage);//foreimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	pValueList=new CMFCPropertyGridProperty(_T("MinMax"),tagMinMax,TRUE);//minmax
-	pProp=new CMFCPropertyGridProperty(_T("Min"),(_variant_t)(LONG)0,_T("指定进度条的最小值"));
+	pProp=new CMFCPropertyGridProperty(_T("Min"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定进度条的最小值"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Max"),(_variant_t)(LONG)0,_T("指定进度条的最大值"));
+	pProp=new CMFCPropertyGridProperty(_T("Max"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定进度条的最大值"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
-	pProp=new CMFCPropertyGridProperty(_T("Value"),(_variant_t)(LONG)0,_T("指定进度条的值"),tagValue);//value
+	pProp=new CMFCPropertyGridProperty(_T("Value"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定进度条的值"),tagValue);//value
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("Hor"),(_variant_t)false,_T("指示进度条是否水平"),tagHor);//hor
+	pProp=new CMFCPropertyGridProperty(_T("Hor"),(_variant_t)false, StringConvertor::Utf8ToWide("指示进度条是否水平"),tagHor);//hor
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -760,22 +761,22 @@ void CUIProperties::InitPropList()
 #pragma region Slider
 	pPropUI=new CMFCPropertyGridProperty(_T("Slider"),classSlider);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbImage"),_T(""),_T("指定滑块的滑条图片"),tagThumbImage);//thumbimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块的滑条图片"),tagThumbImage);//thumbimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbHotImage"),_T(""),_T("指定滑条获得热点时的图片"),tagThumbHotImage);//thumbhotimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbHotImage"),_T(""), StringConvertor::Utf8ToWide("指定滑条获得热点时的图片"),tagThumbHotImage);//thumbhotimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbPushedImage"),_T(""),_T("指定滑条被按压后的图片"),tagThumbPushedImage);//thumbpushedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbPushedImage"),_T(""), StringConvertor::Utf8ToWide("指定滑条被按压后的图片"),tagThumbPushedImage);//thumbpushedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	pValueList=new CMFCPropertyGridProperty(_T("ThumbSize"),tagThumbSize,TRUE);//thumbsize
-	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0,_T("指定滑条的宽度"));
+	pProp=new CMFCPropertyGridProperty(_T("Width"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定滑条的宽度"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0,_T("指定滑条的高度"));
+	pProp=new CMFCPropertyGridProperty(_T("Height"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定滑条的高度"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
@@ -787,15 +788,15 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("ActiveX"),classActiveX);
 
 	//clsid
-	pProp=new CMFCPropertyGridProperty(_T("Clsid"),(_variant_t)_T(""),_T("指定ActiveX控件的Clsid值"),tagClsid);
+	pProp=new CMFCPropertyGridProperty(_T("Clsid"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("指定ActiveX控件的Clsid值"),tagClsid);
 	pPropUI->AddSubItem(pProp);
 
 	//delaycreate
-	pProp=new CMFCPropertyGridProperty(_T("DelayCreate"),(_variant_t)true,_T("指示是否延迟加载ActiveX控件"),tagDelayCreate);
+	pProp=new CMFCPropertyGridProperty(_T("DelayCreate"),(_variant_t)true, StringConvertor::Utf8ToWide("指示是否延迟加载ActiveX控件"),tagDelayCreate);
 	pPropUI->AddSubItem(pProp);//added by 邓景仁 2011-09-08
 
 	// modulename
-	pProp=new CMFCPropertyGridProperty(_T("ModuleName"),(_variant_t)_T(""),_T("指示从指定位置加载ActiveX控件\n如(flash/flash.ocx)"),tagModuleName);
+	pProp=new CMFCPropertyGridProperty(_T("ModuleName"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("指示从指定位置加载ActiveX控件\n如(flash/flash.ocx)"),tagModuleName);
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -806,26 +807,26 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("Container"),classContainer);
 
 	pValueList=new CMFCPropertyGridProperty(_T("Inset"),tagInset,TRUE);//inset
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("指定容器客户区域的左边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定容器客户区域的左边距\n0"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("指定容器客户区域的上边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定容器客户区域的上边距\n0"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("指定容器客户区域的右边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定容器客户区域的右边距\n0"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("指定容器客户区域的下边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定容器客户区域的下边距\n0"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
-	pProp=new CMFCPropertyGridProperty(_T("ChildPadding"),(_variant_t)(LONG)0,_T("指定子控件之间的间距\n0"),tagChildPadding);//childpadding
+	pProp=new CMFCPropertyGridProperty(_T("ChildPadding"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定子控件之间的间距\n0"),tagChildPadding);//childpadding
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("MouseChild"),(_variant_t)false,_T("指定本控件的子控件是否可以响应用户操作\nTrue"),tagMouseChild);//mousechild
+	pProp=new CMFCPropertyGridProperty(_T("MouseChild"),(_variant_t)false, StringConvertor::Utf8ToWide("指定本控件的子控件是否可以响应用户操作\nTrue"),tagMouseChild);//mousechild
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("HScrollBar"),(_variant_t)false,_T("指示是否启用水平滚动条\nFalse"),tagHScrollBar);//hscrollbar
+	pProp=new CMFCPropertyGridProperty(_T("HScrollBar"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否启用水平滚动条\nFalse"),tagHScrollBar);//hscrollbar
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("VScrollBar"),(_variant_t)false,_T("指示是否启用垂直滚动条\nFalse"),tagVScrollBar);//vscrollbar
+	pProp=new CMFCPropertyGridProperty(_T("VScrollBar"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否启用垂直滚动条\nFalse"),tagVScrollBar);//vscrollbar
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -835,36 +836,36 @@ void CUIProperties::InitPropList()
 #pragma region Item
 	pPropUI=new CMFCPropertyGridProperty(_T("Item"),classItem);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemBkImage"),_T(""),_T("指定组项正常显示时的图片"),tagItemBkImage);//itembkimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemBkImage"),_T(""), StringConvertor::Utf8ToWide("指定组项正常显示时的图片"),tagItemBkImage);//itembkimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemHotImage"),_T(""),_T("指定组项获得热点时的图片"),tagItemHotImage);//itemhotimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemHotImage"),_T(""), StringConvertor::Utf8ToWide("指定组项获得热点时的图片"),tagItemHotImage);//itemhotimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemSelectedImage"),_T(""),_T("指定组项被选择时的图片"),tagItemSelectedImage);//itemselectedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemSelectedImage"),_T(""), StringConvertor::Utf8ToWide("指定组项被选择时的图片"),tagItemSelectedImage);//itemselectedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemDisabledImage"),_T(""),_T("指定组项被禁用后的图片"),tagItemDisabledImage);//itemdisabledimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ItemDisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定组项被禁用后的图片"),tagItemDisabledImage);//itemdisabledimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	//itemtextpadding
 	pValueList=new CMFCPropertyGridProperty(_T("ItemTextPadding"),tagItemTextPadding,TRUE);
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("指定组项文本区域的左边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定组项文本区域的左边距\n0"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("指定组项文本区域的上边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定组项文本区域的上边距\n0"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("指定组项文本区域的右边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定组项文本区域的右边距\n0"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("指定组项文本区域的下边距\n0"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定组项文本区域的下边距\n0"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
 	//itemalign
-	pProp=new CMFCPropertyGridProperty(_T("ItemAlign"),_T("Center"),_T("指示组项文本的对齐方式\nCenter"),tagItemAlign);
+	pProp=new CMFCPropertyGridProperty(_T("ItemAlign"),_T("Center"), StringConvertor::Utf8ToWide("指示组项文本的对齐方式\nCenter"),tagItemAlign);
 	pProp->AddOption(_T("Center"));
 	pProp->AddOption(_T("Left"));
 	pProp->AddOption(_T("Right"));
@@ -872,69 +873,69 @@ void CUIProperties::InitPropList()
 	pPropUI->AddSubItem(pProp);
 
 	//itemtextcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemTextColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项文本的颜色"),tagItemTextColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemTextColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项文本的颜色"),tagItemTextColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itembkcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemBkColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项背景的颜色"),tagItemBkColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemBkColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项背景的颜色"),tagItemBkColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itemselectedtextcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemSelectedTextColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项被选中后文本的颜色"),tagItemSelectedTextColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemSelectedTextColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项被选中后文本的颜色"),tagItemSelectedTextColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itemselectedbkcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemSelectedBkColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项被选中后背景的颜色"),tagItemSelectedBkColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemSelectedBkColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项被选中后背景的颜色"),tagItemSelectedBkColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itemhottextcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemHotTextColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项获得热点时文本的颜色"),tagItemHotTextColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemHotTextColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项获得热点时文本的颜色"),tagItemHotTextColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itemhotbkcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemHotBkColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项获得热点时背景的颜色"),tagItemHotBkColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemHotBkColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项获得热点时背景的颜色"),tagItemHotBkColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itemdisabledtextcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemDisabledTextColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项被禁用后文本的颜色"),tagItemDisabledTextColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemDisabledTextColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项被禁用后文本的颜色"),tagItemDisabledTextColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//itemdisabledbkcolor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemDisabledBkColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项被禁用后背景的颜色"),tagItemDisabledBkColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemDisabledBkColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项被禁用后背景的颜色"),tagItemDisabledBkColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//ItemLineColor
-	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemLineColor"),(LONG)ARGB(0,0,0,0),NULL,_T("指定组项分割线的颜色"),tagItemLineColor);
-	pPropColor->EnableOtherButton(_T("其他..."));
-	pPropColor->EnableAutomaticButton(_T("默认"),::GetSysColor(COLOR_3DFACE));
+	pPropColor=new CMFCPropertyGridColor32Property(_T("ItemLineColor"),(LONG)ARGB(0,0,0,0),NULL, StringConvertor::Utf8ToWide("指定组项分割线的颜色"),tagItemLineColor);
+	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
+	pPropColor->EnableAutomaticButton(StringConvertor::Utf8ToWide("默认"),::GetSysColor(COLOR_3DFACE));
 	pPropUI->AddSubItem(pPropColor);
 
 	//ItemFont
-	pProp=new CMFCPropertyGridProperty(_T("ItemFont"),(_variant_t)(LONG)-1,_T("指定组项文本的字体\n-1"),tagItemFont);
+	pProp=new CMFCPropertyGridProperty(_T("ItemFont"),(_variant_t)(LONG)-1, StringConvertor::Utf8ToWide("指定组项文本的字体\n-1"),tagItemFont);
 	pPropUI->AddSubItem(pProp);
 
 	//ItemShowHtml
-	pProp=new CMFCPropertyGridProperty(_T("ItemShowHtml"),(_variant_t)false,_T("指示是否使用Html格式文本\nFalse"),tagItemShowHtml);
+	pProp=new CMFCPropertyGridProperty(_T("ItemShowHtml"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否使用Html格式文本\nFalse"),tagItemShowHtml);
 	pPropUI->AddSubItem(pProp);
 
 	//MultiExpanding
-	pProp=new CMFCPropertyGridProperty(_T("MultiExpanding"),(_variant_t)false,_T("指示是否支持多个item同时打开\nFalse"),tagMultiExpanding);
+	pProp=new CMFCPropertyGridProperty(_T("MultiExpanding"),(_variant_t)false, StringConvertor::Utf8ToWide("指示是否支持多个item同时打开\nFalse"),tagMultiExpanding);
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -944,34 +945,34 @@ void CUIProperties::InitPropList()
 #pragma region Combo
 	pPropUI=new CMFCPropertyGridProperty(_T("Combo"),classCombo);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""),_T("指定组合框正常显示时的图片"),tagComboNormalImage);//normalimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定组合框正常显示时的图片"),tagComboNormalImage);//normalimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""),_T("指定组合框获得热点时的图片"),tagComboHotImage);//hotimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""), StringConvertor::Utf8ToWide("指定组合框获得热点时的图片"),tagComboHotImage);//hotimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("PushedImage"),_T(""),_T("指定组合框被按压下时的图片"),tagComboPushedImage);//pushedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("PushedImage"),_T(""), StringConvertor::Utf8ToWide("指定组合框被按压下时的图片"),tagComboPushedImage);//pushedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""),_T("指定组合框获得焦点后的图片"),tagComboFocusedImage);//focusedimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""), StringConvertor::Utf8ToWide("指定组合框获得焦点后的图片"),tagComboFocusedImage);//focusedimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("DisabledImage"),_T(""),_T("指定组合框被禁用后的图片"),tagComboDisabledImage);//disabledimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("DisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定组合框被禁用后的图片"),tagComboDisabledImage);//disabledimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	pValueList=new CMFCPropertyGridProperty(_T("TextPadding"),tagComboTextPadding,TRUE);//textpadding
-	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0,_T("指定文本区域的左边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Left"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的左边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0,_T("指定文本区域的上边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Top"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的上边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0,_T("指定文本区域的右边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Right"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的右边距"));
 	pValueList->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0,_T("指定文本区域的下边距"));
+	pProp=new CMFCPropertyGridProperty(_T("Bottom"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定文本区域的下边距"));
 	pValueList->AddSubItem(pProp);
 	pPropUI->AddSubItem(pValueList);
 
@@ -982,10 +983,10 @@ void CUIProperties::InitPropList()
 #pragma region HorizontalLayout
 	pPropUI=new CMFCPropertyGridProperty(_T("HorizontalLayout"),classHorizontalLayout);
 
-	pProp=new CMFCPropertyGridProperty(_T("SepWidth"),(_variant_t)(LONG)0,_T("分隔符宽,正负表示分隔符在左边还是右边\n0"),tagSepWidth);//sepwidth
+	pProp=new CMFCPropertyGridProperty(_T("SepWidth"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("分隔符宽,正负表示分隔符在左边还是右边\n0"),tagSepWidth);//sepwidth
 	pPropUI->AddSubItem(pProp);
 
-	pProp=new CMFCPropertyGridProperty(_T("SepImm"),(_variant_t)false,_T("拖动分隔符是否立即改变大小\nfalse"),tagSepImm);//sepimm
+	pProp=new CMFCPropertyGridProperty(_T("SepImm"),(_variant_t)false, StringConvertor::Utf8ToWide("拖动分隔符是否立即改变大小\nfalse"),tagSepImm);//sepimm
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -995,7 +996,7 @@ void CUIProperties::InitPropList()
 #pragma region TileLayout
 	pPropUI=new CMFCPropertyGridProperty(_T("TileLayout"),classTileLayout);
 
-	pProp=new CMFCPropertyGridProperty(_T("Columns"),(_variant_t)(LONG)0,_T("指定并列布局的列数"),tagColumns);//columns
+	pProp=new CMFCPropertyGridProperty(_T("Columns"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定并列布局的列数"),tagColumns);//columns
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -1005,10 +1006,10 @@ void CUIProperties::InitPropList()
 #pragma region List
 	pPropUI=new CMFCPropertyGridProperty(_T("List"),classList);
 
-	pProp=new CMFCPropertyGridProperty(_T("Header"),(_variant_t)false,_T("指定是否显示列表表头\nTrue"),tagListHeader);
+	pProp=new CMFCPropertyGridProperty(_T("Header"),(_variant_t)false, StringConvertor::Utf8ToWide("指定是否显示列表表头\nTrue"),tagListHeader);
 	pPropUI->AddSubItem(pProp);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("headerbkimage"),_T(""),_T("指定表头背景图片"),tagListHeaderBKImage);//normalimage
+	pPropImage=new CMFCPropertyGridImageProperty(_T("headerbkimage"),_T(""), StringConvertor::Utf8ToWide("指定表头背景图片"),tagListHeaderBKImage);//normalimage
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
@@ -1020,80 +1021,80 @@ void CUIProperties::InitPropList()
 
 	pPropUI=new CMFCPropertyGridProperty(_T("ScrollBar"),classScrollBar);
 
-	pProp=new CMFCPropertyGridProperty(_T("Range"),(_variant_t)(LONG)0,_T("指定滚动范围\n100"),tagScrollBarRange);
+	pProp=new CMFCPropertyGridProperty(_T("Range"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定滚动范围\n100"),tagScrollBarRange);
 	pPropUI->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("Value"),(_variant_t)(LONG)0,_T("指定滚动位置\n0"),tagScrollBarValue);
+	pProp=new CMFCPropertyGridProperty(_T("Value"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定滚动位置\n0"),tagScrollBarValue);
 	pPropUI->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("LineSize"),(_variant_t)(LONG)0,_T("指定滚动一行的大小\n8"),tagScrollBarLineSize);
-	pPropUI->AddSubItem(pProp);
-
-	pProp=new CMFCPropertyGridProperty(_T("ShowButton1"),(_variant_t)false,_T("是否显示左或上按钮\nTrue"),tagScrollBarShowButton1);
-	pPropUI->AddSubItem(pProp);
-	pProp=new CMFCPropertyGridProperty(_T("ShowButton2"),(_variant_t)false,_T("是否显示左或上按钮\nTrue"),tagScrollBarShowButton2);
+	pProp=new CMFCPropertyGridProperty(_T("LineSize"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("指定滚动一行的大小\n8"),tagScrollBarLineSize);
 	pPropUI->AddSubItem(pProp);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1NormalImage"),_T(""),_T("指定左或上按钮普通状态图片"),tagScrollBarButton1NormalImage);
+	pProp=new CMFCPropertyGridProperty(_T("ShowButton1"),(_variant_t)false, StringConvertor::Utf8ToWide("是否显示左或上按钮\nTrue"),tagScrollBarShowButton1);
+	pPropUI->AddSubItem(pProp);
+	pProp=new CMFCPropertyGridProperty(_T("ShowButton2"),(_variant_t)false, StringConvertor::Utf8ToWide("是否显示左或上按钮\nTrue"),tagScrollBarShowButton2);
+	pPropUI->AddSubItem(pProp);
+
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮普通状态图片"),tagScrollBarButton1NormalImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1HotImage"),_T(""),_T("指定左或上按钮鼠标悬浮状态图片"),tagScrollBarButton1HotImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1HotImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮鼠标悬浮状态图片"),tagScrollBarButton1HotImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1PushedImage"),_T(""),_T("指定左或上按钮鼠标按下状态图片"),tagScrollBarButton1PushedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1PushedImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮鼠标按下状态图片"),tagScrollBarButton1PushedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1DisabledImage"),_T(""),_T("指定左或上按钮鼠标禁用状态图片"),tagScrollBarButton1DisabledImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button1DisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮鼠标禁用状态图片"),tagScrollBarButton1DisabledImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2NormalImage"),_T(""),_T("指定左或上按钮普通状态图片"),tagScrollBarButton2NormalImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮普通状态图片"),tagScrollBarButton2NormalImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2HotImage"),_T(""),_T("指定左或上按钮鼠标悬浮状态图片"),tagScrollBarButton2HotImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2HotImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮鼠标悬浮状态图片"),tagScrollBarButton2HotImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2PushedImage"),_T(""),_T("指定左或上按钮鼠标按下状态图片"),tagScrollBarButton2PushedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2PushedImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮鼠标按下状态图片"),tagScrollBarButton2PushedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2DisabledImage"),_T(""),_T("指定左或上按钮鼠标悬禁用态图片"),tagScrollBarButton2DisabledImage);
-	pPropImage->AllowEdit(FALSE);
-	pPropUI->AddSubItem(pPropImage);
-
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbNormalImage"),_T(""),_T("指定滑块普通状态图片"),tagScrollBarThumbNormalImage);
-	pPropImage->AllowEdit(FALSE);
-	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbHotImage"),_T(""),_T("指定滑块鼠标悬浮状态图片"),tagScrollBarThumbHotImage);
-	pPropImage->AllowEdit(FALSE);
-	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbPushedImage"),_T(""),_T("指定滑块鼠标按下状态图片"),tagScrollBarThumbPushedImage);
-	pPropImage->AllowEdit(FALSE);
-	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbDisabledImage"),_T(""),_T("指定滑块禁用状态图片"),tagScrollBarThumbDisabledImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("Button2DisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定左或上按钮鼠标悬禁用态图片"),tagScrollBarButton2DisabledImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("RailNormalImage"),_T(""),_T("指定滑块中间标识普通状态图片"),tagScrollBarRailNormalImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbNormalImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块普通状态图片"),tagScrollBarThumbNormalImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("RailHotImage"),_T(""),_T("指定滑块中间标识鼠标悬浮状态图片"),tagScrollBarRailHotImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbHotImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块鼠标悬浮状态图片"),tagScrollBarThumbHotImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("RailPushedImage"),_T(""),_T("指定滑块中间标识鼠标按下状态图片"),tagScrollBarRailPushedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbPushedImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块鼠标按下状态图片"),tagScrollBarThumbPushedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("RailDisabledImage"),_T(""),_T("指定滑块中间标识禁用状态图片"),tagScrollBarRailDisabledImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbDisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块禁用状态图片"),tagScrollBarThumbDisabledImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
-	pPropImage=new CMFCPropertyGridImageProperty(_T("BKNormalImage"),_T(""),_T("指定背景普通状态图片"),tagScrollBarBKNormalImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("RailNormalImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块中间标识普通状态图片"),tagScrollBarRailNormalImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("BKHotImage"),_T(""),_T("指定背景鼠标悬浮状态图片"),tagScrollBarBKHotImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("RailHotImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块中间标识鼠标悬浮状态图片"),tagScrollBarRailHotImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("BKPushedImage"),_T(""),_T("指定背景鼠标按下状态图片"),tagScrollBarBKPushedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("RailPushedImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块中间标识鼠标按下状态图片"),tagScrollBarRailPushedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
-	pPropImage=new CMFCPropertyGridImageProperty(_T("BKDisabledImage"),_T(""),_T("指定背景禁用状态图片"),tagScrollBarBKDisabledImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("RailDisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块中间标识禁用状态图片"),tagScrollBarRailDisabledImage);
+	pPropImage->AllowEdit(FALSE);
+	pPropUI->AddSubItem(pPropImage);
+
+	pPropImage=new CMFCPropertyGridImageProperty(_T("BKNormalImage"),_T(""), StringConvertor::Utf8ToWide("指定背景普通状态图片"),tagScrollBarBKNormalImage);
+	pPropImage->AllowEdit(FALSE);
+	pPropUI->AddSubItem(pPropImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("BKHotImage"),_T(""), StringConvertor::Utf8ToWide("指定背景鼠标悬浮状态图片"),tagScrollBarBKHotImage);
+	pPropImage->AllowEdit(FALSE);
+	pPropUI->AddSubItem(pPropImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("BKPushedImage"),_T(""), StringConvertor::Utf8ToWide("指定背景鼠标按下状态图片"),tagScrollBarBKPushedImage);
+	pPropImage->AllowEdit(FALSE);
+	pPropUI->AddSubItem(pPropImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("BKDisabledImage"),_T(""), StringConvertor::Utf8ToWide("指定背景禁用状态图片"),tagScrollBarBKDisabledImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
@@ -1105,7 +1106,7 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("TabLayout"),classTabLayout);
 
 	// selectedid
-	pProp=new CMFCPropertyGridProperty(_T("selectedid"),(_variant_t)(LONG)0,_T("默认选中的页面ID\n从0开始计数"),tagSelectedID);
+	pProp=new CMFCPropertyGridProperty(_T("selectedid"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("默认选中的页面ID\n从0开始计数"),tagSelectedID);
 	pPropUI->AddSubItem(pProp);
 
 	m_wndPropList.AddProperty(pPropUI);
@@ -1116,35 +1117,35 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("ListHeaderItem"),classListHeaderItem);
 
 	// dragable
-	pProp=new CMFCPropertyGridProperty(_T("Dragable"),(_variant_t)true,_T("是否可拖动改变大小\ntrue"),tagDragable);
+	pProp=new CMFCPropertyGridProperty(_T("Dragable"),(_variant_t)true, StringConvertor::Utf8ToWide("是否可拖动改变大小\ntrue"),tagDragable);
 	pPropUI->AddSubItem(pProp);
 
 	// sepwidth
-	pProp=new CMFCPropertyGridProperty(_T("SepWidth"),(_variant_t)(LONG)0,_T("分隔符宽\n4"),tagListHeaderItemSepWidth);
+	pProp=new CMFCPropertyGridProperty(_T("SepWidth"),(_variant_t)(LONG)0, StringConvertor::Utf8ToWide("分隔符宽\n4"),tagListHeaderItemSepWidth);
 	pPropUI->AddSubItem(pProp);
 
 	// normalimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""),_T("普通状态图片"),tagListHeaderItemNormalImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("普通状态图片"),tagListHeaderItemNormalImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	// hotimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""),_T("鼠标悬浮的状态图片"),tagListHeaderItemHotImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("HotImage"),_T(""), StringConvertor::Utf8ToWide("鼠标悬浮的状态图片"),tagListHeaderItemHotImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	// PushedImage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("PushedImage"),_T(""),_T("鼠标按下的状态图片"),tagListHeaderItemPushedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("PushedImage"),_T(""), StringConvertor::Utf8ToWide("鼠标按下的状态图片"),tagListHeaderItemPushedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	// focusedimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""),_T("获得焦点时的状态图片"),tagListHeaderItemFocusedImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("FocusedImage"),_T(""), StringConvertor::Utf8ToWide("获得焦点时的状态图片"),tagListHeaderItemFocusedImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 
 	// sepimage
-	pPropImage=new CMFCPropertyGridImageProperty(_T("SepImage"),_T(""),_T("拖动条图片"),tagSepImage);
+	pPropImage=new CMFCPropertyGridImageProperty(_T("SepImage"),_T(""), StringConvertor::Utf8ToWide("拖动条图片"),tagSepImage);
 	pPropImage->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pPropImage);
 

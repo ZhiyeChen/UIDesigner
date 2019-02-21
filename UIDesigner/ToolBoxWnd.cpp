@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "UIDesigner.h"
 #include "ToolBoxWnd.h"
+#include "UIUtil.h"
 
 //////////////////////////////////////////////////////////////////////////
 // CToolBoxWnd
@@ -71,8 +72,8 @@ void CToolBoxWnd::AdjustLayout()
 void CToolBoxWnd::InitToolList()
 {
 
-	CToolElement* pControlTab=new CToolElement(_T("Component"));
-	pControlTab->AddSubTool(new CToolElement(_T("Pointer"),classPointer,IDI_TOOLBOX_POINTER));
+	CToolElement* pControlTab=new CToolElement(StringConvertor::Utf8ToWide("控件"));
+	pControlTab->AddSubTool(new CToolElement(StringConvertor::Utf8ToWide("指针"),classPointer,IDI_TOOLBOX_POINTER));
 	pControlTab->AddSubTool(new CToolElement(_T("Control"),classControl,IDI_TOOLBOX_CONTROL));
 	pControlTab->AddSubTool(new CToolElement(_T("Label"),classLabel,IDI_TOOLBOX_LABEL));
 	pControlTab->AddSubTool(new CToolElement(_T("Text"),classText,IDI_TOOLBOX_TEXT));
@@ -86,13 +87,15 @@ void CToolBoxWnd::InitToolList()
 	pControlTab->AddSubTool(new CToolElement(_T("ActiveX"),classActiveX,IDI_TOOLBOX_ACTIVE));
 	m_ctlToolList.AddToolTab(pControlTab);
 
-	CToolElement* pLayoutTab=new CToolElement(_T("Layout"));
+	CToolElement* pLayoutTab=new CToolElement(StringConvertor::Utf8ToWide("布局"));
 	pLayoutTab->AddSubTool(new CToolElement(_T("Container"),classContainer,IDI_TOOLBOX_CONTAINER));
 	pLayoutTab->AddSubTool(new CToolElement(_T("VerticalLayout"),classVerticalLayout,IDI_TOOLBOX_VERTICAL_LAYOUT));
 	pLayoutTab->AddSubTool(new CToolElement(_T("HorizontalLayout"),classHorizontalLayout,IDI_TOOLBOX_HORIZONTAL_LAYOUT));
 	pLayoutTab->AddSubTool(new CToolElement(_T("TileLayout"),classTileLayout,IDI_TOOLBOX_TILE_LAYOUT));
 	pLayoutTab->AddSubTool(new CToolElement(_T("TabLayout"),classTabLayout,IDI_TOOLBOX_TAB_LAYOUT));
 	m_ctlToolList.AddToolTab(pLayoutTab);
+
+	m_ctlToolList.SetCurDrag(NULL);
 
 	m_ctlToolList.SetCurSel(classPointer);
 }

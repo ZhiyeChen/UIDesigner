@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "UIDesigner.h"
 #include "DialogProjectNew.h"
-
+#include "UIUtil.h"
 
 // CDialogProjectNew 对话框
 
@@ -48,7 +48,7 @@ void CDialogProjectNew::OnBnClickedButtonBrowse()
 	_tcscpy(szDefaultDir,m_strPath);
 	ZeroMemory(&info, sizeof(BROWSEINFO));
 	info.hwndOwner = this->GetSafeHwnd();
-	info.lpszTitle = _T("请选择一个文件夹:");
+	info.lpszTitle = StringConvertor::Utf8ToWide("请选择一个文件夹:");
 	info.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
 	info.lpfn = BrowseCallbackProc;
 	info.lParam = long(&szDefaultDir);
@@ -95,17 +95,17 @@ void CDialogProjectNew::OnBnClickedOk()
 
 	if(m_strName.IsEmpty())
 	{
-		MessageBox(_T("项目名称不能设置为空。"),_T("提示"));
+		MessageBox(StringConvertor::Utf8ToWide("项目名称不能设置为空。"), StringConvertor::Utf8ToWide("提示"));
 		return;
 	}
 	if(m_strPath.IsEmpty())
 	{
-		MessageBox(_T("路径名称不能设置为空。"),_T("提示"));
+		MessageBox(StringConvertor::Utf8ToWide("路径名称不能设置为空。"), StringConvertor::Utf8ToWide("提示"));
 		return;
 	}
 	if(!PathIsDirectory(m_strPath))
 	{
-		MessageBox(_T("所设路径已不存在，可能被移除。"),_T("提示"));
+		MessageBox(StringConvertor::Utf8ToWide("所设路径已不存在，可能被移除。"), StringConvertor::Utf8ToWide("提示"));
 		return;
 	}
 	if(m_strPath.Right(1) != _T("\\"))

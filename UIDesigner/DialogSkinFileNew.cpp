@@ -1,10 +1,10 @@
-// DialogSkinFileNew.cpp : implementation file
+﻿// DialogSkinFileNew.cpp : implementation file
 //
 
 #include "stdafx.h"
 #include "UIDesigner.h"
 #include "DialogSkinFileNew.h"
-
+#include "UIUtil.h"
 
 // CDialogSkinFileNew dialog
 
@@ -44,7 +44,7 @@ BOOL CDialogSkinFileNew::OnInitDialog()
 	CDialog::OnInitDialog();
 
 	// TODO:  Add extra initialization here
-	m_lstStyles.AddString(_T("(Empty)"));
+	m_lstStyles.AddString(StringConvertor::Utf8ToWide("(无)"));
 	m_lstStyles.SetCurSel(0);
 	FindStyleFiles(CGlobalVariable::GetStylesDir());
 
@@ -90,7 +90,7 @@ void CDialogSkinFileNew::OnLbnSelchangeListStyle()
 
 	m_lstStyles.GetText(nIndex, strText);
 	CString strStyleDir;
-	strStyleDir = (strText == _T("(Empty)")) ? _T("") : CGlobalVariable::GetStylesDir() \
+	strStyleDir = (strText == StringConvertor::Utf8ToWide("(无)")) ? _T("") : CGlobalVariable::GetStylesDir() \
 		+ strText;
 	if(!strStyleDir.IsEmpty())
 	{

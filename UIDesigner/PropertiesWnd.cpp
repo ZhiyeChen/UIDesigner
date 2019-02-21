@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PropertiesWnd.h"
 #include "Resource.h"
+#include "UIUtil.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -164,7 +165,7 @@ void CPropertiesWnd::SetUIValue(CMFCPropertyGridProperty* pProp,int nTag)
 			if(strNewVal.IsEmpty() || pManager->FindControl(strNewVal))
 			{
 				if(!strNewVal.IsEmpty())
-					MessageBox(strNewVal + _T(" 名称已被其他控件使用！"));
+					MessageBox(strNewVal + StringConvertor::Utf8ToWide(" 名称已被其他控件使用！"));
 				pProp->SetValue((_variant_t)pControl->GetName());
 				return;
 			}

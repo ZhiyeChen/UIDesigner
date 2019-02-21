@@ -31,6 +31,15 @@ m_nClass(nClass)
 
 	Init();
 }
+CToolElement::CToolElement(const CString& strName, int nClass, HICON hIcon) :m_strName(strName),
+m_nClass(nClass), m_hIcon(hIcon)
+{
+	m_bTab = FALSE;
+	m_bExpanded = FALSE;
+
+	Init();
+}
+
 
 CToolElement::~CToolElement()
 {
@@ -564,6 +573,10 @@ void CToolBoxCtrl::SetCurSel(int nClass,BOOL bRedraw/*=TRUE*/)
 	}
 }
 
+void CToolBoxCtrl::SetCurDrag(CToolElement* pTool) {
+	m_pDrag = pTool;
+}
+
 void CToolBoxCtrl::ExpandAll(BOOL bExpand/* = TRUE*/)
 {
 	ASSERT_VALID(this);
@@ -575,6 +588,12 @@ void CToolBoxCtrl::ExpandAll(BOOL bExpand/* = TRUE*/)
 
 		pToolTab->Expand(bExpand);
 	}
+}
+
+void CToolBoxCtrl::Redraw() {
+	ASSERT_VALID(this);
+
+	RedrawWindow();
 }
 
 void CToolBoxCtrl::OnPaint()
@@ -592,6 +611,8 @@ void CToolBoxCtrl::OnPaint()
 	HFONT hfontOld = SetCurrFont(pDC);
 	pDC->SetBkMode(TRANSPARENT);
 	OnDrawList(pDC);
+	if (m_pDrag != NULL)
+		OnDrawTool(pDC, m_pDrag);
 	::SelectObject(pDC->GetSafeHdc(), hfontOld);
 }
 
@@ -652,7 +673,7 @@ BOOL CToolBoxCtrl::OnDrawTool(CDC* pDC, CToolElement* pTool) const
 			pDC->SelectObject(oldBsh);
 			pDC->SelectObject(oldPen);
 		}
-		if(!bFlag&&pTool->IsHovered())
+		if (!bFlag && ((pTool->IsHovered() && m_pDrag==NULL) || pTool == m_pDrag))
 		{
 			bFlag=TRUE;
 			CBrush bsh(m_clrHover);
@@ -710,6 +731,9 @@ BOOL CToolBoxCtrl::OnDrawTool(CDC* pDC, CToolElement* pTool) const
 
 		CRgn rgnClipName;
 		rectName.left += rectIcon.right;
+		if (m_pDrag != NULL && pTool == m_pDrag) {
+			rectName.left = rectIcon.right;
+		}
 		CRect rectNameClip = rectName;
 		rectNameClip.bottom = min(rectNameClip.bottom, m_rectList.bottom);
 
@@ -1005,20 +1029,23 @@ void CToolBoxCtrl::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 
-	if (GetCapture()) {
-		TRACE(m_pSel->m_strName + _T(" moved\n"));
+	CToolElement* pOldHover = m_pHover;
+	m_pHover = HitTest(point);
+
+	if (m_pDrag != NULL) {
+		//TRACE(m_pSel->m_strName + _T(" move to %d %d\n"), point.x, point.y);
+		m_pDrag->m_Rect.SetRect(point.x - m_pSel->m_Rect.Width() / 2, point.y - m_pSel->m_Rect.Height() / 2, point.x + m_pSel->m_Rect.Width() / 2, point.y + m_pSel->m_Rect.Height() / 2);
+		Redraw();
 	}
 	else {
-		CToolElement* pOldHover = m_pHover;
-		m_pHover = HitTest(point);
-		if (pOldHover == m_pHover)
+		if (pOldHover == m_pHover) {
 			return;
+		}
 		if (pOldHover)
 			pOldHover->Redraw();
 		if (m_pHover)
 			m_pHover->Redraw();
 	}
-
 
 	// Post message when the mouse pointer leaves the window 
 	TRACKMOUSEEVENT   tme;
@@ -1055,7 +1082,11 @@ void CToolBoxCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 
 	if (DragDetect(point)) {
 		SetCapture();
-		TRACE(m_pSel->m_strName + _T(" Dragged\n"));
+		m_pDrag = new CToolElement(m_pSel->m_strName, m_pSel->GetClass(), m_pSel->GetIcon());
+		m_pDrag->SetOwnerList(this);
+	}
+	else {
+		m_pDrag = NULL;
 	}
 
 	CWnd::OnLButtonDown(nFlags, point);
@@ -1064,6 +1095,19 @@ void CToolBoxCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 void CToolBoxCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
+	CUIDesignerView* designerView = g_pMainFrame->GetActiveUIView();
+	if (m_pDrag != NULL&& designerView != NULL) {
+		CRect rectWin;
+		designerView->GetWindowRect(rectWin);
+		CPoint c_point = CPoint(point);
+		ClientToScreen(&c_point);
+		if (rectWin.PtInRect(c_point)) {
+			designerView->ScreenToClient(&c_point);
+			designerView->OnLButtonDown(nFlags, c_point);
+		}
+	}
+	m_pDrag = NULL;
+	Redraw();
 	ReleaseCapture();
 	CWnd::OnLButtonUp(nFlags, point);
 }

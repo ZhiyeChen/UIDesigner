@@ -17,6 +17,8 @@ protected:
 public:
 	CToolElement* GetCurSel() const { return m_ctlToolList.GetCurSel(); }
 	void SetCurSel(int nClass,BOOL bRedraw=TRUE) { m_ctlToolList.SetCurSel(nClass,bRedraw); }
+	CToolElement* GetCurDrag() const { return m_ctlToolList.GetCurDrag(); }
+
 
 protected:
 	void AdjustLayout();

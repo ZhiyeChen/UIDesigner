@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "UIDesigner.h"
 #include "DialogSaveAsName.h"
-
+#include "UIUtil.h"
 
 // CDialogSaveAsName 对话框
 
@@ -12,7 +12,7 @@ IMPLEMENT_DYNAMIC(CDialogSaveAsName, CDialog)
 
 CDialogSaveAsName::CDialogSaveAsName(CWnd* pParent /*=NULL*/)
 	: CDialog(CDialogSaveAsName::IDD, pParent)
-	, m_strName(_T("未命名1"))
+	, m_strName(StringConvertor::Utf8ToWide("未命名1"))
 {
 
 }

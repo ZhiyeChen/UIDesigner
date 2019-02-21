@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "UIDesigner.h"
 #include "DialogCustomFonts.h"
-
+#include "UIUtil.h"
 
 // CDialogCustomFonts dialog
 
@@ -102,8 +102,8 @@ void CDialogCustomFonts::OnBnClickedButtonFontDelete()
 	int nIndex = m_lstCustomFonts.GetSelectionMark();
 	if(nIndex == -1)
 		return;
-	if(MessageBox(_T("删除此字体后，使用了其后字体的控件，\n均需手动修改序号，请慎用此功能！")
-		, _T("提示"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL)
+	if(MessageBox(StringConvertor::Utf8ToWide("删除此字体后，使用了其后字体的控件，\n均需手动修改序号，请慎用此功能！")
+		, StringConvertor::Utf8ToWide("提示"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL)
 		return;
 
 	if(m_pManager->RemoveFontAt(nIndex))

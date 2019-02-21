@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "UIDesigner.h"
 #include "ImageDialog.h"
+#include "UIUtil.h"
 
 //////////////////////////////////////////////////////////////////////////
 //CMyColorButton
@@ -38,7 +39,7 @@ void CMyColorButton::OnDraw(CDC* pDC, const CRect& rect, UINT uiState)
 	// Draw current color and color's value:
 	//---------------------------
 	CString strColor;
-	color==(COLORREF)-1?strColor=_T("无"):strColor.Format(_T("0x%06x"),color);
+	color==(COLORREF)-1?strColor= StringConvertor::Utf8ToWide("无"):strColor.Format(_T("0x%06x"),color);
 
 	rectColor.right = rectColor.left + rectColor.Height();
 
@@ -226,7 +227,7 @@ BOOL CImageDialog::OnInitDialog()
 	}
 	m_ctlFade.SetPos(m_nFade);
 
-	int nIndex=m_lstImages.AddString(_T("(无)"));
+	int nIndex=m_lstImages.AddString(StringConvertor::Utf8ToWide("(无)"));
 	m_lstImages.SetItemDataPtr(nIndex,(void*)(LPCTSTR)m_strNullImage);
 
 	LPCTSTR pstrImage=NULL;
@@ -244,7 +245,7 @@ BOOL CImageDialog::OnInitDialog()
 	}
 	int nPos = m_strImagePathName.ReverseFind(_T('\\'));
 	CString strFileName = (nPos==-1) ? m_strImagePathName : m_strImagePathName.Right(m_strImagePathName.GetLength() - nPos - 1);
-	m_strImagePathName.IsEmpty()?m_lstImages.SelectString(-1,_T("(无)")):m_lstImages.SelectString(-1,strFileName);
+	m_strImagePathName.IsEmpty()?m_lstImages.SelectString(-1, StringConvertor::Utf8ToWide("(无)")):m_lstImages.SelectString(-1,strFileName);
 
 	UpdateData(FALSE);
 	SetImageProperty(m_strImagePathName);
@@ -266,7 +267,7 @@ void CImageDialog::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 void CImageDialog::OnBnClickedButtonImageImport()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CFileDialog dlg(TRUE,_T(""),NULL,OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT,_T("图片文件(*.bmp;*.jpg;*.png)|*.bmp;*.jpg;*.png|所有文件(*.*)|*.*||"));
+	CFileDialog dlg(TRUE,_T(""),NULL,OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, StringConvertor::Utf8ToWide("图片文件(*.bmp;*.jpg;*.png)|*.bmp;*.jpg;*.png|所有文件(*.*)|*.*||"));
 	if(dlg.DoModal()==IDOK)
 	{
 		CString strFileName = dlg.GetFileName();
