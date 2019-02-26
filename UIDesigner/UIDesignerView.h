@@ -59,6 +59,9 @@ public:
 	void OnTitleChanged(LPCTSTR pstrOldTitle, LPCTSTR pstrNewTitle);
 	void SetModifiedFlag(BOOL bModified = TRUE);
 
+	void setDragRect(CRect* pDragRect);
+	CRect* getDragRect() const { return m_pDragRect; }
+
 protected:
 	void UpDateDPtoLPOffset();
 	CTrackerElement* CreateTracker(CControlUI* pControl);
@@ -80,6 +83,7 @@ protected:
 private:
 	CLayoutManager m_LayoutManager;
 	CMultiUITracker m_MultiTracker;
+	CRect* m_pDragRect;
 	CUICommandHistory m_UICommandHistory;
 
 	CPoint m_ptDPtoLP;//Device coordinates to Logical coordinates

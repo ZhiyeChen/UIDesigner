@@ -611,8 +611,10 @@ void CToolBoxCtrl::OnPaint()
 	HFONT hfontOld = SetCurrFont(pDC);
 	pDC->SetBkMode(TRANSPARENT);
 	OnDrawList(pDC);
-	if (m_pDrag != NULL)
+	if (m_pDrag != NULL) {
 		OnDrawTool(pDC, m_pDrag);
+	}
+		
 	::SelectObject(pDC->GetSafeHdc(), hfontOld);
 }
 
@@ -1028,14 +1030,30 @@ void CToolBoxCtrl::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 void CToolBoxCtrl::OnMouseMove(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
-
 	CToolElement* pOldHover = m_pHover;
 	m_pHover = HitTest(point);
+	CUIDesignerView* designerView = g_pMainFrame->GetActiveUIView();
 
 	if (m_pDrag != NULL) {
 		//TRACE(m_pSel->m_strName + _T(" move to %d %d\n"), point.x, point.y);
 		m_pDrag->m_Rect.SetRect(point.x - m_pSel->m_Rect.Width() / 2, point.y - m_pSel->m_Rect.Height() / 2, point.x + m_pSel->m_Rect.Width() / 2, point.y + m_pSel->m_Rect.Height() / 2);
 		Redraw();
+
+		if (designerView != NULL) {
+			CRect rectWin;
+			designerView->GetWindowRect(rectWin);
+			CPoint c_point = CPoint(point);
+			ClientToScreen(&c_point);
+			if (rectWin.PtInRect(c_point)) {
+				designerView->ScreenToClient(&c_point);
+				CRect dragRect(c_point.x, c_point.y, c_point.x + UI_DEFAULT_WIDTH, c_point.y + UI_DEFAULT_HEIGHT);
+				designerView->setDragRect(&dragRect);
+			}
+			else {
+				designerView->setDragRect(NULL);
+			}
+			designerView->ReDrawForm();
+		}
 	}
 	else {
 		if (pOldHover == m_pHover) {
@@ -1046,6 +1064,7 @@ void CToolBoxCtrl::OnMouseMove(UINT nFlags, CPoint point)
 		if (m_pHover)
 			m_pHover->Redraw();
 	}
+
 
 	// Post message when the mouse pointer leaves the window 
 	TRACKMOUSEEVENT   tme;
@@ -1103,6 +1122,7 @@ void CToolBoxCtrl::OnLButtonUp(UINT nFlags, CPoint point)
 		ClientToScreen(&c_point);
 		if (rectWin.PtInRect(c_point)) {
 			designerView->ScreenToClient(&c_point);
+			designerView->setDragRect(NULL);
 			designerView->OnLButtonDown(nFlags, c_point);
 		}
 	}

@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////
 DECLARE_HANDLE(HZIP);	// An HZIP identifies a zip file that has been opened
@@ -894,8 +894,8 @@ bool CRenderEngine::DrawImageString(HDC hDC, CPaintManagerUI* pManager, const RE
 {
 	if ((pManager == NULL) || (hDC == NULL)) return false;
 
-    // 1¡¢aaa.jpg
-    // 2¡¢file='aaa.jpg' res='' restype='0' dest='0,0,0,0' source='0,0,0,0' corner='0,0,0,0' 
+    // 1ã€aaa.jpg
+    // 2ã€file='aaa.jpg' res='' restype='0' dest='0,0,0,0' source='0,0,0,0' corner='0,0,0,0' 
     // mask='#FF0000' fade='255' hole='false' xtiled='false' ytiled='false'
 
     CStdString sImageName = pStrImage;
@@ -1162,8 +1162,8 @@ void CRenderEngine::DrawText(HDC hDC, CPaintManagerUI* pManager, RECT& rc, LPCTS
 
 void CRenderEngine::DrawHtmlText(HDC hDC, CPaintManagerUI* pManager, RECT& rc, LPCTSTR pstrText, DWORD dwTextColor, RECT* prcLinks, CStdString* sLinks, int& nLinkRects, UINT uStyle)
 {
-    // ¿¼ÂÇµ½ÔÚxml±à¼­Æ÷ÖĞÊ¹ÓÃ<>·ûºÅ²»·½±ã£¬¿ÉÒÔÊ¹ÓÃ{}·ûºÅ´úÌæ
-    // Ö§³Ö±êÇ©Ç¶Ì×£¨Èç<l><b>text</b></l>£©£¬µ«ÊÇ½»²æÇ¶Ì×ÊÇÓ¦¸Ã±ÜÃâµÄ£¨Èç<l><b>text</l></b>£©
+    // Â¿Â¼Ã‚Ã‡ÂµÂ½Ã”ÃšxmlÂ±Ã Â¼Â­Ã†Ã·Ã–ÃÃŠÂ¹Ã“Ãƒ<>Â·Ã»ÂºÃ…Â²Â»Â·Â½Â±Ã£Â£Â¬Â¿Ã‰Ã’Ã”ÃŠÂ¹Ã“Ãƒ{}Â·Ã»ÂºÃ…Â´ÃºÃŒÃ¦
+    // Ã–Â§Â³Ã–Â±ÃªÃ‡Â©Ã‡Â¶ÃŒÃ—Â£Â¨ÃˆÃ§<l><b>text</b></l>Â£Â©Â£Â¬ÂµÂ«ÃŠÃ‡Â½Â»Â²Ã¦Ã‡Â¶ÃŒÃ—ÃŠÃ‡Ã“Â¦Â¸ÃƒÂ±ÃœÃƒÃ¢ÂµÃ„Â£Â¨ÃˆÃ§<l><b>text</l></b>Â£Â©
     // The string formatter supports a kind of "mini-html" that consists of various short tags:
     //
     //   Bold:             <b>text</b>
@@ -1248,7 +1248,7 @@ void CRenderEngine::DrawHtmlText(HDC hDC, CPaintManagerUI* pManager, RECT& rc, L
     bool bInSelected = false;
     int iLineLinkIndex = 0;
 
-    // ÅÅ°æÏ°¹ßÊÇÍ¼ÎÄµ×²¿¶ÔÆë£¬ËùÒÔÃ¿ĞĞ»æÖÆ¶¼Òª·ÖÁ½²½£¬ÏÈ¼ÆËã¸ß¶È£¬ÔÙ»æÖÆ
+    // Ã…Ã…Â°Ã¦ÃÂ°Â¹ÃŸÃŠÃ‡ÃÂ¼ÃÃ„ÂµÃ—Â²Â¿Â¶Ã”Ã†Ã«Â£Â¬Ã‹Ã¹Ã’Ã”ÃƒÂ¿ÃÃÂ»Ã¦Ã–Ã†Â¶Â¼Ã’ÂªÂ·Ã–ÃÂ½Â²Â½Â£Â¬ÃÃˆÂ¼Ã†Ã‹Ã£Â¸ÃŸÂ¶ÃˆÂ£Â¬Ã”Ã™Â»Ã¦Ã–Ã†
     CStdPtrArray aLineFontArray;
     CStdPtrArray aLineColorArray;
     CStdPtrArray aLinePIndentArray;
@@ -1257,7 +1257,7 @@ void CRenderEngine::DrawHtmlText(HDC hDC, CPaintManagerUI* pManager, RECT& rc, L
     bool bLineInLink = false;
     bool bLineInSelected = false;
     int cyLineHeight = 0;
-    bool bLineDraw = false; // ĞĞµÄµÚ¶ş½×¶Î£º»æÖÆ
+    bool bLineDraw = false; // ÃÃÂµÃ„ÂµÃšÂ¶Ã¾Â½Ã—Â¶ÃÂ£ÂºÂ»Ã¦Ã–Ã†
     while( *pstrText != _T('\0') ) {
         if( pt.x >= rc.right || *pstrText == _T('\n') || bLineEnd ) {
             if( *pstrText == _T('\n') ) pstrText++;
@@ -1370,7 +1370,7 @@ void CRenderEngine::DrawHtmlText(HDC hDC, CPaintManagerUI* pManager, RECT& rc, L
                     while( *pstrText > _T('\0') && *pstrText <= _T(' ') ) pstrText = ::CharNext(pstrText);
                     LPCTSTR pstrTemp = pstrText;
                     int iFont = (int) _tcstol(pstrText, const_cast<LPTSTR*>(&pstrText), 10);
-                    //if( isdigit(*pstrText) ) { // debug°æ±¾»áÒıÆğÒì³£
+                    //if( isdigit(*pstrText) ) { // debugÂ°Ã¦Â±Â¾Â»Ã¡Ã’Ã½Ã†Ã°Ã’Ã¬Â³Â£
                     if( pstrTemp != pstrText ) {
                         TFontInfo* pFontInfo = pManager->GetFontInfo(iFont);
                         aFontArray.Add(pFontInfo);
@@ -1657,7 +1657,7 @@ void CRenderEngine::DrawHtmlText(HDC hDC, CPaintManagerUI* pManager, RECT& rc, L
                     if( pTm->tmItalic && pFontInfo->bItalic == false ) {
                         ABC abc;
                         ::GetCharABCWidths(hDC, _T(' '), _T(' '), &abc);
-                        pt.x += abc.abcC / 2; // ¼òµ¥ĞŞÕıÒ»ÏÂĞ±Ìå»ìÅÅµÄÎÊÌâ, ÕıÈ·×ö·¨Ó¦¸ÃÊÇhttp://support.microsoft.com/kb/244798/en-us
+                        pt.x += abc.abcC / 2; // Â¼Ã²ÂµÂ¥ÃÃÃ•Ã½Ã’Â»ÃÃ‚ÃÂ±ÃŒÃ¥Â»Ã¬Ã…Ã…ÂµÃ„ÃÃŠÃŒÃ¢, Ã•Ã½ÃˆÂ·Ã—Ã¶Â·Â¨Ã“Â¦Â¸ÃƒÃŠÃ‡http://support.microsoft.com/kb/244798/en-us
                     }
                     pTm = &pFontInfo->tm;
                     ::SelectObject(hDC, pFontInfo->hFont);

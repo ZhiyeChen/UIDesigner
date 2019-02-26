@@ -90,6 +90,8 @@ CUIDesignerView::CUIDesignerView()
 	m_ptDPtoLP.x=0;
 	m_ptDPtoLP.y=0;
 	m_bInit=false;
+
+	m_pDragRect = NULL;
 }
 
 CUIDesignerView::~CUIDesignerView()
@@ -138,6 +140,16 @@ void CUIDesignerView::OnDraw(CDC* pDrawDC)
 	::DeleteObject(hNewBitmap);
 
 	m_MultiTracker.Draw(pDC,&szFormOffset);
+
+	if (m_pDragRect != NULL) {
+		/*CPen p(PS_SOLID, 1, RGB(255, 255, 0));
+		pDC->SelectObject(&p);
+		pDC->SelectStockObject(NULL_BRUSH);
+		pDC->Rectangle(*m_pDragRect);*/
+		
+		pDC->DrawDragRect(*m_pDragRect, CSize(1, 1), NULL, CSize(1, 1));
+
+	}
 }
 
 
@@ -1202,4 +1214,13 @@ void CUIDesignerView::RemoveForm(CArray<CControlUI*,CControlUI*>& arrSelected)
 void CUIDesignerView::SetModifiedFlag(BOOL bModified/* = TRUE*/)
 {
 	this->GetDocument()->SetModifiedFlag(bModified);
+}
+
+void CUIDesignerView::setDragRect(CRect* pDragRect) { 
+	if (pDragRect != NULL) {
+		m_pDragRect = new CRect(pDragRect);
+	}
+	else {
+		m_pDragRect = NULL;
+	}
 }
