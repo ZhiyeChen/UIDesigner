@@ -5,7 +5,6 @@ using DuiLib::CPaintManagerUI;
 using DuiLib::CWindowWnd;
 using DuiLib::TNotifyUI;
 using DuiLib::IDialogBuilderCallback;
-
 #define EXPORT_UI_SCRIPT
 
 #if defined(EXPORT_UI_SCRIPT)
@@ -207,6 +206,7 @@ private:
 	CPaintManagerUI m_Manager;
 	CWindowUI* m_pFormUI;
 	CString m_strSkinDir;
+	CString m_strResDir;
 
 	bool m_bShowGrid;
 	bool m_bShowAuxBorder;

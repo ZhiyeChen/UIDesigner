@@ -1,9 +1,12 @@
 #include "StdAfx.h"
 #include "HookAPI.h"
 #include <Dbghelp.h>
+#include <cwctype>
 
 bool CHookAPI::m_bCreateFileEnabled=false;
 TCHAR CHookAPI::m_sSkinDir[MAX_PATH]={0};
+TCHAR CHookAPI::m_sResDir[MAX_PATH]={0};
+std::map<CString, CString> CHookAPI::m_mResourceEx;
 pfnCreateFile CHookAPI::CreateFileAPI=NULL;
 
 bool CHookAPI::m_bInvalidateEnabled=false;
@@ -127,8 +130,23 @@ HANDLE WINAPI CHookAPI::Hook_CreateFile(
 	{
 		if(*(lpFileName+1)!=':')//relative path
 		{
-			_tcscpy_s(sFullPath,m_sSkinDir);
-			_tcscat_s(sFullPath,lpFileName);
+			CString real_path;
+			if (m_mResourceEx.size() != 0) {
+				std::wstring wstr;
+				for (int i = 0; i < lstrlen(lpFileName); i++) {
+					wstr += std::towupper(lpFileName[i]);
+				}
+				real_path = m_mResourceEx[wstr.c_str()];
+			}
+			if (real_path.GetLength() != 0) {
+				_tcscpy_s(sFullPath, m_sResDir);
+				_tcscat_s(sFullPath, real_path);
+			}
+			else {
+				_tcscpy_s(sFullPath, m_sSkinDir);
+				_tcscat_s(sFullPath, lpFileName);
+			}
+			
 			lpFileName=sFullPath;
 		}
 	}

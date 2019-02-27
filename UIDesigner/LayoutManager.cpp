@@ -2,6 +2,9 @@
 #include "LayoutManager.h"
 #include "UIUtil.h"
 #include <vector>
+#include <fstream>
+#include <string>
+#include <map>
 
 using DuiLib::IListOwnerUI;
 
@@ -561,6 +564,49 @@ void CLayoutManager::Init(HWND hWnd,LPCTSTR pstrLoad)
 	if(*pstrLoad!='\0')
 	{
 		m_strSkinDir = pstrLoad;
+
+		if (m_strSkinDir.Right(3) == ".rc") {
+			m_strResDir = pstrLoad;
+			int nPos = m_strResDir.ReverseFind(_T('\\'));
+			if (nPos != -1)
+				m_strResDir = m_strResDir.Left(nPos + 1);
+			g_HookAPI.SetResDir(m_strResDir.Left(nPos + 1));
+			
+			std::ifstream rcfile(m_strSkinDir);
+			std::string line;
+			if (rcfile.is_open())
+			{
+				while (getline(rcfile, line))
+				{
+					if (line.find("//") != 0 && (line.find("ZPIMGRES") != std::string::npos || line.find("ROOMSIMGRES") != std::string::npos)) {
+						std::vector<CString> internal_str;
+						std::stringstream ss(line);
+						std::string seperate_str;
+						while (getline(ss, seperate_str, ' '))
+						{
+							if (seperate_str.length() != 0)
+							{
+								internal_str.push_back(CString(seperate_str.c_str()));
+							}
+						}
+						if (internal_str.size() == 3) {
+							CString real_resPath;
+							int value_length = internal_str[2].GetLength();
+							for (int i = 0; i < value_length; i++) {
+								if (internal_str[2][i] == '"') continue;
+								if (internal_str[2][i] == '\\') i++;
+								real_resPath += internal_str[2][i];
+							}
+
+							g_HookAPI.m_mResourceEx[internal_str[0]] = real_resPath;
+							//TRACE("%ws,%ws,%ws \n", internal_str[0], internal_str[1], internal_str[2]);
+						}
+					}
+				}
+				rcfile.close();
+			}
+		}
+
 		int nPos = m_strSkinDir.ReverseFind(_T('\\'));
 		if(nPos != -1)
 			m_strSkinDir = m_strSkinDir.Left(nPos + 1);

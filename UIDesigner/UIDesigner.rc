@@ -16,13 +16,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ÖÐÎÄ(ÖÐ»ªÈËÃñ¹²ºÍ¹ú) resources
+// Chinese (Simplified, PRC) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
-#ifdef _WIN32
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 #pragma code_page(936)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -53,11 +51,11 @@ BEGIN
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
     "LANGUAGE 4, 2\r\n"
     "#pragma code_page(936)\r\n"
-    "#include ""res\\UIDesigner.rc2""  // ?????¡ì????¡ì?? Microsoft Visual C++ ?????¨¬????¡§???¡§?????¡§??????¡ì????¡ì??-|????¨¬????????¨¬????¡§?|????¡§??o???\r\n"
-    "#include ""l.CHS\\afxres.rc""          // ?????¨¬????¡§???¡§?????¡§??o?????¨¬????¡§?|??????¨¬????¡§?|????¡§??|?t\r\n"
-    "#include ""l.CHS\\afxprint.rc""        // ??????¡§????????¡§????/??????¡§????????¡§??????????¨¬?????¨¬?????¡§??????¡ì????¡ì?????¡§??????¡ì????¡ì??????¨¬????¡§?|????¡§??o???\r\n"
+    "#include ""res\\UIDesigner.rc2""  // ??????¨¬?????¨¬?? Microsoft Visual C++ ?????¡§??????¡ì????¡ì??????¡ì???????¨¬?????¨¬??-|????¡§?????????¡§??????¡ì?|?????¡ì??o???\r\n"
+    "#include ""l.CHS\\afxres.rc""          // ?????¡§??????¡ì????¡ì??????¡ì??o?????¡§??????¡ì?|??????¡§??????¡ì?|?????¡ì??|?t\r\n"
+    "#include ""l.CHS\\afxprint.rc""        // ???????¡ì?????????¡ì????/???????¡ì?????????¡ì??????????¡§??????¡§???????¡ì???????¨¬?????¨¬??????¡ì???????¨¬?????¨¬??????¡§??????¡ì?|?????¡ì??o???\r\n"
     "#if !defined(_AFXDLL)\r\n"
-    "#include ""l.CHS\\afxribbon.rc""               // MFC 1|?????¡§??1??o????¡§??a???t????¡§?????????¨¬????¡§?|????¡§??o???\r\n"
+    "#include ""l.CHS\\afxribbon.rc""               // MFC 1|??????¡ì??1??o?????¡ì??a???t?????¡ì?????????¡§??????¡ì?|?????¡ì??o???\r\n"
     "#endif\r\n"
     "#endif\r\n"
     "\0"
@@ -74,33 +72,61 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\UIDesigner.ico"
+
 IDR_UIDESIGNER          ICON                    "res\\UIDesignerDoc.ico"
+
 IDI_FILE_VIEW           ICON                    "res\\file_view.ico"
+
 IDI_FILE_VIEW_HC        ICON                    "res\\file_view_hc.ico"
+
 IDI_CLASS_VIEW          ICON                    "res\\class_view.ico"
+
 IDI_CLASS_VIEW_HC       ICON                    "res\\class_view_hc.ico"
+
 IDI_PROPERTIES_WND      ICON                    "res\\properties_wnd.ico"
+
 IDI_PROPERTIES_WND_HC   ICON                    "res\\properties_wnd_hc.ico"
+
 IDI_RES_VIEW            ICON                    "res\\res_view.ico"
+
 IDI_RES_VIEW_HC         ICON                    "res\\res_view_hc.ico"
+
 IDI_TOOLBOX_WND_HC      ICON                    "res\\toolbox_wnd_hc.ico"
+
 IDI_TOOLBOX_ACTIVE      ICON                    "res\\ToolBox\\Active.ico"
+
 IDI_TOOLBOX_BUTTON      ICON                    "res\\ToolBox\\Button.ico"
+
 IDI_TOOLBOX_OPTION      ICON                    "res\\ToolBox\\Option.ico"
+
 IDI_TOOLBOX_COMBO       ICON                    "res\\ToolBox\\Combo.ico"
+
 IDI_TOOLBOX_CONTAINER   ICON                    "res\\ToolBox\\Container.ico"
+
 IDI_TOOLBOX_CONTROL     ICON                    "res\\ToolBox\\Control.ico"
+
 IDI_TOOLBOX_EDIT        ICON                    "res\\ToolBox\\Edit.ico"
+
 IDI_TOOLBOX_HORIZONTAL_LAYOUT ICON                    "res\\ToolBox\\HorizontalLayout.ico"
+
 IDI_TOOLBOX_LABEL       ICON                    "res\\ToolBox\\Label.ico"
+
 IDI_TOOLBOX_POINTER     ICON                    "res\\ToolBox\\Pointer.ico"
+
 IDI_TOOLBOX_PROGRESS    ICON                    "res\\ToolBox\\Progress.ico"
+
 IDI_TOOLBOX_SCROLLBAR   ICON                    "res\\ToolBox\\ScrollBar.ico"
+
 IDI_TOOLBOX_SLIDER      ICON                    "res\\ToolBox\\Slider.ico"
+
 IDI_TOOLBOX_TAB_LAYOUT  ICON                    "res\\ToolBox\\TabLayout.ico"
+
 IDI_TOOLBOX_TEXT        ICON                    "res\\ToolBox\\Text.ico"
+
 IDI_TOOLBOX_TILE_LAYOUT ICON                    "res\\ToolBox\\TileLayout.ico"
+
 IDI_TOOLBOX_VERTICAL_LAYOUT ICON                    "res\\ToolBox\\VerticalLayout.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -108,32 +134,52 @@ IDI_TOOLBOX_VERTICAL_LAYOUT ICON                    "res\\ToolBox\\VerticalLayou
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDR_MAINFRAME_HC        BITMAP                  "res\\Toolbar_hc.bmp"
+
 IDR_SORT                BITMAP                  "res\\sort.bmp"
+
 IDB_SORT_24             BITMAP                  "res\\sort_hc.bmp"
+
 IDB_FILE_VIEW           BITMAP                  "res\\fileview.bmp"
+
 IDB_FILE_VIEW_24        BITMAP                  "res\\fileview_hc.bmp"
+
 IDB_CLASS_VIEW          BITMAP                  "res\\classview.bmp"
+
 IDB_CLASS_VIEW_24       BITMAP                  "res\\classview_hc.bmp"
+
 IDR_PROJECT_EXPLORER    BITMAP                  "res\\explorer.bmp"
+
 IDB_PROJECT_EXPLORER_24 BITMAP                  "res\\explorer_hc.bmp"
+
 IDR_MENU_IMAGES         BITMAP                  "res\\menuimages.bmp"
+
 IDB_MENU_IMAGES_24      BITMAP                  "res\\menuimages_hc.bmp"
+
 IDR_PROPERTIES          BITMAP                  "res\\properties.bmp"
+
 IDB_PROPERTIES_HC       BITMAP                  "res\\properties_hc.bmp"
+
 IDB_RESOURCE_VIEW       BITMAP                  "res\\resource.bmp"
+
 IDB_RESOURCE_VIEW24     BITMAP                  "res\\resource24.bmp"
+
 IDB_BITMAP_MOVEHANDLE   BITMAP                  "res\\movehandle.bmp"
+
 IDR_FORMEDIT            BITMAP                  "res\\formedit_hc.bmp"
+
 IDR_MENU_UI             BITMAP                  "res\\uimenu.bmp"
+
 IDB_ABOUT_BANNER        BITMAP                  "res\\banner.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR  16, 16
+IDR_MAINFRAME TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_FILE_OPEN
@@ -144,7 +190,7 @@ BEGIN
     BUTTON      ID_EDIT_PASTE
 END
 
-IDR_MAINFRAME_HC TOOLBAR  16, 16
+IDR_MAINFRAME_HC TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_PROJECT_NEW
     BUTTON      ID_FILE_NEW
@@ -160,13 +206,13 @@ BEGIN
     BUTTON      ID_EDIT_REDO
 END
 
-IDR_SORT TOOLBAR  16, 16
+IDR_SORT TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_SORT_MENU
     BUTTON      ID_NEW_FOLDER
 END
 
-IDR_PROJECT_EXPLORER TOOLBAR  16, 16
+IDR_PROJECT_EXPLORER TOOLBAR 16, 16
 BEGIN
     BUTTON      IDR_PROJECT_NEW
     BUTTON      IDR_FILE_NEW
@@ -174,7 +220,7 @@ BEGIN
     BUTTON      IDR_FILE_DELETE
 END
 
-IDR_MENU_IMAGES TOOLBAR  16, 16
+IDR_MENU_IMAGES TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_WINDOW_MANAGER
     SEPARATOR
@@ -191,13 +237,13 @@ BEGIN
     BUTTON      ID_PROJECT_OPEN
 END
 
-IDR_PROPERTIES TOOLBAR  16, 16
+IDR_PROPERTIES TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_PROPERTIES_TOOLBAR_SORT
     BUTTON      ID_PROPERTIES_TOOLBAR_ALPHABETIC
 END
 
-IDR_FORMEDIT TOOLBAR  16, 16
+IDR_FORMEDIT TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_FORMEDIT_TEST
     SEPARATOR
@@ -220,7 +266,7 @@ BEGIN
     BUTTON      ID_FORMEDIT_SHOW_AUXBORDER
 END
 
-IDR_MENU_UI TOOLBAR  16, 16
+IDR_MENU_UI TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_UI_CONTROL_BUTTON
     BUTTON      ID_UI_CONTROL_CONTROL
@@ -248,7 +294,7 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENU 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "ÎÄ¼þ(&F)"
     BEGIN
@@ -307,7 +353,7 @@ BEGIN
     END
 END
 
-IDR_UIDESIGNER MENU 
+IDR_UIDESIGNER MENU
 BEGIN
     POPUP "ÎÄ¼þ(&F)"
     BEGIN
@@ -408,7 +454,7 @@ BEGIN
     END
 END
 
-IDR_POPUP_EDIT MENU 
+IDR_POPUP_EDIT MENU
 BEGIN
     POPUP "±à¼­"
     BEGIN
@@ -418,7 +464,7 @@ BEGIN
     END
 END
 
-IDR_POPUP_EXPLORER MENU 
+IDR_POPUP_EXPLORER MENU
 BEGIN
     POPUP "ÎÄ¼þ¹ÜÀíÆ÷"
     BEGIN
@@ -440,7 +486,7 @@ BEGIN
     END
 END
 
-IDR_POPUP_RESOURCE MENU 
+IDR_POPUP_RESOURCE MENU
 BEGIN
     POPUP "×ÊÔ´¹ÜÀíÆ÷"
     BEGIN
@@ -451,7 +497,7 @@ BEGIN
     END
 END
 
-IDR_THEME_MENU MENU 
+IDR_THEME_MENU MENU
 BEGIN
     MENUITEM "Office 2007 (À¶É«ÑùÊ½)(&B)",      ID_VIEW_APPLOOK_OFF_2007_BLUE
     MENUITEM "Office 2007 (ºÚÉ«ÑùÊ½)(&L)",      ID_VIEW_APPLOOK_OFF_2007_BLACK
@@ -459,7 +505,7 @@ BEGIN
     MENUITEM "Office 2007 (Ë®ÂÌÉ«ÑùÊ½)(&A)",     ID_VIEW_APPLOOK_OFF_2007_AQUA
 END
 
-IDR_POPUP_SORT MENU 
+IDR_POPUP_SORT MENU
 BEGIN
     POPUP "ÅÅÐò"
     BEGIN
@@ -470,7 +516,7 @@ BEGIN
     END
 END
 
-IDR_UI MENU 
+IDR_UI MENU
 BEGIN
     POPUP "UI"
     BEGIN
@@ -493,7 +539,7 @@ BEGIN
     END
 END
 
-IDR_POPUP_MDITABS MENU 
+IDR_POPUP_MDITABS MENU
 BEGIN
     POPUP "DUMMY"
     BEGIN
@@ -517,7 +563,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
     VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
@@ -559,7 +605,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSM
 CAPTION "¹ØÓÚ UIDesigner"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         346,IDC_STATIC,"Static",SS_BITMAP,0,0,229,57
+    CONTROL         IDD_DIALOG_DEFAULT_ATTRIB_LIST,IDC_STATIC,"Static",SS_BITMAP,0,0,229,57
     LTEXT           "UIDesigner",IDC_STATIC,7,61,37,8,SS_NOPREFIX
     LTEXT           "¹±Ï×Õß:  achellies,Thinker,Daviyang35",IDC_STATIC,7,89,130,8
     DEFPUSHBUTTON   "È·¶¨",IDOK,174,98,50,14,WS_GROUP
@@ -756,7 +802,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -854,26 +900,26 @@ END
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDP_OLE_INIT_FAILED     "OLE ³õÊ¼»¯Ê§°Ü¡£ÇëÈ·±£ OLE ¿âÊÇÕýÈ·µÄ°æ±¾¡£"
     IDS_TOOLBAR_FORMEDIT    "´°Ìå±à¼­"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "UIDesigner"
-    IDR_UIDESIGNER          "\nUISkin\nUIDesigner\nUISkin Files (*.xml)\n.xml\nUIDesigner.Document\nUIDesigner.Document"
+    IDR_UIDESIGNER          "\nUISkin\nUIDesigner\nUISkin Files (*.xml; *.rc)\n.xml;.rc\nUIDesigner.Document\nUIDesigner.Document"
     IDS_WINDOWS_MANAGER     "´°¿Ú(&W)..."
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "UIDesigner"
     AFX_IDS_IDLEMESSAGE     "¾ÍÐ÷"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -883,7 +929,7 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_NEW             "´´½¨ÐÂÎÄµµ\nÎÄ¼þ"
     ID_FILE_OPEN            "´ò¿ªÏÖÓÐÎÄµµ\nÎÄ¼þ"
@@ -895,13 +941,13 @@ BEGIN
     ID_FILE_PRINT_PREVIEW   "ÏÔÊ¾ÕûÒ³\n´òÓ¡Ô¤ÀÀ"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "ÏÔÊ¾³ÌÐòÐÅÏ¢¡¢°æ±¾ºÅºÍ°æÈ¨\n¹ØÓÚ"
     ID_APP_EXIT             "ÍË³öÓ¦ÓÃ³ÌÐò£»ÌáÊ¾±£´æÎÄµµ\nÍË³ö"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_MRU_FILE1       "´ò¿ª´ËÎÄµµ"
     ID_FILE_MRU_FILE2       "´ò¿ª´ËÎÄµµ"
@@ -921,13 +967,13 @@ BEGIN
     ID_FILE_MRU_FILE16      "´ò¿ª´ËÎÄµµ"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "ÇÐ»»µ½ÏÂÒ»¸ö´°¸ñ\nÏÂÒ»´°¸ñ"
     ID_PREV_PANE            "ÇÐ»»»ØÉÏÒ»¸ö´°¸ñ\nÉÏÒ»´°¸ñ"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_NEW           "Îª»î¶¯ÎÄµµ´ò¿ªÁíÒ»¸ö´°¿Ú\nÐÂ½¨´°¿Ú"
     ID_WINDOW_ARRANGE       "ÔÚ´°¿Úµ×²¿ÅÅÁÐÍ¼±ê\nÅÅÁÐÍ¼±ê"
@@ -937,7 +983,7 @@ BEGIN
     ID_WINDOW_SPLIT         "½«»î¶¯´°¿Ú²ð·ÖÎª¶à¸ö´°¸ñ\n²ð·Ö"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "Çå³ýÑ¡¶¨ÄÚÈÝ\nÇå³ý"
     ID_EDIT_CLEAR_ALL       "Çå³ýÈ«²¿ÄÚÈÝ\nÈ«²¿Çå³ý"
@@ -952,12 +998,12 @@ BEGIN
     ID_EDIT_REDO            "»Ö¸´ÉÏ´Î³·ÏûµÄ²Ù×÷\nÖØ¸´"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_STATUS_BAR      "ÏÔÊ¾»òÒþ²Ø×´Ì¬À¸\nÇÐ»»×´Ì¬À¸"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "¸ü¸Ä´°¿Ú´óÐ¡"
     AFX_IDS_SCMOVE          "¸ü¸Ä´°¿ÚÎ»ÖÃ"
@@ -968,14 +1014,14 @@ BEGIN
     AFX_IDS_SCCLOSE         "¹Ø±Õ»î¶¯´°¿Ú²¢ÌáÊ¾±£´æÎÄµµ"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "½«´°¿Ú»Ö¸´µ½Õý³£´óÐ¡"
     AFX_IDS_SCTASKLIST      "¼¤»îÈÎÎñÁÐ±í"
     AFX_IDS_MDICHILD        "¼¤»î´Ë´°¿Ú"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_STATUS_PANE1        "´°¸ñ 1"
     IDS_STATUS_PANE2        "´°¸ñ 2"
@@ -983,7 +1029,7 @@ BEGIN
     IDS_TOOLBAR_CUSTOMIZE   "×Ô¶¨Òå..."
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_PROPERTIES_TOOLBAR_ALPHABETIC "\n°´×ÖÄ¸Ë³Ðò"
     ID_PROPERTIES_TOOLBAR_SORT "\n°´·ÖÀàË³Ðò"
@@ -994,7 +1040,7 @@ BEGIN
     IDS_TOOLBOX_WND         "¹¤¾ßÏä"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_EXPLORER            "ÎÄ¼þ"
     IDS_EDIT_MENU           "±à¼­"
@@ -1002,7 +1048,7 @@ BEGIN
     ID_VIEW_FORMEDIT_TOOLBAR "´°¿Ú¸ñÊ½±à¼­\n´°¿Ú±à¼­"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FORMEDIT_TEST        "\n²âÊÔ´°Ìå"
     ID_FORMEDIT_ALIGN_LEFT  "\n×ó¶ÔÆë"
@@ -1022,26 +1068,26 @@ BEGIN
     ID_FILE_SAVE_ALL        "±£´æÈ«²¿»î¶¯ÎÄµµ\n±£´æÈ«²¿"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_PREVIEW_CLOSE   "¹Ø±Õ´òÓ¡Ô¤ÀÀÄ£Ê½\nÈ¡ÏûÔ¤ÀÀ"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_PROJECT_OPEN         "´ò¿ªÏîÄ¿\nÏîÄ¿"
     ID_TEMPLATE_OPEN        "´ò¿ªÄ£°å\nÄ£°å"
     ID_PROJECT_CLOSE        "¹Ø±ÕÏîÄ¿\nÏîÄ¿"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_TEMPLATE_SAVE_AS     "±£´æÎªÄ£°å\nÄ£°å"
     ID_FILE_CLOSE_ALL       "¹Ø±ÕÈ«²¿»î¶¯ÎÄµµ\n¹Ø±ÕÈ«²¿"
     ID_MDITABS_COPY_FULLPATH "¸´ÖÆ´ËÎÄ¼þµÄÍêÕûÂ·¾¶"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_MDITABS_OPEN_FULLPATH "´ò¿ª´ËÎÄ¼þËùÔÚµÄÎÄ¼þ¼Ð"
     ID_MDITABS_NEW_HORZ_TAB_GROUP "ÐÂ½¨Ò»¸öÐÂµÄË®Æ½Ñ¡Ïî¿¨×é"
@@ -1051,12 +1097,12 @@ BEGIN
     ID_APP_CHECK_UPDATE     "¼ì²éÊÇ·ñÓÐÐÂ°æ±¾\n¼ì²é¸üÐÂ"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_DELETE          "É¾³ýÑ¡ÖÐµÄ¿Ø¼þ\\É¾³ý"
 END
 
-#endif    // ÖÐÎÄ(ÖÐ»ªÈËÃñ¹²ºÍ¹ú) resources
+#endif    // Chinese (Simplified, PRC) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -1073,11 +1119,11 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE 4, 2
 #pragma code_page(936)
-#include "res\UIDesigner.rc2"  // ?????¡ì????¡ì?? Microsoft Visual C++ ?????¨¬????¡§???¡§?????¡§??????¡ì????¡ì??-|????¨¬????????¨¬????¡§?|????¡§??o???
-#include "l.CHS\afxres.rc"          // ?????¨¬????¡§???¡§?????¡§??o?????¨¬????¡§?|??????¨¬????¡§?|????¡§??|?t
-#include "l.CHS\afxprint.rc"        // ??????¡§????????¡§????/??????¡§????????¡§??????????¨¬?????¨¬?????¡§??????¡ì????¡ì?????¡§??????¡ì????¡ì??????¨¬????¡§?|????¡§??o???
+#include "res\UIDesigner.rc2"  // ?????§????§?? Microsoft Visual C++ ?????ì????¨???¨?????¨??????§????§??-|????ì????????ì????¨?|????¨??o???
+#include "l.CHS\afxres.rc"          // ?????ì????¨???¨?????¨??o?????ì????¨?|??????ì????¨?|????¨??|?t
+#include "l.CHS\afxprint.rc"        // ??????¨????????¨????/??????¨????????¨??????????ì?????ì?????¨??????§????§?????¨??????§????§??????ì????¨?|????¨??o???
 #if !defined(_AFXDLL)
-#include "l.CHS\afxribbon.rc"               // MFC 1|?????¡§??1??o????¡§??a???t????¡§?????????¨¬????¡§?|????¡§??o???
+#include "l.CHS\afxribbon.rc"               // MFC 1|?????¨??1??o????¨??a???t????¨?????????ì????¨?|????¨??o???
 #endif
 #endif
 

@@ -17,6 +17,10 @@ DuiLib/[Dd]ebug_u/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
+UnicodeDebug/
+UnicodeRelease/
+UIDesigner/UnicodeDebug/
+UIDesigner/UnicodeRelease/
 x64/
 x86/
 build/

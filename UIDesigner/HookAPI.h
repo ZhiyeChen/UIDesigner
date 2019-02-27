@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 using DuiLib::TImageInfo;
 
 //////////////////////////////////////////////////////////////////////////
@@ -46,6 +47,8 @@ public:
 		);
 	static void EnableCreateFile(bool bEnable=true) { m_bCreateFileEnabled=bEnable; }
 	static void SetSkinDir(LPCTSTR pstrDir) { _tcscpy_s(m_sSkinDir,pstrDir); }
+	static void SetResDir(LPCTSTR pstrDir) { _tcscpy_s(m_sResDir,pstrDir); }
+	static std::map<CString, CString> m_mResourceEx;
 
 	static void WINAPI Hook_Invalidate(RECT& rcItem);
 	static void EnableInvalidate(bool bEnable=true) { m_bInvalidateEnabled=bEnable; }
@@ -56,6 +59,8 @@ public:
 private:
 	static bool m_bCreateFileEnabled;
 	static TCHAR m_sSkinDir[MAX_PATH];
+	static TCHAR m_sResDir[MAX_PATH];
+
 	static pfnCreateFile CreateFileAPI;
 
 	static bool m_bInvalidateEnabled;
