@@ -1889,7 +1889,10 @@ const TImageInfo* CPaintManagerUI::AddImage(LPCTSTR bitmap, LPCTSTR type, DWORD 
             LPTSTR pstr = NULL;
             int iIndex = _tcstol(bitmap, &pstr, 10);
             data = CRenderEngine::LoadImage(iIndex, type, mask);
-        }
+		}
+		else { // Added for reading image based on .rc resource file
+			data = CRenderEngine::LoadImage(bitmap, NULL, mask);
+		}
     }
     else {
         data = CRenderEngine::LoadImage(bitmap, NULL, mask);
