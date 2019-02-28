@@ -1453,7 +1453,10 @@ bool CPaintManagerUI::RemovePreMessageFilter(IMessageFilterUI* pFilter)
 
 bool CPaintManagerUI::AddMessageFilter(IMessageFilterUI* pFilter)
 {
-    ASSERT(m_aMessageFilters.Find(pFilter)<0);
+	if(m_aMessageFilters.Find(pFilter) >= 0){
+		return false;
+	}
+	//ASSERT(m_aMessageFilters.Find(pFilter)<0);
     return m_aMessageFilters.Add(pFilter);
 }
 

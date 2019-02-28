@@ -1617,6 +1617,12 @@ long CRichEditUI::StreamOut(int nFormat, EDITSTREAM &es)
 
 void CRichEditUI::DoInit()
 {
+	if (m_pManager)
+		m_pManager->AddMessageFilter(this);
+
+	if (m_bInited)
+		return;
+
     CREATESTRUCT cs;
     cs.style = m_lTwhStyle;
     cs.x = 0;
@@ -1627,11 +1633,16 @@ void CRichEditUI::DoInit()
     CreateHost(this, &cs, &m_pTwh);
     if( m_pTwh ) {
         m_pTwh->SetTransparent(TRUE);
-        LRESULT lResult;
-        m_pTwh->GetTextServices()->TxSendMessage(EM_SETLANGOPTIONS, 0, 0, &lResult);
+		if (m_pTwh->GetTextServices()) {
+			LRESULT lResult;
+			m_pTwh->GetTextServices()->TxSendMessage(EM_SETLANGOPTIONS, 0, 0, &lResult);
+			m_pTwh->GetTextServices()->TxSendMessage(EM_SETEDITSTYLE, SES_USECTF, SES_USECTF, &lResult);
+		}
+       
         m_pTwh->OnTxInPlaceActivate(NULL);
-        m_pManager->AddMessageFilter(this);
     }
+
+	m_bInited = true;
 }
 
 HRESULT CRichEditUI::TxSendMessage(UINT msg, WPARAM wparam, LPARAM lparam, LRESULT *plresult) const

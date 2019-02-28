@@ -286,12 +286,24 @@ BOOL CClassView::RemoveUITreeItem(HTREEITEM hItem)
 
 void CClassView::SelectUITreeItem(CControlUI* pControl)
 {
+	HTREEITEM hItemCur = NULL;
+	HTREEITEM hItemPrev = NULL;
+
 	if(pControl==NULL)
 		return;
 
 	if (pControl->GetTag())
 	{
-		m_wndClassView.SelectItem((HTREEITEM)(((ExtendedAttributes*)pControl->GetTag())->hItem));
+		hItemPrev = m_wndClassView.GetSelectedItem();
+
+		if (hItemPrev != NULL) {
+			m_wndClassView.SetItemState(hItemPrev, 0, TVIS_BOLD | TVIS_SELECTED | TVIS_DROPHILITED | TVIS_CUT);
+		}
+		hItemCur = (HTREEITEM)(((ExtendedAttributes*)pControl->GetTag())->hItem);
+		if (hItemCur != NULL) {
+			m_wndClassView.SelectItem(hItemCur);
+			m_wndClassView.SetItemState(hItemCur, TVIS_BOLD | TVIS_SELECTED | TVIS_DROPHILITED | TVIS_CUT, TVIS_BOLD | TVIS_SELECTED | TVIS_DROPHILITED | TVIS_CUT);
+		}
 	}
 	//HTREEITEM hSelect=(HTREEITEM)(((ExtendedAttributes*)pControl->GetTag())->hItem);
 	//m_wndClassView.SelectItem(hSelect);

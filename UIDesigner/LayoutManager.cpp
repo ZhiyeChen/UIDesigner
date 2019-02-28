@@ -986,12 +986,19 @@ CControlUI* CLayoutManager::CloneControls(CControlUI* pControl)
 		return CloneControl(pControl);
 
 	CContainerUI* pCopyContainer=static_cast<CContainerUI*>(CloneControl(pContainer)->GetInterface(_T("Container")));
+	// nullptr error
+	if (pCopyContainer == NULL) 
+		return NULL;
+
 	pCopyContainer->SetAutoDestroy(false);
 	pCopyContainer->RemoveAll();
 	pCopyContainer->SetAutoDestroy(true);
 	for(int i=0;i<pContainer->GetCount();i++)
 	{
 		CControlUI* pCopyControl=CloneControls(pContainer->GetItemAt(i));
+		// nullptr error
+		if (pCopyControl == NULL) continue;
+
 		pCopyControl->SetManager(NULL,pCopyContainer);
 		pCopyContainer->Add(pCopyControl);
 	}
