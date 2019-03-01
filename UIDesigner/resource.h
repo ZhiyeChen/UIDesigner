@@ -2,6 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by UIDesigner.rc
 //
+#define WM_RELOADDOCUMENTFILE	WM_USER+200
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
 #define IDS_TOOLBAR_FORMEDIT            101

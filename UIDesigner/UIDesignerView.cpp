@@ -71,6 +71,7 @@ BEGIN_MESSAGE_MAP(CUIDesignerView, CScrollView)
 	ON_COMMAND(ID_EDIT_REDO, &CUIDesignerView::OnEditRedo)
 	ON_UPDATE_COMMAND_UI(ID_EDIT_REDO, &CUIDesignerView::OnUpdateEditRedo)
 	ON_COMMAND(ID_TEMPLATE_SAVE_AS, &CUIDesignerView::OnTemplateSaveAs)
+	ON_MESSAGE(WM_RELOADDOCUMENTFILE, &CUIDesignerView::OnReloadDocumentFile)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_SETCURSOR()
 	ON_WM_SIZE()
@@ -219,6 +220,10 @@ void CUIDesignerView::OnInitialUpdate()
 
 	m_LayoutManager.Init(this->GetSafeHwnd(),pDoc->GetPathName());
 	CWindowUI* pForm=m_LayoutManager.GetForm();
+
+	CFileStatus status;
+	CFile::GetStatus(pDoc->GetPathName(), status);
+	m_timeDocLastMod = status.m_mtime;
 
 	g_pClassView->InsertUITreeItem(pForm,pDoc->GetTitle());
 	g_pResourceView->InsertImageTree(pDoc->GetTitle(), pDoc->GetPathName());
@@ -1116,6 +1121,11 @@ void CUIDesignerView::SaveSkinFile(LPCTSTR pstrPathName)
 	{
 		MessageBox(_T("保存XML文件失败!"),_T("错误"),MB_OK);
 	}
+	else { // save modified time
+		CFileStatus status;
+		CFile::GetStatus(pstrPathName, status);
+		m_timeDocLastMod = status.m_mtime;
+	}
 	g_pResourceView->CopyImageToSkinDir(m_LayoutManager.GetSkinDir(), this->GetDocument()->GetTitle());
 }
 
@@ -1223,4 +1233,37 @@ void CUIDesignerView::setDragRect(CRect* pDragRect) {
 	else {
 		m_pDragRect = NULL;
 	}
+}
+
+void CUIDesignerView::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView)
+{
+	if (bActivate) {
+		CString strFilePath = GetDocument()->GetPathName();
+		CFileStatus status; //get file info
+		if (CFile::GetStatus(strFilePath, status)) {
+			CTime timeLastMod = status.m_mtime; //get last modified timestamp
+			if (timeLastMod != m_timeDocLastMod) {
+				m_timeDocLastMod = timeLastMod;
+				if (MessageBox(strFilePath + StringConvertor::Utf8ToWide("\n文件发生变化，是否重新载入?"), StringConvertor::Utf8ToWide("提示"), MB_YESNO) == IDYES) {
+					//close the current document and view
+					//pActivateView->GetParentFrame()->SendMessage(WM_CLOSE);
+					pActivateView->PostMessage(WM_RELOADDOCUMENTFILE, 0, (LPARAM)pActivateView->GetParentFrame());
+					return;
+				}
+			}
+		}
+	}
+	__super::OnActivateView(bActivate, pActivateView, pDeactiveView);
+}
+
+LRESULT CUIDesignerView::OnReloadDocumentFile(WPARAM wParam, LPARAM lParam)
+{
+	CFrameWnd *pWnd = (CFrameWnd *)lParam;
+	if (pWnd) {
+		CString strFilePath = GetDocument()->GetPathName();
+		pWnd->SendMessage(WM_CLOSE);
+		AfxGetApp()->OpenDocumentFile(strFilePath);
+	}
+
+	return 0;
 }

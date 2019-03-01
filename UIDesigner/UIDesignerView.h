@@ -80,6 +80,7 @@ protected:
 
 	void RemoveForm(CArray<CControlUI*,CControlUI*>& arrSelected);
 
+	void OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView);
 private:
 	CLayoutManager m_LayoutManager;
 	CMultiUITracker m_MultiTracker;
@@ -88,6 +89,7 @@ private:
 
 	CPoint m_ptDPtoLP;//Device coordinates to Logical coordinates
 	bool m_bInit;
+	CTime m_timeDocLastMod;// file last modified time
 
 	static CLIPFORMAT m_cfUI;//custom clipboard format
 
@@ -151,6 +153,8 @@ public:
 	afx_msg void OnDestroy();
 	afx_msg void OnTemplateSaveAs();
 	afx_msg void OnStyleSaveAs();
+
+	afx_msg LRESULT OnReloadDocumentFile(WPARAM wParam, LPARAM lParam);
 };
 
 #ifndef _DEBUG  // UIDesignerView.cpp 中的调试版本
