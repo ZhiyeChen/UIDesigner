@@ -2087,6 +2087,13 @@ void CLayoutManager::SaveComboProperty(CControlUI* pControl, TiXmlElement* pNode
 		pNode->SetAttribute("inset", StringConvertor::WideToUtf8(szBuf));
 	}
 
+	RECT rcTextPadding = pComboUI->GetTextPadding();
+	if ((rcTextPadding.left != 0) || (rcTextPadding.right != 0) || (rcTextPadding.bottom != 0) || (rcTextPadding.top != 0))
+	{
+		_stprintf_s(szBuf, _T("%d,%d,%d,%d"), rcTextPadding.left, rcTextPadding.top, rcTextPadding.right, rcTextPadding.bottom);
+		pNode->SetAttribute("textpadding", StringConvertor::WideToUtf8(szBuf));
+	}
+
 	SaveItemProperty(pControl,pNode);
 	SaveContainerProperty(pControl, pNode);
 }
