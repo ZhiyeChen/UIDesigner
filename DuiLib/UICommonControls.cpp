@@ -120,25 +120,61 @@ void CLabelUI::DoEvent(TEventUI& event)
 void CLabelUI::SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue)
 {
     if( _tcscmp(pstrName, _T("align")) == 0 ) {
-        if( _tcsstr(pstrValue, _T("left")) != NULL ) {
-            m_uTextStyle &= ~(DT_CENTER | DT_RIGHT | DT_TOP | DT_BOTTOM);
-            m_uTextStyle |= DT_LEFT;
-        }
-        if( _tcsstr(pstrValue, _T("center")) != NULL ) {
-            m_uTextStyle &= ~(DT_LEFT | DT_RIGHT | DT_TOP | DT_BOTTOM);
-            m_uTextStyle |= DT_CENTER;
-        }
-        if( _tcsstr(pstrValue, _T("right")) != NULL ) {
-            m_uTextStyle &= ~(DT_LEFT | DT_CENTER | DT_TOP | DT_BOTTOM);
-            m_uTextStyle |= DT_RIGHT;
-        }
-		if( _tcsstr(pstrValue, _T("top")) != NULL ) {
-			m_uTextStyle &= ~(DT_BOTTOM | DT_VCENTER | DT_LEFT | DT_RIGHT);
-			m_uTextStyle |= DT_TOP;
+  //      if( _tcsstr(pstrValue, _T("left")) != NULL ) {
+  //          m_uTextStyle &= ~(DT_CENTER | DT_RIGHT | DT_TOP | DT_BOTTOM);
+  //          m_uTextStyle |= DT_LEFT;
+  //      }
+  //      if( _tcsstr(pstrValue, _T("center")) != NULL ) {
+  //          m_uTextStyle &= ~(DT_LEFT | DT_RIGHT | DT_TOP | DT_BOTTOM);
+  //          m_uTextStyle |= DT_CENTER;
+  //      }
+  //      if( _tcsstr(pstrValue, _T("right")) != NULL ) {
+  //          m_uTextStyle &= ~(DT_LEFT | DT_CENTER | DT_TOP | DT_BOTTOM);
+  //          m_uTextStyle |= DT_RIGHT;
+  //      }
+		//if( _tcsstr(pstrValue, _T("top")) != NULL ) {
+		//	m_uTextStyle &= ~(DT_BOTTOM | DT_VCENTER | DT_LEFT | DT_RIGHT);
+		//	m_uTextStyle |= DT_TOP;
+		//}
+		//if( _tcsstr(pstrValue, _T("bottom")) != NULL ) {
+		//	m_uTextStyle &= ~(DT_TOP | DT_VCENTER | DT_LEFT | DT_RIGHT);
+		//	m_uTextStyle |= DT_BOTTOM;
+		//}
+		if (_tcscmp(pstrValue, _T("leftvcenter")) == 0) {
+			m_uTextStyle = DT_LEFT | DT_VCENTER | DT_SINGLELINE;
 		}
-		if( _tcsstr(pstrValue, _T("bottom")) != NULL ) {
-			m_uTextStyle &= ~(DT_TOP | DT_VCENTER | DT_LEFT | DT_RIGHT);
-			m_uTextStyle |= DT_BOTTOM;
+		else if (_tcscmp(pstrValue, _T("rightvcenter")) == 0) {
+			m_uTextStyle = DT_RIGHT | DT_VCENTER | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("center")) == 0) {
+			m_uTextStyle = DT_CENTER | DT_VCENTER | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("topcenter")) == 0) {
+			m_uTextStyle = DT_CENTER | DT_TOP | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("bottomcenter")) == 0) {
+			m_uTextStyle = DT_CENTER | DT_BOTTOM | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("lefttop")) == 0) {
+			m_uTextStyle = DT_LEFT | DT_TOP | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("leftbottom")) == 0) {
+			m_uTextStyle = DT_LEFT | DT_BOTTOM | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("righttop")) == 0) {
+			m_uTextStyle = DT_RIGHT | DT_TOP | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("rightbottom")) == 0) {
+			m_uTextStyle = DT_RIGHT | DT_BOTTOM | DT_SINGLELINE;
+		}
+		else if (_tcscmp(pstrValue, _T("wrap")) == 0) {
+			m_uTextStyle = DT_WORDBREAK;
+		}
+		else if (_tcscmp(pstrValue, _T("none")) == 0) {
+			m_uTextStyle = 0x10000000;
+		}
+		else {
+			m_uTextStyle = 0;
 		}
     }
     else if( _tcscmp(pstrName, _T("endellipsis")) == 0 ) {
@@ -737,7 +773,7 @@ void COptionUI::PaintText(HDC hDC)
 CTextUI::CTextUI() : m_nLinks(0), m_nHoverLink(-1)
 {
     m_uTextStyle = DT_WORDBREAK;
-    m_rcTextPadding.left = 2;
+    m_rcTextPadding.left = 5;
     m_rcTextPadding.right = 2;
     ::ZeroMemory(m_rcLinks, sizeof(m_rcLinks));
 }

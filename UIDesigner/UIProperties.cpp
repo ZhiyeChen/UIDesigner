@@ -592,15 +592,28 @@ void CUIProperties::InitPropList()
 	pPropUI=new CMFCPropertyGridProperty(_T("Label"),classLabel);
 
 	//align
-	pProp=new CMFCPropertyGridProperty(_T("Align"),_T("Center"), StringConvertor::Utf8ToWide("指示文本的对齐方式"),tagAlign);
+	//pProp=new CMFCPropertyGridProperty(_T("Align"),_T("Center"), StringConvertor::Utf8ToWide("指示文本的对齐方式"),tagAlign);
+	//pProp->AddOption(_T("Center"));
+	//pProp->AddOption(_T("Left"));
+	//pProp->AddOption(_T("Right"));
+	//pProp->AddOption(_T("Top"));
+	//pProp->AddOption(_T("Bottom"));
+	//pProp->AllowEdit(FALSE);
+	//pPropUI->AddSubItem(pProp);
+	pProp = new CMFCPropertyGridProperty(_T("Align"), _T("LeftVCenter"), StringConvertor::Utf8ToWide("指示文本的对齐方式"), tagAlign);
+	pProp->AddOption(_T("LeftVCenter"));
+	pProp->AddOption(_T("RightVCenter"));
 	pProp->AddOption(_T("Center"));
-	pProp->AddOption(_T("Left"));
-	pProp->AddOption(_T("Right"));
-	pProp->AddOption(_T("Top"));
-	pProp->AddOption(_T("Bottom"));
+	pProp->AddOption(_T("TopCenter"));
+	pProp->AddOption(_T("BottomCenter"));
+	pProp->AddOption(_T("LeftTop"));
+	pProp->AddOption(_T("LeftBottom"));
+	pProp->AddOption(_T("RightTop"));
+	pProp->AddOption(_T("RightBottom"));
+	pProp->AddOption(_T("Wrap"));
+	pProp->AddOption(_T("None"));
 	pProp->AllowEdit(FALSE);
 	pPropUI->AddSubItem(pProp);
-
 	//textcolor
 	pPropColor=new CMFCPropertyGridColorProperty(_T("TextColor"),(LONG)RGB(0,0,0),NULL, StringConvertor::Utf8ToWide("指定文本的颜色"),tagTextColor);
 	pPropColor->EnableOtherButton(StringConvertor::Utf8ToWide("其他..."));
@@ -1498,18 +1511,53 @@ void CUIProperties::ShowLabelProperty(CControlUI* pControl)
 	ASSERT(pPropLabel);
 
 	//align
-	UINT uStyle=pLabel->GetTextStyle();
+	UINT uTextStyle =pLabel->GetTextStyle();
 	CString strStyle;
-	if(uStyle&DT_CENTER)
-		strStyle=_T("Center");
-	else if(uStyle&DT_LEFT)
-		strStyle=_T("Left");
-	else if(uStyle&DT_RIGHT)
-		strStyle=_T("Right");
-	else if(uStyle&DT_TOP)
-		strStyle=_T("Top");
-	else if(uStyle&DT_BOTTOM)
-		strStyle=_T("Bottom");
+	//if(uStyle&DT_CENTER)
+	//	strStyle=_T("Center");
+	//else if(uStyle==0)
+	//	strStyle=_T("Left");
+	//else if(uStyle&DT_RIGHT)
+	//	strStyle=_T("Right");
+	//else if(uStyle==0)
+	//	strStyle=_T("Top");
+	//else if(uStyle&DT_BOTTOM)
+	//	strStyle=_T("Bottom");
+	uTextStyle &= ~(DT_SINGLELINE);
+	if (uTextStyle == (DT_LEFT | DT_VCENTER)) {
+		strStyle = _T("LeftVCenter");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_VCENTER)) {
+		strStyle = _T("RightVCenter");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_VCENTER)) {
+		strStyle = _T("Center");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_TOP)) {
+		strStyle = _T("TopCenter");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_BOTTOM)) {
+		strStyle = _T("BottomCenter");
+	}
+	else if (uTextStyle == (DT_LEFT | DT_TOP)) {
+		strStyle = _T("LeftTop");
+	}
+	else if (uTextStyle == (DT_LEFT | DT_BOTTOM)) {
+		strStyle = _T("LeftBottom");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_TOP)) {
+		strStyle = _T("RightYop");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_BOTTOM)) {
+		strStyle = _T("RightBottom");
+	}
+	else if (uTextStyle == DT_WORDBREAK) {
+		strStyle = _T("Wrap");
+	}
+	else {
+		strStyle = _T("None");
+	}
+
 	pPropLabel->GetSubItem(tagAlign-tagLabel)->SetValue((_variant_t)strStyle);
 	pPropLabel->GetSubItem(tagAlign-tagLabel)->SetOriginalValue((_variant_t)strStyle);
 	//textcolor

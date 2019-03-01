@@ -1715,24 +1715,59 @@ void CLayoutManager::SaveLabelProperty(CControlUI* pControl, TiXmlElement* pNode
 
 	std::wstring tstrAlgin;
 	UINT uTextStyle = pLabelUI->GetTextStyle();
+	//if(uTextStyle == 0)
+	//	tstrAlgin = _T("left");
 
-	if(uTextStyle & DT_LEFT)
-		tstrAlgin = _T("left");
+	//if(uTextStyle & DT_CENTER)
+	//	tstrAlgin = _T("center");
 
-	if(uTextStyle & DT_CENTER)
+	//if(uTextStyle & DT_RIGHT)
+	//	tstrAlgin = _T("right");
+
+	//if(uTextStyle == 0)
+	//	tstrAlgin += _T("top");
+
+	//if(uTextStyle & DT_BOTTOM)
+	//	tstrAlgin += _T("bottom");
+
+	//if(uTextStyle & DT_WORDBREAK)
+	//	tstrAlgin += _T("wrap");
+	uTextStyle &= ~(DT_SINGLELINE);
+
+	if (uTextStyle == (DT_LEFT | DT_VCENTER)) {
+		tstrAlgin = _T("leftvcenter");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_VCENTER)) {
+		tstrAlgin = _T("rightvcenter");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_VCENTER)) {
 		tstrAlgin = _T("center");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_TOP)) {
+		tstrAlgin = _T("topcenter");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_BOTTOM)) {
+		tstrAlgin = _T("bottomcenter");
+	}
+	else if (uTextStyle == (DT_LEFT | DT_TOP)) {
+		tstrAlgin = _T("lefttop");
+	}
+	else if (uTextStyle == (DT_LEFT | DT_BOTTOM)) {
+		tstrAlgin = _T("leftbottom");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_TOP)) {
+		tstrAlgin = _T("righttop");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_BOTTOM)) {
+		tstrAlgin = _T("rightbottom");
+	}
+	else if (uTextStyle == DT_WORDBREAK) {
+		tstrAlgin = _T("wrap");
+	}
+	else {
+		tstrAlgin = _T("");
+	}
 
-	if(uTextStyle & DT_RIGHT)
-		tstrAlgin = _T("right");
-
-	if(uTextStyle & DT_TOP)
-		tstrAlgin += _T("top");
-
-	if(uTextStyle & DT_BOTTOM)
-		tstrAlgin += _T("bottom");
-
-	if(uTextStyle & DT_WORDBREAK)
-		tstrAlgin += _T("wrap");
 
 	if(!tstrAlgin.empty())
 		pNode->SetAttribute("align", StringConvertor::WideToUtf8(tstrAlgin.c_str()));
@@ -2082,24 +2117,58 @@ void CLayoutManager::SaveListHeaderItemProperty(CControlUI* pControl, TiXmlEleme
 
 	std::wstring tstrAlgin;
 	UINT uTextStyle = pListHeaderItemUI->GetTextStyle();
+	
+	//if(uTextStyle & DT_LEFT)
+	//	tstrAlgin = _T("left");
 
-	if(uTextStyle & DT_LEFT)
-		tstrAlgin = _T("left");
+	//if(uTextStyle & DT_CENTER)
+	//	tstrAlgin = _T("center");
 
-	if(uTextStyle & DT_CENTER)
+	//if(uTextStyle & DT_RIGHT)
+	//	tstrAlgin = _T("right");
+
+	//if(uTextStyle & DT_TOP)
+	//	tstrAlgin += _T("top");
+
+	//if(uTextStyle & DT_BOTTOM)
+	//	tstrAlgin += _T("bottom");
+
+	//if(uTextStyle & DT_WORDBREAK)
+	//	tstrAlgin += _T("wrap");
+	uTextStyle &= ~(DT_SINGLELINE);
+	if (uTextStyle == (DT_LEFT | DT_VCENTER)) {
+		tstrAlgin = _T("leftvcenter");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_VCENTER)) {
+		tstrAlgin = _T("rightvcenter");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_VCENTER)) {
 		tstrAlgin = _T("center");
-
-	if(uTextStyle & DT_RIGHT)
-		tstrAlgin = _T("right");
-
-	if(uTextStyle & DT_TOP)
-		tstrAlgin += _T("top");
-
-	if(uTextStyle & DT_BOTTOM)
-		tstrAlgin += _T("bottom");
-
-	if(uTextStyle & DT_WORDBREAK)
-		tstrAlgin += _T("wrap");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_TOP)) {
+		tstrAlgin = _T("topcenter");
+	}
+	else if (uTextStyle == (DT_CENTER | DT_BOTTOM)) {
+		tstrAlgin = _T("bottomcenter");
+	}
+	else if (uTextStyle == (DT_LEFT | DT_TOP)) {
+		tstrAlgin = _T("lefttop");
+	}
+	else if (uTextStyle == (DT_LEFT | DT_BOTTOM)) {
+		tstrAlgin = _T("leftbottom");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_TOP)) {
+		tstrAlgin = _T("righttop");
+	}
+	else if (uTextStyle == (DT_RIGHT | DT_BOTTOM)) {
+		tstrAlgin = _T("rightbottom");
+	}
+	else if (uTextStyle == DT_WORDBREAK) {
+		tstrAlgin = _T("wrap");
+	}
+	else {
+		tstrAlgin = _T("");
+	}
 
 	if(!tstrAlgin.empty())
 		pNode->SetAttribute("align", StringConvertor::WideToUtf8(tstrAlgin.c_str()));
