@@ -51,6 +51,8 @@ typedef enum EVENTTYPE_UI
 #define UIFLAG_TABSTOP       0x00000001
 #define UIFLAG_SETCURSOR     0x00000002
 #define UIFLAG_WANTRETURN    0x00000004
+#define UIFLAG_WANTPRESS   0x00000008
+#define UIFLAG_EDITABLE    0x00000010
 
 // Flags for FindControl()
 #define UIFIND_ALL           0x00000000
@@ -314,7 +316,7 @@ public:
 
     bool MessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& lRes);
     bool PreMessageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& lRes);
-
+	void UsedVirtualWnd(bool bUsed);
 private:
     static CControlUI* CALLBACK __FindControlFromNameHash(CControlUI* pThis, LPVOID pData);
     static CControlUI* CALLBACK __FindControlFromCount(CControlUI* pThis, LPVOID pData);
@@ -358,6 +360,7 @@ private:
     bool m_bAlphaBackground;
     bool m_bMouseTracking;
     bool m_bMouseCapture;
+	bool m_bUsedVirtualWnd;
     //
     CStdPtrArray m_aNotifiers;
     CStdPtrArray m_aTimers;

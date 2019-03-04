@@ -87,6 +87,7 @@ m_bMouseTracking(false),
 m_bMouseCapture(false),
 m_bOffscreenPaint(true),
 m_bAlphaBackground(false),
+m_bUsedVirtualWnd(false),
 m_pParentResourcePM(NULL)
 {
     m_dwDefaultDisabledColor = 0xFFA7A6AA;

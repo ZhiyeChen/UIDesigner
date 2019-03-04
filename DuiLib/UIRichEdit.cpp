@@ -1189,7 +1189,9 @@ long CRichEditUI::GetTextLength(DWORD dwFlags) const
 
 CStdString CRichEditUI::GetText() const
 {
-    long lLen = GetTextLength(GTL_DEFAULT);
+	unsigned long lLen = GetTextLength(GTL_DEFAULT);
+	if (lLen > cInitTextMax)  // For Safety and security
+		lLen = cInitTextMax;
     LPTSTR lpText = NULL;
     GETTEXTEX gt;
     gt.flags = GT_DEFAULT;

@@ -5,189 +5,261 @@
 
 namespace DuiLib {
 
-/////////////////////////////////////////////////////////////////////////////////////
-//
+	/////////////////////////////////////////////////////////////////////////////////////
+	//
 
-typedef CControlUI* (CALLBACK* FINDCONTROLPROC)(CControlUI*, LPVOID);
+	typedef CControlUI* (CALLBACK* FINDCONTROLPROC)(CControlUI*, LPVOID);
 
-class UILIB_API CControlUI
-{
-public:
-    CControlUI();
-    virtual ~CControlUI();
+	class UILIB_API CControlUI
+	{
+	public:
+		CControlUI();
+		virtual ~CControlUI();
 
-public:
-    virtual CStdString GetName() const;
-    virtual void SetName(LPCTSTR pstrName);
-    virtual LPCTSTR GetClass() const;
-    virtual LPVOID GetInterface(LPCTSTR pstrName);
-    virtual UINT GetControlFlags() const;
+	public:
+		virtual CStdString GetName() const;
+		virtual void SetName(LPCTSTR pstrName);
+		virtual LPCTSTR GetClass() const;
+		virtual LPVOID GetInterface(LPCTSTR pstrName);
+		virtual UINT GetControlFlags() const;
 
-    virtual bool Activate();
-    virtual CPaintManagerUI* GetManager() const;
-    virtual void SetManager(CPaintManagerUI* pManager, CControlUI* pParent, bool bInit = true);
-    virtual CControlUI* GetParent() const;
+		virtual bool Activate();
+		virtual CPaintManagerUI* GetManager() const;
+		virtual void SetManager(CPaintManagerUI* pManager, CControlUI* pParent, bool bInit = true);
+		virtual CControlUI* GetParent() const;
 
-    // ÎÄ±¾Ïà¹Ø
-    virtual CStdString GetText() const;
-    virtual void SetText(LPCTSTR pstrText);
+		// æ–‡æœ¬ç›¸å…³
+		virtual CStdString GetText() const;
+		virtual void SetText(LPCTSTR pstrText);
 
-    // Í¼ĞÎÏà¹Ø
-    DWORD GetBkColor() const;
-    void SetBkColor(DWORD dwBackColor);
-    DWORD GetBkColor2() const;
-    void SetBkColor2(DWORD dwBackColor);
-    DWORD GetBkColor3() const;
-    void SetBkColor3(DWORD dwBackColor);
-    LPCTSTR GetBkImage();
-    void SetBkImage(LPCTSTR pStrImage);
-    DWORD GetBorderColor() const;
-    void SetBorderColor(DWORD dwBorderColor);
-	DWORD GetFocusBorderColor() const;
-	void SetFocusBorderColor(DWORD dwBorderColor);
-    bool IsColorHSL() const;
-    void SetColorHSL(bool bColorHSL);
-    int GetBorderSize() const;
-    void SetBorderSize(int nSize);
-    SIZE GetBorderRound() const;
-    void SetBorderRound(SIZE cxyRound);
-    bool DrawImage(HDC hDC, LPCTSTR pStrImage, LPCTSTR pStrModify = NULL);
+		// å›¾å½¢ç›¸å…³
+		DWORD GetBkColor() const;
+		void SetBkColor(DWORD dwBackColor);
+		DWORD GetBkColor2() const;
+		void SetBkColor2(DWORD dwBackColor);
+		DWORD GetBkColor3() const;
+		void SetBkColor3(DWORD dwBackColor);
+		LPCTSTR GetBkImage();
+		void SetBkImage(LPCTSTR pStrImage);
+		DWORD GetFocusBorderColor() const;
+		void SetFocusBorderColor(DWORD dwBorderColor);
+		bool IsColorHSL() const;
+		void SetColorHSL(bool bColorHSL);
+		SIZE GetBorderRound() const;
+		void SetBorderRound(SIZE cxyRound);
+		bool DrawImage(HDC hDC, LPCTSTR pStrImage, LPCTSTR pStrModify = NULL);
 
-    // Î»ÖÃÏà¹Ø
-    virtual const RECT& GetPos() const;
-    virtual void SetPos(RECT rc);
-    virtual int GetWidth() const;
-    virtual int GetHeight() const;
-    virtual int GetX() const;
-    virtual int GetY() const;
-    virtual RECT GetPadding() const;
-    virtual void SetPadding(RECT rcPadding); // ÉèÖÃÍâ±ß¾à£¬ÓÉÉÏ²ã´°¿Ú»æÖÆ
-    virtual SIZE GetFixedXY() const;         // Êµ¼Ê´óĞ¡Î»ÖÃÊ¹ÓÃGetPos»ñÈ¡£¬ÕâÀïµÃµ½µÄÊÇÔ¤ÉèµÄ²Î¿¼Öµ
-    virtual void SetFixedXY(SIZE szXY);      // ½öfloatÎªtrueÊ±ÓĞĞ§
-    virtual int GetFixedWidth() const;       // Êµ¼Ê´óĞ¡Î»ÖÃÊ¹ÓÃGetPos»ñÈ¡£¬ÕâÀïµÃµ½µÄÊÇÔ¤ÉèµÄ²Î¿¼Öµ
-    virtual void SetFixedWidth(int cx);      // Ô¤ÉèµÄ²Î¿¼Öµ
-    virtual int GetFixedHeight() const;      // Êµ¼Ê´óĞ¡Î»ÖÃÊ¹ÓÃGetPos»ñÈ¡£¬ÕâÀïµÃµ½µÄÊÇÔ¤ÉèµÄ²Î¿¼Öµ
-    virtual void SetFixedHeight(int cy);     // Ô¤ÉèµÄ²Î¿¼Öµ
-    virtual int GetMinWidth() const;
-    virtual void SetMinWidth(int cx);
-    virtual int GetMaxWidth() const;
-    virtual void SetMaxWidth(int cx);
-    virtual int GetMinHeight() const;
-    virtual void SetMinHeight(int cy);
-    virtual int GetMaxHeight() const;
-    virtual void SetMaxHeight(int cy);
-    virtual void SetRelativePos(SIZE szMove,SIZE szZoom);
-    virtual void SetRelativeParentSize(SIZE sz);
-    virtual TRelativePosUI GetRelativePos() const;
-    virtual bool IsRelativePos() const;
+		// add by bruce.yang
+		//void SetCustomizeAccRole(LPCTSTR acc_role);
+		int GetCustomizeAccRole() const {
+			return customize_acc_role_;
+		}
+		// end by bruce.yang
 
-    // Êó±êÌáÊ¾
-    virtual CStdString GetToolTip() const;
-    virtual void SetToolTip(LPCTSTR pstrText);
+		// ä½ç½®ç›¸å…³
+		virtual const RECT& GetPos() const;
+		virtual void SetPos(RECT rc);
+		virtual void AfterSetPos();
+		virtual int GetWidth() const;
+		virtual int GetHeight() const;
+		virtual int GetX() const;
+		virtual int GetY() const;
+		virtual RECT GetPadding() const;
+		virtual void SetPadding(RECT rcPadding); // è®¾ç½®å¤–è¾¹è·ï¼Œç”±ä¸Šå±‚çª—å£ç»˜åˆ¶
+		virtual SIZE GetFixedXY() const;         // å®é™…å¤§å°ä½ç½®ä½¿ç”¨GetPosè·å–ï¼Œè¿™é‡Œå¾—åˆ°çš„æ˜¯é¢„è®¾çš„å‚è€ƒå€¼
+		virtual void SetFixedXY(SIZE szXY);      // ä»…floatä¸ºtrueæ—¶æœ‰æ•ˆ
+		virtual int GetFixedWidth() const;       // å®é™…å¤§å°ä½ç½®ä½¿ç”¨GetPosè·å–ï¼Œè¿™é‡Œå¾—åˆ°çš„æ˜¯é¢„è®¾çš„å‚è€ƒå€¼
+		virtual void SetFixedWidth(int cx);      // é¢„è®¾çš„å‚è€ƒå€¼
+		virtual int GetFixedHeight() const;      // å®é™…å¤§å°ä½ç½®ä½¿ç”¨GetPosè·å–ï¼Œè¿™é‡Œå¾—åˆ°çš„æ˜¯é¢„è®¾çš„å‚è€ƒå€¼
+		virtual void SetFixedHeight(int cy);     // é¢„è®¾çš„å‚è€ƒå€¼
+		virtual int GetMinWidth() const;
+		virtual void SetMinWidth(int cx);
+		virtual int GetMaxWidth() const;
+		virtual void SetMaxWidth(int cx);
+		virtual int GetMinHeight() const;
+		virtual void SetMinHeight(int cy);
+		virtual int GetMaxHeight() const;
+		virtual void SetMaxHeight(int cy);
+		virtual void SetRelativePos(SIZE szMove, SIZE szZoom);
+		virtual void SetRelativeParentSize(SIZE sz);
+		virtual TRelativePosUI GetRelativePos() const;
+		virtual bool IsRelativePos() const;
 
-    // ¿ì½İ¼ü
-    virtual TCHAR GetShortcut() const;
-    virtual void SetShortcut(TCHAR ch);
+		//è¾¹æ¡†ç›¸å…³
+		int GetBorderSize() const;
+		void SetBorderSize(int nSize);
+		DWORD GetBorderColor() const;
+		void SetBorderColor(DWORD dwBorderColor);
 
-    // ²Ëµ¥
-    virtual bool IsContextMenuUsed() const;
-    virtual void SetContextMenuUsed(bool bMenuUsed);
+		void SetBorderSize(RECT rc);
+		int GetLeftBorderSize() const;
+		void SetLeftBorderSize(int nSize);
+		int GetTopBorderSize() const;
+		void SetTopBorderSize(int nSize);
+		int GetRightBorderSize() const;
+		void SetRightBorderSize(int nSize);
+		int GetBottomBorderSize() const;
+		void SetBottomBorderSize(int nSize);
+		int GetBorderStyle() const;
+		void SetBorderStyle(int nStyle);
 
-    // ÓÃ»§ÊôĞÔ
-    virtual const CStdString& GetUserData(); // ¸¨Öúº¯Êı£¬¹©ÓÃ»§Ê¹ÓÃ
-    virtual void SetUserData(LPCTSTR pstrText); // ¸¨Öúº¯Êı£¬¹©ÓÃ»§Ê¹ÓÃ
-    virtual UINT_PTR GetTag() const; // ¸¨Öúº¯Êı£¬¹©ÓÃ»§Ê¹ÓÃ
-    virtual void SetTag(UINT_PTR pTag); // ¸¨Öúº¯Êı£¬¹©ÓÃ»§Ê¹ÓÃ
+		void SetFocusPadding(const RECT& rcPadding);
+		RECT GetFocusPadding() const;
+		void SetFocusRound(const SIZE& sizeRound);
+		SIZE GetFocusRound() const;
+		void SetFocusFrameColor(DWORD dwColor);
+		DWORD GetFocusFrameColor() const;
 
-    // Ò»Ğ©ÖØÒªµÄÊôĞÔ
-    virtual bool IsVisible() const;
-    virtual void SetVisible(bool bVisible = true);
-    virtual void SetInternVisible(bool bVisible = true); // ½ö¹©ÄÚ²¿µ÷ÓÃ£¬ÓĞĞ©UIÓµÓĞ´°¿Ú¾ä±ú£¬ĞèÒªÖØĞ´´Ëº¯Êı
-    virtual bool IsEnabled() const;
-    virtual void SetEnabled(bool bEnable = true);
-    virtual bool IsMouseEnabled() const;
-    virtual void SetMouseEnabled(bool bEnable = true);
-    virtual bool IsKeyboardEnabled() const;
-    virtual void SetKeyboardEnabled(bool bEnable = true);
-    virtual bool IsFocused() const;
-    virtual void SetFocus();
-    virtual bool IsFloat() const;
-    virtual void SetFloat(bool bFloat = true);
+		// é¼ æ ‡æç¤º
+		virtual CStdString GetToolTip() const;
+		virtual void SetToolTip(LPCTSTR pstrText);
+		virtual void SetToolTipWidth(int nWidth);
+		virtual int	  GetToolTipWidth();	// å¤šè¡ŒToolTipå•è¡Œæœ€é•¿å®½åº¦
 
-    virtual CControlUI* FindControl(FINDCONTROLPROC Proc, LPVOID pData, UINT uFlags);
+		// å¿«æ·é”®
+		virtual TCHAR GetShortcut() const;
+		virtual void SetShortcut(TCHAR ch);
 
-    void Invalidate();
-    bool IsUpdateNeeded() const;
-    void NeedUpdate();
-    void NeedParentUpdate();
-    DWORD GetAdjustColor(DWORD dwColor);
+		// èœå•
+		virtual bool IsContextMenuUsed() const;
+		virtual void SetContextMenuUsed(bool bMenuUsed);
 
-    virtual void Init();
-    virtual void DoInit();
+		// ç”¨æˆ·å±æ€§
+		virtual const CStdString& GetUserData(); // è¾…åŠ©å‡½æ•°ï¼Œä¾›ç”¨æˆ·ä½¿ç”¨
+		virtual void SetUserData(LPCTSTR pstrText); // è¾…åŠ©å‡½æ•°ï¼Œä¾›ç”¨æˆ·ä½¿ç”¨
+		virtual UINT_PTR GetTag() const; // è¾…åŠ©å‡½æ•°ï¼Œä¾›ç”¨æˆ·ä½¿ç”¨
+		virtual void SetTag(UINT_PTR pTag); // è¾…åŠ©å‡½æ•°ï¼Œä¾›ç”¨æˆ·ä½¿ç”¨
 
-    virtual void Event(TEventUI& event);
-    virtual void DoEvent(TEventUI& event);
+		// ä¸€äº›é‡è¦çš„å±æ€§
+		virtual bool IsVisible() const;
+		virtual bool IsNativeVisible() const;
+		virtual void SetVisible(bool bVisible = true);
+		virtual void SetInternVisible(bool bVisible = true); // ä»…ä¾›å†…éƒ¨è°ƒç”¨ï¼Œæœ‰äº›UIæ‹¥æœ‰çª—å£å¥æŸ„ï¼Œéœ€è¦é‡å†™æ­¤å‡½æ•°
+		virtual bool IsEnabled() const;
+		virtual void SetEnabled(bool bEnable = true);
+		virtual bool IsMouseEnabled() const;
+		virtual void SetMouseEnabled(bool bEnable = true);
+		virtual bool IsKeyboardEnabled() const;
+		virtual void SetKeyboardEnabled(bool bEnable = true);
+		virtual bool IsSupportTabStop() const;
+		virtual void SetSupportTabStop(bool bSupport);
+		virtual bool IsFocused() const;
+		virtual void SetFocus();
+		virtual bool IsFloat() const;
+		virtual void SetFloat(bool bFloat = true);
+		virtual void SetShowVirtualKeyboard(bool bShow = false) { m_bShowVirtualKeyboard = bShow; }
+		virtual void SetTransparent(bool bTransparent) { m_bTransparent = bTransparent; }
+		virtual bool IsTransparent() { return m_bTransparent; }
+		virtual bool DoNotAutoDestroyMe() { return false; }
+		virtual bool DetachFromManager(); // ä»…ä¾›å†…éƒ¨è°ƒç”¨
+		virtual bool AttachToManager(CPaintManagerUI * manager, CControlUI * parent);
 
-    virtual void SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue);
-    CControlUI* ApplyAttributeList(LPCTSTR pstrList);
+		virtual bool IsMsgFocusControlWant(UINT nMsg, WPARAM wParam, LPARAM lParam);
 
-    virtual SIZE EstimateSize(SIZE szAvailable);
+		virtual CControlUI* FindControl(FINDCONTROLPROC Proc, LPVOID pData, UINT uFlags);
 
-    virtual void DoPaint(HDC hDC, const RECT& rcPaint);
-    virtual void PaintBkColor(HDC hDC);
-    virtual void PaintBkImage(HDC hDC);
-    virtual void PaintStatusImage(HDC hDC);
-    virtual void PaintText(HDC hDC);
-    virtual void PaintBorder(HDC hDC);
+		void Invalidate();
+		bool IsUpdateNeeded() const;
+		void NeedUpdate();
+		void NeedParentUpdate();
+		DWORD GetAdjustColor(DWORD dwColor);
 
-    virtual void DoPostPaint(HDC hDC, const RECT& rcPaint);
+		virtual void Init();
+		virtual void DoInit();
 
-public:
-    CEventSource OnInit;
-    CEventSource OnDestroy;
-    CEventSource OnSize;
-    CEventSource OnEvent;
-    CEventSource OnNotify;
+		virtual void Event(TEventUI& event);
+		virtual void DoEvent(TEventUI& event);
 
-protected:
-    CPaintManagerUI* m_pManager;
-    CControlUI* m_pParent;
-    CStdString m_sName;
-    bool m_bUpdateNeeded;
-    bool m_bMenuUsed;
-    RECT m_rcItem;
-    RECT m_rcPadding;
-    SIZE m_cXY;
-    SIZE m_cxyFixed;
-    SIZE m_cxyMin;
-    SIZE m_cxyMax;
-    bool m_bVisible;
-    bool m_bInternVisible;
-    bool m_bEnabled;
-    bool m_bMouseEnabled;
-	bool m_bKeyboardEnabled ;
-    bool m_bFocused;
-    bool m_bFloat;
-    bool m_bSetPos; // ·ÀÖ¹SetPosÑ­»·µ÷ÓÃ
-    TRelativePosUI m_tRelativePos;
+		virtual void SetAttribute(LPCTSTR pstrName, LPCTSTR pstrValue);
+		CControlUI* ApplyAttributeList(LPCTSTR pstrList);
 
-    CStdString m_sText;
-    CStdString m_sToolTip;
-    TCHAR m_chShortcut;
-    CStdString m_sUserData;
-    UINT_PTR m_pTag;
+		virtual SIZE EstimateSize(SIZE szAvailable);
 
-    DWORD m_dwBackColor;
-    DWORD m_dwBackColor2;
-    DWORD m_dwBackColor3;
-    CStdString m_sBkImage;
-    DWORD m_dwBorderColor;
-	DWORD m_dwFocusBorderColor;
-    bool m_bColorHSL;
-    int m_nBorderSize;
-    SIZE m_cxyBorderRound;
-    RECT m_rcPaint;
-};
+		virtual void DoPaint(HDC hDC, const RECT& rcPaint);
+		virtual void PaintBkColor(HDC hDC);
+		virtual void PaintBkImage(HDC hDC);
+		virtual void PaintStatusImage(HDC hDC);
+		virtual void PaintText(HDC hDC);
+		virtual void PaintBorder(HDC hDC);
+
+		virtual void DoPostPaint(HDC hDC, const RECT& rcPaint);
+
+		//è™šæ‹Ÿçª—å£å‚æ•°
+		void SetVirtualWnd(LPCTSTR pstrValue);
+		CStdString GetVirtualWnd() const;
+
+		virtual bool TextIsAccValue() { return false; };
+
+		virtual void SetSel(bool bSel) { m_bSel = bSel; Invalidate(); }
+		virtual bool GetSel() { return m_bSel; }
+
+	public:
+		CEventSource OnInit;
+		CEventSource OnDestroy;
+		CEventSource OnSize;
+		CEventSource OnSized;
+		CEventSource OnEvent;
+		CEventSource OnNotify;
+
+	protected:
+		CPaintManagerUI* m_pManager;
+		CControlUI* m_pParent;
+		CStdString m_sVirtualWnd;
+		CStdString m_sName;
+		bool m_bUpdateNeeded;
+		bool m_bMenuUsed;
+		RECT m_rcItem;
+		RECT m_rcPadding;
+		SIZE m_cXY;
+		SIZE m_cxyFixed;
+		SIZE m_cxyMin;
+		SIZE m_cxyMax;
+		bool m_bVisible;
+		bool m_bShowVirtualKeyboard;//if show virtual keyboard for touch device
+		bool m_bInternVisible;
+		bool m_bEnabled;
+		bool m_bMouseEnabled;
+		bool m_bKeyboardEnabled; //old design for tab stop
+		bool m_bSupportTabStop; //new design for tab stop
+		bool m_bFocused;
+		bool m_bFloat;
+		bool m_bSetPos; // é˜²æ­¢SetPoså¾ªç¯è°ƒç”¨
+		TRelativePosUI m_tRelativePos;
+
+		CStdString m_sText;
+		CStdString m_sToolTip;
+		TCHAR m_chShortcut;
+		CStdString m_sUserData;
+		UINT_PTR m_pTag;
+
+		DWORD m_dwBackColor;
+		DWORD m_dwBackColor2;
+		DWORD m_dwBackColor3;
+		CStdString m_sBkImage;
+		CStdString m_sForeImage;
+		DWORD m_dwBorderColor;
+		DWORD m_dwFocusBorderColor;
+		bool m_bColorHSL;
+		int m_nBorderSize;
+		int m_nBorderStyle;
+		int m_nTooltipWidth;
+		SIZE m_cxyBorderRound;
+		RECT m_rcPaint;
+		RECT m_rcBorderSize;
+
+		RECT m_rcFocusPadding;
+		SIZE m_sizeFocusRound;
+		DWORD m_dwFocusFrameColor;
+
+		//CAccProxyObject* m_pAccProxy;
+
+		bool m_bSel;
+		bool m_bTransparent;
+
+		// add by bruce.yang
+		int customize_acc_role_;
+		// end by bruce.yang
+	};
 
 } // namespace DuiLib
 

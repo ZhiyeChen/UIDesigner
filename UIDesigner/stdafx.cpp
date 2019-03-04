@@ -26,6 +26,7 @@ int gGetUIClass(LPCTSTR pstrClass)
 		case 7:
 			if( _tcscmp(pstrClass, _T("ComboUI")) == 0 )                  nClass=classCombo;
 			else if( _tcscmp(pstrClass, _T("LabelUI")) == 0 )             nClass=classLabel;
+			break;
 		case 8:
 			if( _tcscmp(pstrClass, _T("ButtonUI")) == 0 )                 nClass=classButton;
 			else if( _tcscmp(pstrClass, _T("OptionUI")) == 0 )            nClass=classOption;
@@ -37,6 +38,9 @@ int gGetUIClass(LPCTSTR pstrClass)
 			break;
 		case 10:
 			if( _tcscmp(pstrClass, _T("ProgressUI")) == 0 )               nClass=classProgress;
+			else if (_tcscmp(pstrClass, _T("RichEditUI")) == 0)			  nClass=classRichEdit;
+			else if (_tcscmp(pstrClass, _T("CheckBoxUI")) == 0)			  nClass=classCheckBox;
+			break;
 		case 11:
 			if( _tcscmp(pstrClass, _T("ContainerUI")) == 0 )              nClass=classContainer;
 			else if( _tcscmp(pstrClass, _T("TabLayoutUI")) == 0 )         nClass=classTabLayout;

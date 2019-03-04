@@ -176,8 +176,6 @@ using DuiLib::CEditUI;
 using DuiLib::CLabelUI;
 using DuiLib::CTextUI;
 using DuiLib::COptionUI;
-using DuiLib::CCheckBoxUI;
-using DuiLib::CRichEditUI;
 using DuiLib::CComboUI;
 using DuiLib::CListUI;
 using DuiLib::CSliderUI;

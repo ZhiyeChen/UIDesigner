@@ -1675,16 +1675,6 @@ void CLayoutManager::SaveControlProperty(CControlUI* pControl, TiXmlElement* pNo
 	{
 		pNode->SetAttribute("menu","true");
 	}
-
-	CContainerUI* pContainer = static_cast<CContainerUI*>(pControl->GetInterface(_T("Container")));
-	if (pContainer != NULL) {
-		if (pContainer->GetHorizontalScrollBar() != NULL) {
-			pNode->SetAttribute("hscrollbar", "true");
-		}
-		if (pContainer->GetVerticalScrollBar() != NULL) {
-			pNode->SetAttribute("vscrollbar", "true");
-		}
-	}
 }
 
 void CLayoutManager::SaveLabelProperty(CControlUI* pControl, TiXmlElement* pNode)
@@ -1839,14 +1829,12 @@ void CLayoutManager::SaveButtonProperty(CControlUI* pControl, TiXmlElement* pNod
 void CLayoutManager::SaveOptionProperty(CControlUI* pControl, TiXmlElement* pNode)
 {
 	SaveButtonProperty(pControl, pNode);
-	CString strClass = pControl->GetClass();
 	COptionUI* pOptionUI = static_cast<COptionUI*>(pControl->GetInterface(_T("Option")));
 
 	TCHAR szBuf[MAX_PATH] = {0};
-	if (strClass == _T("OptionUI")) {
-		if (pOptionUI->GetGroup() && _tcslen(pOptionUI->GetGroup()))
-			pNode->SetAttribute("group", StringConvertor::WideToUtf8(pOptionUI->GetGroup()));
-	}//CheckBoxUI
+
+	if(pOptionUI->GetGroup() && _tcslen(pOptionUI->GetGroup()))
+		pNode->SetAttribute("group",StringConvertor::WideToUtf8(pOptionUI->GetGroup()));
 
 	if(pOptionUI->IsSelected())
 		pNode->SetAttribute("selected", pOptionUI->IsSelected()?"true":"false");
@@ -2313,7 +2301,6 @@ void CLayoutManager::SaveProperties(CControlUI* pControl, TiXmlElement* pParentN
 		SaveEditProperty(pControl, pNode);
 		break;
 	case classOption:
-	case classCheckBox:
 		SaveOptionProperty(pControl, pNode);
 		break;
 	case classProgress:

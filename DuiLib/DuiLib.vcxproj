@@ -287,6 +287,7 @@
     </ClCompile>
     <ClCompile Include="UIActiveX.cpp" />
     <ClCompile Include="UIBase.cpp" />
+    <ClCompile Include="UICheckBox.cpp" />
     <ClCompile Include="UICombo.cpp" />
     <ClCompile Include="UICommonControls.cpp" />
     <ClCompile Include="UIContainer.cpp" />
@@ -314,10 +315,12 @@
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="UIActiveX.h" />
     <ClInclude Include="UIBase.h" />
+    <ClInclude Include="UICheckBox.h" />
     <ClInclude Include="UICombo.h" />
     <ClInclude Include="UICommonControls.h" />
     <ClInclude Include="UIContainer.h" />
     <ClInclude Include="UIControl.h" />
+    <ClInclude Include="UIDefine.h" />
     <ClInclude Include="UIDelegate.h" />
     <ClInclude Include="UIDlgBuilder.h" />
     <ClInclude Include="UIlib.h" />

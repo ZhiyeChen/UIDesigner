@@ -43,6 +43,7 @@
 #include <crtdbg.h>
 #include <malloc.h>
 
+#include "UIDefine.h"
 #include "UIBase.h"
 #include "UIManager.h"
 #include "UIDelegate.h"
@@ -53,6 +54,8 @@
 #include "UICombo.h"
 #include "UIActiveX.h"
 #include "UIRichEdit.h"
+#include "UICheckBox.h"
+#include "UIDefine.h"
 
 #include "UIMarkup.h"
 #include "UIDlgBuilder.h"
