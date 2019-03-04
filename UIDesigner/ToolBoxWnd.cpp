@@ -74,16 +74,18 @@ void CToolBoxWnd::InitToolList()
 
 	CToolElement* pControlTab=new CToolElement(StringConvertor::Utf8ToWide("控件"));
 	pControlTab->AddSubTool(new CToolElement(StringConvertor::Utf8ToWide("指针"),classPointer,IDI_TOOLBOX_POINTER));
-	pControlTab->AddSubTool(new CToolElement(_T("Control"),classControl,IDI_TOOLBOX_CONTROL));
-	pControlTab->AddSubTool(new CToolElement(_T("Label"),classLabel,IDI_TOOLBOX_LABEL));
-	pControlTab->AddSubTool(new CToolElement(_T("Text"),classText,IDI_TOOLBOX_TEXT));
-	pControlTab->AddSubTool(new CToolElement(_T("Edit"),classEdit,IDI_TOOLBOX_EDIT));
-	pControlTab->AddSubTool(new CToolElement(_T("Option"),classOption,IDI_TOOLBOX_OPTION));
-	pControlTab->AddSubTool(new CToolElement(_T("Combo"),classCombo,IDI_TOOLBOX_COMBO));
-	pControlTab->AddSubTool(new CToolElement(_T("List"),classList,IDI_TOOLBOX_COMBO));
-	pControlTab->AddSubTool(new CToolElement(_T("Button"),classButton,IDI_TOOLBOX_BUTTON));
-	pControlTab->AddSubTool(new CToolElement(_T("Progress"),classProgress,IDI_TOOLBOX_PROGRESS));
-	pControlTab->AddSubTool(new CToolElement(_T("Slider"),classSlider,IDI_TOOLBOX_SLIDER));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_CONTROL,classControl,IDI_TOOLBOX_CONTROL));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_LABEL,classLabel,IDI_TOOLBOX_LABEL));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_TEXT,classText,IDI_TOOLBOX_TEXT));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_EDIT,classEdit,IDI_TOOLBOX_EDIT));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_RICHEDIT,classRichEdit,IDI_TOOLBOX_EDIT));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_OPTION,classOption,IDI_TOOLBOX_OPTION));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_CHECKBOX,classCheckBox,IDI_TOOLBOX_OPTION));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_COMBO,classCombo,IDI_TOOLBOX_COMBO));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_LIST,classList,IDI_TOOLBOX_LIST));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_BUTTON,classButton,IDI_TOOLBOX_BUTTON));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_PROGRESS,classProgress,IDI_TOOLBOX_PROGRESS));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_SLIDER,classSlider,IDI_TOOLBOX_SLIDER));
 	pControlTab->AddSubTool(new CToolElement(_T("ActiveX"),classActiveX,IDI_TOOLBOX_ACTIVE));
 	m_ctlToolList.AddToolTab(pControlTab);
 

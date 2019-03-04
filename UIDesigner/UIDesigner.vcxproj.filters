@@ -415,6 +415,12 @@
     <Image Include="res\ToolBox\VerticalLayout.ico">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\toolbox\icon1.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\ToolBox\List.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="UIDesigner.rc">

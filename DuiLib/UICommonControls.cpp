@@ -19,7 +19,7 @@ LPCTSTR CLabelUI::GetClass() const
 
 LPVOID CLabelUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("Label")) == 0 ) return static_cast<CLabelUI*>(this);
+    if( _tcscmp(pstrName, DUI_CTR_LABEL) == 0 ) return static_cast<CLabelUI*>(this);
     return CControlUI::GetInterface(pstrName);
 }
 
@@ -254,7 +254,7 @@ LPCTSTR CButtonUI::GetClass() const
 
 LPVOID CButtonUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("Button")) == 0 ) return static_cast<CButtonUI*>(this);
+    if( _tcscmp(pstrName, DUI_CTR_BUTTON) == 0 ) return static_cast<CButtonUI*>(this);
     return CLabelUI::GetInterface(pstrName);
 }
 
@@ -572,7 +572,7 @@ LPCTSTR COptionUI::GetClass() const
 
 LPVOID COptionUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("Option")) == 0 ) return static_cast<COptionUI*>(this);
+    if( _tcscmp(pstrName, DUI_CTR_OPTION) == 0 ) return static_cast<COptionUI*>(this);
     return CButtonUI::GetInterface(pstrName);
 }
 
@@ -789,7 +789,7 @@ LPCTSTR CTextUI::GetClass() const
 
 LPVOID CTextUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("Text")) == 0 ) return static_cast<CTextUI*>(this);
+    if( _tcscmp(pstrName, DUI_CTR_TEXT) == 0 ) return static_cast<CTextUI*>(this);
     return CLabelUI::GetInterface(pstrName);
 }
 
@@ -1066,7 +1066,7 @@ UINT CSliderUI::GetControlFlags() const
 
 LPVOID CSliderUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("Slider")) == 0 ) return static_cast<CSliderUI*>(this);
+    if( _tcscmp(pstrName, DUI_CTR_SLIDER) == 0 ) return static_cast<CSliderUI*>(this);
     return CProgressUI::GetInterface(pstrName);
 }
 
@@ -1449,7 +1449,7 @@ LPCTSTR CEditUI::GetClass() const
 
 LPVOID CEditUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("Edit")) == 0 ) return static_cast<CEditUI*>(this);
+    if( _tcscmp(pstrName, DUI_CTR_EDIT) == 0 ) return static_cast<CEditUI*>(this);
     return CLabelUI::GetInterface(pstrName);
 }
 

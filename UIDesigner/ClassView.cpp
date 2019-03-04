@@ -245,8 +245,10 @@ void CClassView::InsertUITreeItem(CControlUI* pControl,LPCTSTR pstrName/*=NULL*/
 	CString strName(pstrName);
 	if(strName.IsEmpty())
 		strName=pControl->GetName();
-
-	int nImage = ((ExtendedAttributes*)pControl->GetTag())->nClass - classWindow;
+	int nClass = ((ExtendedAttributes*)pControl->GetTag())->nClass;
+	int nImage = nClass - classWindow;
+	if (nClass == classRichEdit) nImage = classEdit - classWindow;
+	else if(nClass == classCheckBox) nImage = classOption - classWindow;
 	HTREEITEM hItem=m_wndClassView.InsertItem(strName, nImage, nImage,hParent);
 	ExtendedAttributes* pExtended=(ExtendedAttributes*)pControl->GetTag();
 	pExtended->hItem=hItem;
@@ -297,12 +299,12 @@ void CClassView::SelectUITreeItem(CControlUI* pControl)
 		hItemPrev = m_wndClassView.GetSelectedItem();
 
 		if (hItemPrev != NULL) {
-			m_wndClassView.SetItemState(hItemPrev, 0, TVIS_BOLD | TVIS_SELECTED | TVIS_DROPHILITED);
+			m_wndClassView.SetItemState(hItemPrev, 0, TVIS_SELECTED | TVIS_DROPHILITED);
 		}
 		hItemCur = (HTREEITEM)(((ExtendedAttributes*)pControl->GetTag())->hItem);
 		if (hItemCur != NULL) {
 			m_wndClassView.SelectItem(hItemCur);
-			m_wndClassView.SetItemState(hItemCur, TVIS_BOLD | TVIS_SELECTED | TVIS_DROPHILITED, TVIS_BOLD | TVIS_SELECTED | TVIS_DROPHILITED);
+			m_wndClassView.SetItemState(hItemCur, TVIS_SELECTED | TVIS_DROPHILITED, TVIS_SELECTED | TVIS_DROPHILITED);
 		}
 	}
 	//HTREEITEM hSelect=(HTREEITEM)(((ExtendedAttributes*)pControl->GetTag())->hItem);

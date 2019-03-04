@@ -455,7 +455,7 @@ void CUIProperties::InitPropList()
 
 	//Control
 #pragma region Control
-	pPropUI=new CMFCPropertyGridProperty(_T("Control"),classControl);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_CONTROL,classControl);
 
 	pProp=new CMFCPropertyGridProperty(_T("Name"),(_variant_t)_T(""), StringConvertor::Utf8ToWide("控件的名称"),tagName);//name
 	pPropUI->AddSubItem(pProp);
@@ -589,7 +589,7 @@ void CUIProperties::InitPropList()
 
 	//Label
 #pragma region Label
-	pPropUI=new CMFCPropertyGridProperty(_T("Label"),classLabel);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_LABEL,classLabel);
 
 	//align
 	//pProp=new CMFCPropertyGridProperty(_T("Align"),_T("Center"), StringConvertor::Utf8ToWide("指示文本的对齐方式"),tagAlign);
@@ -655,7 +655,7 @@ void CUIProperties::InitPropList()
 
 	//Button
 #pragma region Button
-	pPropUI=new CMFCPropertyGridProperty(_T("Button"),classButton);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_BUTTON,classButton);
 
 	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定按钮正常显示时的图片"),tagNormalImage);//normalimage
 	pPropImage->AllowEdit(FALSE);
@@ -682,7 +682,7 @@ void CUIProperties::InitPropList()
 
 	//Edit
 #pragma region Edit
-	pPropUI=new CMFCPropertyGridProperty(_T("Edit"),classEdit);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_EDIT,classEdit);
 
 	//normalimage
 	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定编辑框正常显示时的图片"),tagEditNormalImage);
@@ -727,7 +727,7 @@ void CUIProperties::InitPropList()
 
 	//Option
 #pragma region Option
-	pPropUI=new CMFCPropertyGridProperty(_T("Option"),classOption);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_OPTION,classOption);
 
 	pPropImage=new CMFCPropertyGridImageProperty(_T("ForeImage"),_T(""), StringConvertor::Utf8ToWide("指定复选框的前景图片"),tagOptForeImage);//foreimage
 	pPropImage->AllowEdit(FALSE);
@@ -772,7 +772,7 @@ void CUIProperties::InitPropList()
 
 	//Slider
 #pragma region Slider
-	pPropUI=new CMFCPropertyGridProperty(_T("Slider"),classSlider);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_SLIDER,classSlider);
 
 	pPropImage=new CMFCPropertyGridImageProperty(_T("ThumbImage"),_T(""), StringConvertor::Utf8ToWide("指定滑块的滑条图片"),tagThumbImage);//thumbimage
 	pPropImage->AllowEdit(FALSE);
@@ -956,7 +956,7 @@ void CUIProperties::InitPropList()
 
 	//Combo
 #pragma region Combo
-	pPropUI=new CMFCPropertyGridProperty(_T("Combo"),classCombo);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_COMBO,classCombo);
 
 	pPropImage=new CMFCPropertyGridImageProperty(_T("NormalImage"),_T(""), StringConvertor::Utf8ToWide("指定组合框正常显示时的图片"),tagComboNormalImage);//normalimage
 	pPropImage->AllowEdit(FALSE);
@@ -1017,7 +1017,7 @@ void CUIProperties::InitPropList()
 
 	//List
 #pragma region List
-	pPropUI=new CMFCPropertyGridProperty(_T("List"),classList);
+	pPropUI=new CMFCPropertyGridProperty(DUI_CTR_LIST,classList);
 
 	pProp=new CMFCPropertyGridProperty(_T("Header"),(_variant_t)false, StringConvertor::Utf8ToWide("指定是否显示列表表头\nTrue"),tagListHeader);
 	pPropUI->AddSubItem(pProp);
@@ -1504,7 +1504,7 @@ void CUIProperties::ShowLabelProperty(CControlUI* pControl)
 	ShowControlProperty(pControl);
 
 	ASSERT(pControl);
-	CLabelUI* pLabel=static_cast<CLabelUI*>(pControl->GetInterface(_T("Label")));
+	CLabelUI* pLabel=static_cast<CLabelUI*>(pControl->GetInterface(DUI_CTR_LABEL));
 	ASSERT(pLabel);
 
 	CMFCPropertyGridProperty* pPropLabel=m_wndPropList.FindItemByData(classLabel,FALSE);
@@ -1597,7 +1597,7 @@ void CUIProperties::ShowButtonProperty(CControlUI* pControl)
 	ShowLabelProperty(pControl);
 
 	ASSERT(pControl);
-	CButtonUI* pButton=static_cast<CButtonUI*>(pControl->GetInterface(_T("Button")));
+	CButtonUI* pButton=static_cast<CButtonUI*>(pControl->GetInterface(DUI_CTR_BUTTON));
 	ASSERT(pButton);
 
 	CMFCPropertyGridProperty* pPropButton=m_wndPropList.FindItemByData(classButton,FALSE);
@@ -1627,7 +1627,7 @@ void CUIProperties::ShowEditProperty(CControlUI* pControl)
 	ShowLabelProperty(pControl);
 
 	ASSERT(pControl);
-	CEditUI* pEdit=static_cast<CEditUI*>(pControl->GetInterface(_T("Edit")));
+	CEditUI* pEdit=static_cast<CEditUI*>(pControl->GetInterface(DUI_CTR_EDIT));
 	ASSERT(pEdit);
 
 	CMFCPropertyGridProperty* pPropEdit=m_wndPropList.FindItemByData(classEdit,FALSE);
@@ -1666,7 +1666,7 @@ void CUIProperties::ShowOptionProperty(CControlUI* pControl)
 	ShowButtonProperty(pControl);
 
 	ASSERT(pControl);
-	COptionUI* pOption=static_cast<COptionUI*>(pControl->GetInterface(_T("Option")));
+	COptionUI* pOption=static_cast<COptionUI*>(pControl->GetInterface(DUI_CTR_OPTION));
 	ASSERT(pOption);
 
 	CMFCPropertyGridProperty* pPropOption=m_wndPropList.FindItemByData(classOption,FALSE);
@@ -1724,7 +1724,7 @@ void CUIProperties::ShowSliderProperty(CControlUI* pControl)
 	ShowProgressProperty(pControl);
 
 	ASSERT(pControl);
-	CSliderUI* pSlider=static_cast<CSliderUI*>(pControl->GetInterface(_T("Slider")));
+	CSliderUI* pSlider=static_cast<CSliderUI*>(pControl->GetInterface(DUI_CTR_SLIDER));
 	ASSERT(pSlider);
 
 	CMFCPropertyGridProperty* pPropSlider=m_wndPropList.FindItemByData(classSlider,FALSE);
@@ -1756,7 +1756,7 @@ void CUIProperties::ShowComboProperty(CControlUI* pControl)
 	ShowItemProperty(pControl);
 
 	ASSERT(pControl);
-	CComboUI* pCombo=static_cast<CComboUI*>(pControl->GetInterface(_T("Combo")));
+	CComboUI* pCombo=static_cast<CComboUI*>(pControl->GetInterface(DUI_CTR_COMBO));
 	ASSERT(pCombo);
 
 	CMFCPropertyGridProperty* pPropCombo=m_wndPropList.FindItemByData(classCombo,FALSE);
@@ -1993,7 +1993,7 @@ void CUIProperties::ShowListProperty( CControlUI* pControl )
 	ShowItemProperty(pControl);
 
 	ASSERT(pControl);
-	CListUI* pList=static_cast<CListUI*>(pControl->GetInterface(_T("List")));
+	CListUI* pList=static_cast<CListUI*>(pControl->GetInterface(DUI_CTR_LIST));
 	ASSERT(pList);
 
 	CMFCPropertyGridProperty* pPropList=m_wndPropList.FindItemByData(classList,FALSE);

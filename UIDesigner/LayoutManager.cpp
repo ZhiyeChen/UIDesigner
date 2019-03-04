@@ -720,9 +720,19 @@ CControlUI* CLayoutManager::NewUI(int nClass,CRect& rect,CControlUI* pParent, CL
 		pExtended->nClass=classEdit;
 		pControl->SetFloat(true);
 		break;
+	case classRichEdit:
+		pControl = new CRichEditUI;
+		pExtended->nClass = classRichEdit;
+		pControl->SetFloat(true);
+		break;
 	case classOption:
 		pControl=new COptionUI;
 		pExtended->nClass=classOption;
+		pControl->SetFloat(true);
+		break;
+	case classCheckBox:
+		pControl = new CCheckBoxUI;
+		pExtended->nClass = classCheckBox;
 		pControl->SetFloat(true);
 		break;
 	case classProgress:
@@ -1013,31 +1023,37 @@ CControlUI* CLayoutManager::CloneControl(CControlUI* pControl)
 	switch(nClass)
 	{
 	case classControl:
-		pCopyControl = new CControlUI(*static_cast<CControlUI*>(pControl->GetInterface(_T("Control"))));
+		pCopyControl = new CControlUI(*static_cast<CControlUI*>(pControl->GetInterface(DUI_CTR_CONTROL)));
 		break;
 	case classLabel:
-		pCopyControl = new CLabelUI(*static_cast<CLabelUI*>(pControl->GetInterface(_T("Label"))));
+		pCopyControl = new CLabelUI(*static_cast<CLabelUI*>(pControl->GetInterface(DUI_CTR_LABEL)));
 		break;
 	case classText:
-		pCopyControl = new CTextUI(*static_cast<CTextUI*>(pControl->GetInterface(_T("Text"))));
+		pCopyControl = new CTextUI(*static_cast<CTextUI*>(pControl->GetInterface(DUI_CTR_TEXT)));
 		break;
 	case classButton:
-		pCopyControl = new CButtonUI(*static_cast<CButtonUI*>(pControl->GetInterface(_T("Button"))));
+		pCopyControl = new CButtonUI(*static_cast<CButtonUI*>(pControl->GetInterface(DUI_CTR_BUTTON)));
 		break;
 	case classEdit:
-		pCopyControl = new CEditUI(*static_cast<CEditUI*>(pControl->GetInterface(_T("Edit"))));
+		pCopyControl = new CEditUI(*static_cast<CEditUI*>(pControl->GetInterface(DUI_CTR_EDIT)));
+		break;
+	case classRichEdit:
+		pCopyControl = new CRichEditUI(*static_cast<CRichEditUI*>(pControl->GetInterface(DUI_CTR_RICHEDIT)));
 		break;
 	case classOption:
-		pCopyControl = new COptionUI(*static_cast<COptionUI*>(pControl->GetInterface(_T("Option"))));
+		pCopyControl = new COptionUI(*static_cast<COptionUI*>(pControl->GetInterface(DUI_CTR_OPTION)));
+		break;
+	case classCheckBox:
+		pCopyControl = new CCheckBoxUI(*static_cast<CCheckBoxUI*>(pControl->GetInterface(DUI_CTR_CHECKBOX)));
 		break;
 	case classProgress:
-		pCopyControl = new CProgressUI(*static_cast<CProgressUI*>(pControl->GetInterface(_T("Progress"))));
+		pCopyControl = new CProgressUI(*static_cast<CProgressUI*>(pControl->GetInterface(DUI_CTR_PROGRESS)));
 		break;
 	case classSlider:
-		pCopyControl = new CSliderUI(*static_cast<CSliderUI*>(pControl->GetInterface(_T("Slider"))));
+		pCopyControl = new CSliderUI(*static_cast<CSliderUI*>(pControl->GetInterface(DUI_CTR_SLIDER)));
 		break;
 	case classCombo:
-		pCopyControl = new CComboUI(*static_cast<CComboUI*>(pControl->GetInterface(_T("Combo"))));
+		pCopyControl = new CComboUI(*static_cast<CComboUI*>(pControl->GetInterface(DUI_CTR_COMBO)));
 		break;
 	case classActiveX:
 		pCopyControl = new CActiveXUI(*static_cast<CActiveXUI*>(pControl->GetInterface(_T("ActiveX"))));
@@ -1071,7 +1087,7 @@ CControlUI* CLayoutManager::CloneControl(CControlUI* pControl)
 		break;
 	case classList:
 		{//0917 by 邓景仁(cddjr) , 在不改动duilib的前提下，只能采用如下代码 
-			CListUI &copyList = *static_cast<CListUI*>(pControl->GetInterface(_T("List")));
+			CListUI &copyList = *static_cast<CListUI*>(pControl->GetInterface(DUI_CTR_LIST));
 			if (copyList.GetHorizontalScrollBar() || copyList.GetVerticalScrollBar())
 			{//测试窗体中，暂不支持滚动条
 				copyList.EnableScrollBar(false, false);
@@ -1691,7 +1707,7 @@ void CLayoutManager::SaveLabelProperty(CControlUI* pControl, TiXmlElement* pNode
 {
 	SaveControlProperty(pControl, pNode);
 
-	CLabelUI* pLabelUI = static_cast<CLabelUI*>(pControl->GetInterface(_T("Label")));
+	CLabelUI* pLabelUI = static_cast<CLabelUI*>(pControl->GetInterface(DUI_CTR_LABEL));
 
 	TCHAR szBuf[MAX_PATH] = {0};
 
@@ -1793,7 +1809,7 @@ void CLayoutManager::SaveButtonProperty(CControlUI* pControl, TiXmlElement* pNod
 	SaveLabelProperty(pControl, pNode);
 	TCHAR szBuf[MAX_PATH] = {0};
 
-	CButtonUI* pButtonUI = static_cast<CButtonUI*>(pControl->GetInterface(_T("Button")));
+	CButtonUI* pButtonUI = static_cast<CButtonUI*>(pControl->GetInterface(DUI_CTR_BUTTON));
 	if(pButtonUI->GetNormalImage() && _tcslen(pButtonUI->GetNormalImage()) > 0)
 		pNode->SetAttribute("normalimage", StringConvertor::WideToUtf8(ConvertImageFileName(pButtonUI->GetNormalImage())));
 
@@ -1840,7 +1856,7 @@ void CLayoutManager::SaveOptionProperty(CControlUI* pControl, TiXmlElement* pNod
 {
 	SaveButtonProperty(pControl, pNode);
 	CString strClass = pControl->GetClass();
-	COptionUI* pOptionUI = static_cast<COptionUI*>(pControl->GetInterface(_T("Option")));
+	COptionUI* pOptionUI = static_cast<COptionUI*>(pControl->GetInterface(DUI_CTR_OPTION));
 
 	TCHAR szBuf[MAX_PATH] = {0};
 	if (strClass == _T("OptionUI")) {
@@ -1886,7 +1902,7 @@ void CLayoutManager::SaveSliderProperty(CControlUI* pControl, TiXmlElement* pNod
 {
 	SaveProgressProperty(pControl, pNode);
 
-	CSliderUI* pSliderUI = static_cast<CSliderUI*>(pControl->GetInterface(_T("Slider")));
+	CSliderUI* pSliderUI = static_cast<CSliderUI*>(pControl->GetInterface(DUI_CTR_SLIDER));
 	TCHAR szBuf[MAX_PATH] = {0};
 
 	if(pSliderUI->GetThumbImage() && _tcslen(pSliderUI->GetThumbImage()) > 0)
@@ -1907,7 +1923,7 @@ void CLayoutManager::SaveEditProperty(CControlUI* pControl, TiXmlElement* pNode)
 	TCHAR szBuf[MAX_PATH]={0};
 
 	SaveLabelProperty(pControl, pNode);
-	CEditUI* pEditUI = static_cast<CEditUI*>(pControl->GetInterface(_T("Edit")));
+	CEditUI* pEditUI = static_cast<CEditUI*>(pControl->GetInterface(DUI_CTR_EDIT));
 
 	if(pEditUI->IsPasswordMode())
 		pNode->SetAttribute("password", "true");
@@ -1941,6 +1957,23 @@ void CLayoutManager::SaveEditProperty(CControlUI* pControl, TiXmlElement* pNode)
 
 	if(pEditUI->GetDisabledImage() && _tcslen(pEditUI->GetDisabledImage()) > 0)
 		pNode->SetAttribute("disabledimage", StringConvertor::WideToUtf8(ConvertImageFileName(pEditUI->GetDisabledImage())));
+}
+
+void CLayoutManager::SaveRichEditProperty(CControlUI* pControl, TiXmlElement* pNode)
+{
+	SaveControlProperty(pControl, pNode);
+	CRichEditUI* pRichEditUI = static_cast<CRichEditUI*>(pControl->GetInterface(DUI_CTR_RICHEDIT));
+
+	pNode->SetAttribute("multiline", "true");
+	pNode->SetAttribute("autovscroll", "true");
+	pNode->SetAttribute("vscrollbar", "true");
+
+	if (pRichEditUI->IsReadOnly())
+		pNode->SetAttribute("readonly", "true");
+
+	if (pRichEditUI->IsRich()) {
+		pNode->SetAttribute("rich", "true");
+	}
 }
 
 void CLayoutManager::SaveScrollBarProperty(CControlUI* pControl, TiXmlElement* pNode)
@@ -2027,7 +2060,7 @@ void CLayoutManager::SaveListProperty(CControlUI* pControl, TiXmlElement* pNode)
 	SaveControlProperty(pControl, pNode);
 	SaveItemProperty(pControl,pNode);
 
-	CListUI* pListUI = static_cast<CListUI*>(pControl->GetInterface(_T("List")));
+	CListUI* pListUI = static_cast<CListUI*>(pControl->GetInterface(DUI_CTR_LIST));
 
 	TCHAR szBuf[MAX_PATH] = {0};
 
@@ -2063,7 +2096,7 @@ void CLayoutManager::SaveListProperty(CControlUI* pControl, TiXmlElement* pNode)
 
 void CLayoutManager::SaveComboProperty(CControlUI* pControl, TiXmlElement* pNode)
 {
-	CComboUI* pComboUI = static_cast<CComboUI*>(pControl->GetInterface(_T("Combo")));
+	CComboUI* pComboUI = static_cast<CComboUI*>(pControl->GetInterface(DUI_CTR_COMBO));
 
 	TCHAR szBuf[MAX_PATH] = {0};
 
@@ -2311,6 +2344,9 @@ void CLayoutManager::SaveProperties(CControlUI* pControl, TiXmlElement* pParentN
 		break;
 	case classEdit:
 		SaveEditProperty(pControl, pNode);
+		break;
+	case classRichEdit:
+		SaveRichEditProperty(pControl, pNode);
 		break;
 	case classOption:
 	case classCheckBox:

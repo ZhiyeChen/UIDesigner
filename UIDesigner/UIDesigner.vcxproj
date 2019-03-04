@@ -300,10 +300,12 @@
     <Image Include="res\formedit_hc.bmp" />
     <Image Include="res\ToolBox\HorizontalLayout.ico" />
     <Image Include="res\icon1.ico" />
+    <Image Include="res\toolbox\icon1.ico" />
     <Image Include="res\ToolBox\Label.ico" />
     <Image Include="res\menuimages.bmp" />
     <Image Include="res\menuimages_hc.bmp" />
     <Image Include="res\movehandle.bmp" />
+    <Image Include="res\ToolBox\List.ico" />
     <Image Include="res\ToolBox\Option.ico" />
     <Image Include="res\ToolBox\Pointer.ico" />
     <Image Include="res\ToolBox\Progress.ico" />
