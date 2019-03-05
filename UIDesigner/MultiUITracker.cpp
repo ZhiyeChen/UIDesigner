@@ -1257,7 +1257,8 @@ BOOL CMultiUITracker::GetSelected(CArray<CControlUI*,CControlUI*>& arrSelected)
 	for(int i=0;i<m_arrTracker.GetSize();i++)
 	{
 		CTrackerElement* pArrTracker = m_arrTracker.GetAt(i);
-
+		if (pArrTracker->m_pControl->GetInterface(DUI_CTR_LISTHEADER)) return FALSE;
+		if (pArrTracker->m_pControl->GetInterface(DUI_CTR_LISTBODY)) return FALSE;
 		arrSelected.Add(pArrTracker->m_pControl);
 	}
 	ExcludeChildren(arrSelected);
@@ -1292,9 +1293,9 @@ void CMultiUITracker::ExcludeChildren(CArray<CControlUI*,CControlUI*>& arrSelect
 	for(int i=0; i<size; i++)
 	{
 		ExtendedAttributes* pExtended = (ExtendedAttributes*)arrSelected[i]->GetTag();
-		pDepth[i] = pExtended->nDepth;
+		if(pExtended)
+			pDepth[i] = pExtended->nDepth;
 	}
-
 	for(int i=0; i<arrSelected.GetSize()-1; i++)
 	{
 		CControlUI* pControl1 = arrSelected[i];

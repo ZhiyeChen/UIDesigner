@@ -503,12 +503,13 @@ void CUIDesignerView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CUIDesignerView::OnDeleteUI()
 {
+	
 	CArray<CControlUI*,CControlUI*> arrSelected;
 	m_MultiTracker.GetSelected(arrSelected);
 	RemoveForm(arrSelected);
 	if(arrSelected.IsEmpty())
 		return;
-
+	
 	m_UICommandHistory.Begin(arrSelected, actionDelete);
 	for(int i=0; i<arrSelected.GetSize(); i++)
 	{

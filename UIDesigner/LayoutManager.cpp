@@ -1862,7 +1862,7 @@ void CLayoutManager::SaveOptionProperty(CControlUI* pControl, TiXmlElement* pNod
 	if (strClass == _T("OptionUI")) {
 		if (pOptionUI->GetGroup() && _tcslen(pOptionUI->GetGroup()))
 			pNode->SetAttribute("group", StringConvertor::WideToUtf8(pOptionUI->GetGroup()));
-	}//CheckBoxUI
+	}
 
 	if(pOptionUI->IsSelected())
 		pNode->SetAttribute("selected", pOptionUI->IsSelected()?"true":"false");

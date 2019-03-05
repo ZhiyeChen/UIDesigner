@@ -852,10 +852,24 @@ CScrollBarUI* CListUI::GetHorizontalScrollBar() const
 //
 
 
-CListBodyUI::CListBodyUI(CListUI* pOwner) : m_pOwner(pOwner)
+CListBodyUI::CListBodyUI(CListUI* pOwner) :m_pOwner(pOwner)
+, update_flag_(kUpdateResize)
+, m_pCompareFunc(NULL)
+, m_compareData(NULL)
 {
     ASSERT(m_pOwner);
     SetInset(CRect(0,0,0,0));
+}
+
+LPCTSTR CListBodyUI::GetClass() const
+{
+	return _T("ListBodyUI");
+}
+
+LPVOID CListBodyUI::GetInterface(LPCTSTR pstrName)
+{
+	if (_tcscmp(pstrName, DUI_CTR_LISTBODY) == 0) return this;
+	return CVerticalLayoutUI::GetInterface(pstrName);
 }
 
 void CListBodyUI::SetScrollPos(SIZE szPos)
@@ -1068,6 +1082,133 @@ void CListBodyUI::DoEvent(TEventUI& event)
     if( m_pOwner != NULL ) m_pOwner->DoEvent(event); else CControlUI::DoEvent(event);
 }
 
+bool CListBodyUI::Add(CControlUI* pControl) {
+	if (CVerticalLayoutUI::Add(pControl)) {
+		update_flag_ = kUpdateAdd;
+
+		return true;
+	}
+
+	return false;
+}
+
+bool CListBodyUI::AddAt(CControlUI* pControl, int iIndex) {
+	if (CVerticalLayoutUI::AddAt(pControl, iIndex)) {
+		update_flag_ = kUpdateAdd;
+		return true;
+	}
+
+	return false;
+}
+
+bool CListBodyUI::Remove(CControlUI* pControl) {
+	if (CVerticalLayoutUI::Remove(pControl)) {
+		update_flag_ = kUpdateRemove;
+		return true;
+	}
+
+	return false;
+}
+
+bool CListBodyUI::RemoveAt(int iIndex) {
+	if (CVerticalLayoutUI::RemoveAt(iIndex)) {
+		update_flag_ = kUpdateRemove;
+		return true;
+	}
+
+	return false;
+}
+
+void CListBodyUI::RemoveAll() {
+	CVerticalLayoutUI::RemoveAll();
+	update_flag_ = kUpdateRemoveAll;
+}
+
+BOOL CListBodyUI::SortItems(PULVCompareFunc pfnCompare, UINT_PTR dwData)
+{
+	if (!pfnCompare)
+		return FALSE;
+	m_pCompareFunc = pfnCompare;
+	m_compareData = dwData;
+	CControlUI **pData = (CControlUI **)m_items.GetData();
+	qsort_s(m_items.GetData(), m_items.GetSize(), sizeof(CControlUI*), CListBodyUI::ItemComareFunc, this);
+	IListItemUI *pItem = NULL;
+	for (int i = 0; i < m_items.GetSize(); ++i)
+	{
+		pItem = (IListItemUI*)(static_cast<CControlUI*>(m_items[i])->GetInterface(TEXT("ListItem")));
+		if (pItem)
+		{
+			pItem->SetIndex(i);
+			pItem->Select(false);
+		}
+	}
+	m_pOwner->SelectItem(-1);
+	if (m_pManager)
+	{
+		SetPos(GetPos());
+		Invalidate();
+	}
+
+	return TRUE;
+}
+
+BOOL CListBodyUI::SortPartItems(PULVCompareFunc pfnCompare, UINT_PTR dwData, int nBeginIndex, int nEndIndex)
+{
+	int nSortSize = 0;
+	LPVOID* pItemBeginData = NULL;
+	if (!pfnCompare)
+		return FALSE;
+	if (nBeginIndex < 0 || nEndIndex >= m_items.GetSize() || nBeginIndex > nEndIndex)
+		return FALSE;
+
+	pItemBeginData = m_items.GetData();
+	if (NULL == pItemBeginData)
+		return FALSE;
+	pItemBeginData += nBeginIndex;
+	if (NULL == pItemBeginData)
+		return FALSE;
+
+	nSortSize = nEndIndex - nBeginIndex + 1;
+	m_pCompareFunc = pfnCompare;
+	m_compareData = dwData;
+	CControlUI **pData = (CControlUI **)m_items.GetData();
+	qsort_s(pItemBeginData, nSortSize, sizeof(CControlUI*), CListBodyUI::ItemComareFunc, this);
+	IListItemUI *pItem = NULL;
+	for (int i = nBeginIndex; i <= nEndIndex; ++i)
+	{
+		pItem = (IListItemUI*)(static_cast<CControlUI*>(m_items[i])->GetInterface(TEXT("ListItem")));
+		if (pItem)
+		{
+			pItem->SetIndex(i);
+			pItem->Select(false);
+		}
+	}
+	m_pOwner->SelectItem(-1);
+	if (m_pManager)
+	{
+		SetPos(GetPos());
+		Invalidate();
+	}
+
+	return TRUE;
+}
+
+int __cdecl CListBodyUI::ItemComareFunc(void *pvlocale, const void *item1, const void *item2)
+{
+	CListBodyUI *pThis = (CListBodyUI*)pvlocale;
+	if (!pThis || !item1 || !item2)
+		return 0;
+	return pThis->ItemComareFunc(item1, item2);
+}
+
+int __cdecl CListBodyUI::ItemComareFunc(const void *item1, const void *item2)
+{
+	CControlUI *pControl1 = *(CControlUI**)item1;
+	CControlUI *pControl2 = *(CControlUI**)item2;
+	return m_pCompareFunc((UINT_PTR)pControl1, (UINT_PTR)pControl2, m_compareData);
+}
+
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -1083,7 +1224,7 @@ LPCTSTR CListHeaderUI::GetClass() const
 
 LPVOID CListHeaderUI::GetInterface(LPCTSTR pstrName)
 {
-    if( _tcscmp(pstrName, _T("ListHeader")) == 0 ) return this;
+    if( _tcscmp(pstrName, DUI_CTR_LISTHEADER) == 0 ) return this;
     return CHorizontalLayoutUI::GetInterface(pstrName);
 }
 

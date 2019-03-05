@@ -101,6 +101,7 @@ namespace DuiLib
 #define  DUI_CTR_SCROLLBAR                       (_T("ScrollBar"))
 
 #define  DUI_CTR_LISTHEADER                      (_T("ListHeader"))
+#define  DUI_CTR_LISTBODY                        (_T("ListBody"))
 #define  DUI_CTR_TILEITEM                        (_T("TileItem"))
 #define  DUI_CTR_TILELAYOUT                      (_T("TileLayout"))
 
