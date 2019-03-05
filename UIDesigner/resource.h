@@ -144,6 +144,7 @@
 #define IDR_MENU_UI                     349
 #define IDI_TOOLBOX_LIST                349
 #define IDD_DIALOG_CHECK_UPDATE         350
+#define WM_RELOADDOCUMENTFILE           WM_USER+200
 #define IDC_BUTTON_IMAGE_IMPORT         1000
 #define IDC_BUTTON_IMAGE_CLEAR          1001
 #define IDC_LIST_IMAGE_RESOURCE         1002
