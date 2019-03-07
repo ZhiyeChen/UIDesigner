@@ -78,9 +78,9 @@ void CToolBoxWnd::InitToolList()
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_LABEL,classLabel,IDI_TOOLBOX_LABEL));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_TEXT,classText,IDI_TOOLBOX_TEXT));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_EDIT,classEdit,IDI_TOOLBOX_EDIT));
-	pControlTab->AddSubTool(new CToolElement(DUI_CTR_RICHEDIT,classRichEdit,IDI_TOOLBOX_EDIT));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_RICHEDIT,classRichEdit,IDI_TOOLBOX_RICHEDIT));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_OPTION,classOption,IDI_TOOLBOX_OPTION));
-	pControlTab->AddSubTool(new CToolElement(DUI_CTR_CHECKBOX,classCheckBox,IDI_TOOLBOX_OPTION));
+	pControlTab->AddSubTool(new CToolElement(DUI_CTR_CHECKBOX,classCheckBox,IDI_TOOLBOX_CHECKBOX));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_COMBO,classCombo,IDI_TOOLBOX_COMBO));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_LIST,classList,IDI_TOOLBOX_LIST));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_BUTTON,classButton,IDI_TOOLBOX_BUTTON));
