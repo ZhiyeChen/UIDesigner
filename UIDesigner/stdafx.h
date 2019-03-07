@@ -121,15 +121,15 @@ enum UIClass
 	classTabLayout,
 	classTileLayout,
 	classListHeader,
+	classRichEdit,
+	classCheckBox,
 	classListHeaderItem,
 	classListTextElement,
 	classListLabelElement,
 	classListExpandElement,
 	classListContainerElement,
 	classItem,
-	classScrollBar,
-	classRichEdit,
-	classCheckBox
+	classScrollBar
 };
 
 typedef struct tagExtendedAttributes

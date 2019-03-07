@@ -247,8 +247,8 @@ void CClassView::InsertUITreeItem(CControlUI* pControl,LPCTSTR pstrName/*=NULL*/
 		strName=pControl->GetName();
 	int nClass = ((ExtendedAttributes*)pControl->GetTag())->nClass;
 	int nImage = nClass - classWindow;
-	if (nClass == classRichEdit) nImage = classEdit - classWindow;
-	else if(nClass == classCheckBox) nImage = classOption - classWindow;
+	//if (nClass == classRichEdit) nImage = classEdit - classWindow;
+	//else if(nClass == classCheckBox) nImage = classOption - classWindow;
 	HTREEITEM hItem=m_wndClassView.InsertItem(strName, nImage, nImage,hParent);
 	ExtendedAttributes* pExtended=(ExtendedAttributes*)pControl->GetTag();
 	pExtended->hItem=hItem;

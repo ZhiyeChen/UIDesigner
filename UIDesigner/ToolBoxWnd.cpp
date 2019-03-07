@@ -86,7 +86,7 @@ void CToolBoxWnd::InitToolList()
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_BUTTON,classButton,IDI_TOOLBOX_BUTTON));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_PROGRESS,classProgress,IDI_TOOLBOX_PROGRESS));
 	pControlTab->AddSubTool(new CToolElement(DUI_CTR_SLIDER,classSlider,IDI_TOOLBOX_SLIDER));
-	pControlTab->AddSubTool(new CToolElement(_T("ActiveX"),classActiveX,IDI_TOOLBOX_ACTIVE));
+	//pControlTab->AddSubTool(new CToolElement(_T("ActiveX"),classActiveX,IDI_TOOLBOX_ACTIVE));
 	m_ctlToolList.AddToolTab(pControlTab);
 
 	CToolElement* pLayoutTab=new CToolElement(StringConvertor::Utf8ToWide("布局"));

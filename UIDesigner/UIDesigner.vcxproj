@@ -318,6 +318,7 @@
     <Image Include="res\res_view_hc.ico" />
     <Image Include="res\resource.bmp" />
     <Image Include="res\resource24.bmp" />
+    <Image Include="res\ToolBox\RichEdit.ico" />
     <Image Include="res\ToolBox\ScrollBar.ico" />
     <Image Include="res\ToolBox\Slider.ico" />
     <Image Include="res\sort.bmp" />
